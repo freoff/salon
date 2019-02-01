@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Dodaj</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding [formGroup]="form.get('client')">
+  <ion-card style="max-width: 600px">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md>
+          <ion-item>
+            <ion-label position="floating">Imie</ion-label>
+            <ion-input type="text" formControlName="fname"></ion-input>
+          </ion-item>
+          <ion-item lines="none" no-margin >
+            <ion-label color="danger" no-padding no-margin><small>Error</small></ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" size-md>
+          <ion-item>
+            <ion-label position="floating">Nazwisko</ion-label>
+            <ion-input type="text" formControlName="lname"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>
