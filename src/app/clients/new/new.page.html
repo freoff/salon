@@ -1,34 +1,92 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Dodaj</ion-title>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+            <ion-menu-button menu="mainMenu"></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Dodaj</ion-title>
 
-  </ion-toolbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content padding [formGroup]="form.get('client')">
-  <ion-card style="max-width: 600px">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="12" size-md>
-          <ion-item>
-            <ion-label position="floating">Imie</ion-label>
-            <ion-input type="text" formControlName="fname"></ion-input>
-          </ion-item>
-          <ion-item lines="none" no-margin >
-            <ion-label color="danger" no-padding no-margin><small>Error</small></ion-label>
-          </ion-item>
-        </ion-col>
-        <ion-col size="12" size-md>
-          <ion-item>
-            <ion-label position="floating">Nazwisko</ion-label>
-            <ion-input type="text" formControlName="lname"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </ion-card>
+    <ion-card style="max-width: 600px">
+        <ion-grid>
+            <ion-card-header>
+
+                <ion-item lines="none">
+                    <ion-icon name="contact" slot="start" size="large" color="primary"></ion-icon>
+                    <ion-content>
+                        <ion-card-title> Nowy klient</ion-card-title>
+                        <ion-card-subtitle>Dodaj informacje o nowym kiliencie</ion-card-subtitle>
+
+                    </ion-content>
+                </ion-item>
+            </ion-card-header>
+            <ion-row>
+                <ion-col size="12" size-md>
+                    <ion-item>
+                        <ion-label position="floating">Imie</ion-label>
+                        <ion-input type="text" formControlName="fname" autofocus></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12" size-md>
+                    <ion-item>
+                        <ion-label position="floating">Nazwisko</ion-label>
+                        <ion-input type="text" formControlName="lname"></ion-input>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="12" size-md>
+                    <ion-item>
+                        <ion-label position="floating">Telefon:</ion-label>
+                        <ion-input type="telephone" formControlName="telephone"></ion-input>
+                    </ion-item>
+                </ion-col>
+                <ion-col size="12" size-md>
+                    <ion-item>
+                        <ion-label position="floating">Email:</ion-label>
+                        <ion-input type="email" formControlName="email" placeholder="Podaj email klienta..." email></ion-input>
+                        <ion-icon slot="end" name="add" align-self-end></ion-icon>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <ion-item>
+                        <ion-label position="stacked">Dodatkowe informacje</ion-label>
+                        <ion-textarea  rows="5" placeholder="Dodaj dodatkowe informacje o kliencie"></ion-textarea>
+                    </ion-item>
+                </ion-col>
+            </ion-row>
+
+            <ion-row justify-content-end>
+                <ion-col size="6" justify-content-end>
+
+                            <section style="display: flex; justify-content: flex-end;">
+
+                            <ion-button fill="outline" (click)="resetForm()">
+                                <ion-text>Anuluj</ion-text>
+                            </ion-button>
+                            <ion-button (click)="addClient(form.value)">
+                                <ion-text>Dodaj</ion-text>
+                            </ion-button>
+                            </section>
+
+
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col>
+                    <pre>
+                        {{form.value | json}}
+                    </pre>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+
+    </ion-card>
+
 
 </ion-content>

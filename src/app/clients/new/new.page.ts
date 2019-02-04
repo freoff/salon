@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientFormController} from '../client-form.controller';
 import {FormGroup} from '@angular/forms';
+import {ClientFormInterface} from '../types/client-form.interface';
 
 @Component({
   selector: 'app-new',
@@ -14,7 +15,12 @@ export class NewPage implements OnInit {
   constructor(public formController: ClientFormController) {
     this.form = formController.form;
   }
-
+  resetForm() {
+    this.form.reset();
+  }
+  addClient(client: ClientFormInterface ) {
+    console.log('New client ', client);
+  }
   ngOnInit() {
   }
 

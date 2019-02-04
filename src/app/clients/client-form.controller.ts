@@ -20,9 +20,9 @@ export class ClientFormController {
         this._form = this.fb.group({
             client: this.fb.group({
                 fname: ['', [Validators.required, Validators.minLength(3)]],
-                lname: [''],
-                tel: [],
-                email: ['', Validators.email],
+                lname: ['', [Validators.required, Validators.minLength(3)]],
+                telephone: [],
+                email: ['', [Validators.email]],
                 clientNotes: this.fb.array([])
             }),
             formState: this.fb.group({
