@@ -1,10 +1,10 @@
-import {Telephone} from './telephone.interface';
+import {Phone} from './telephone.interface';
 
 export interface Client {
     id: string;
     fname: string;
     lname: string;
-    tel: Telephone;
+    tel: Phone;
     email: string;
     clientNotes: string[];
 }

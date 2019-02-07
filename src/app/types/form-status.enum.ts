@@ -1,11 +1,11 @@
-export enum FormStatus {
+export enum FormState {
     createNew= 'createNew',
     update = 'update'
 }
 
 
-export namespace FormStatus {
-    export function isUpdate(formStatus: FormStatus) {
-        return FormStatus.update === formStatus;
+export namespace FormState {
+    export function isUpdate(formStatus: FormState) {
+        return FormState.update === formStatus;
     }
 }

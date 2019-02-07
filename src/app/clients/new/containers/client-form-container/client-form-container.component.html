@@ -1,0 +1,9 @@
+<app-client-form
+        [form]="form.get('client')"
+        [formTelephonesControls]="formTelephonesControls"
+        [phoneTypes]="phoneTypes"
+        [isUpdate]="isUpdate"
+        (addPhone)="addPhone()"
+        (removePhone)="removePhone($event)"
+></app-client-form>
+<app-client-form-footer [isUpdate]="isUpdate" (addClient)="addClient()" (resetForm)="resetForm()"></app-client-form-footer>

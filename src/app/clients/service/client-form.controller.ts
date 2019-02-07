@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ClientsModule } from './clients.module';
-import {FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
-import { FormStatus } from '../types/form-status.enum';
-import { Telephone } from './models/telephone.interface';
+import { ClientsModule } from '../clients.module';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormState } from '../../types/form-status.enum';
+import { Phone } from '../models/telephone.interface';
 
 @Injectable({ providedIn: ClientsModule })
 export class ClientFormController {
@@ -15,10 +15,9 @@ export class ClientFormController {
     this.initializeForm();
   }
   getFormTelephones(): FormArray {
-      return this._form && this.form.get(['client', 'telephones']) as FormArray;
+    return this._form && (this.form.get(['client', 'telephones']) as FormArray);
   }
-  isUpdateForm = () =>
-    FormStatus.isUpdate(this._form.get(['formState', 'formStatus']).value);
+  isUpdateForm = () => FormState.isUpdate(this._form.get(['formState', 'formStatus']).value);
 
   private initializeForm() {
     this._form = this.fb.group({
@@ -27,17 +26,15 @@ export class ClientFormController {
         lname: ['', [Validators.required, Validators.minLength(3)]],
         telephones: this.fb.array([this.createTelephone()]),
         email: ['', [Validators.email]],
-        clientNotes: this.fb.array([]),
+        clientNotes: [''],
       }),
-      formState: this.fb.group({
-        formStatus: FormStatus.createNew,
-      }),
+      state: [FormState.createNew],
     });
   }
   public createTelephone(
-    telephone: Telephone = {
+    telephone: Phone = {
       id: '',
-      name: 'komorkowy',
+      name: null,
       number: '',
       order: 1,
       primary: true,
@@ -52,4 +49,12 @@ export class ClientFormController {
       order: [order, []],
     });
   }
+
+  removePhone({ index }) {
+    this.getFormTelephones().removeAt(index);
+  }
+
+    setFormState(state: FormState) {
+        this.form.get('state').patchValue(state)
+    }
 }

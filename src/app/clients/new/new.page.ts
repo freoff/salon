@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import {ClientFormController} from '../client-form.controller';
-import {FormGroup} from '@angular/forms';
-import {ClientFormInterface} from '../types/client-form.interface';
-import {TelephoneTypes} from '../models/telephone-types.enum';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { filter, map, tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { isEmpty } from 'underscore';
+import { FormState } from '../../types/form-status.enum';
 
 @Component({
   selector: 'app-new',
@@ -10,28 +11,18 @@ import {TelephoneTypes} from '../models/telephone-types.enum';
   styleUrls: ['./new.page.scss'],
 })
 export class NewPage implements OnInit {
+  params$: Observable<FormState>;
+  isUpdate$: Observable<boolean>;
+  constructor(private route: ActivatedRoute) {}
 
-  public form: FormGroup;
-  public telephoneTypes = [TelephoneTypes.cell, TelephoneTypes.ground]
-  constructor(public formController: ClientFormController) {
-    this.form = formController.form;
-  }
-  resetForm() {
-    this.form.reset();
-  }
-  addClient(client: ClientFormInterface ) {
-    console.log('New client ', client);
-  }
-  ngOnInit() {
-  }
-  get formTelephonesControls() {
-    return this.formController.getFormTelephones().controls;
-  }
-  addTelephone(index: number) {
-      console.log(this.formTelephonesControls);
-    // console.log('Telephone is valid' ,this.formController.getFormTelephones().at(index).valid);
-    this.formController.getFormTelephones().push(this.formController.createTelephone());
+  ngOnInit(): void {
+    this.readParams();
   }
 
-
+  private readParams() {
+    this.params$ = this.route.paramMap.pipe(
+      map((params) => (params.has('formState') ? (params.get('formState') as FormState) : FormState.createNew)),
+    );
+    this.isUpdate$ = this.params$.pipe(map((formState) => FormState.isUpdate(formState)));
+  }
 }

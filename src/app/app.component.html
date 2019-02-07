@@ -23,7 +23,7 @@
                             </ion-label>
                         </ion-item-divider>
                         <ion-menu-toggle menu="mainMenu" [autoHide]="false">
-                            <ion-item detail routerLink="/clients/list" routerLinkActive="url-active">
+                            <ion-item detail [routerLink]="['/secure', 'clients', 'new', {formState: 'update'}]" routerLinkActive="url-active">
                                 <ion-label>Lista</ion-label>
                                 <ion-icon slot="start" name="search"></ion-icon>
                             </ion-item>

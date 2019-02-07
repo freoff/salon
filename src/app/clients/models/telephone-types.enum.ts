@@ -1,4 +1,4 @@
-export enum TelephoneTypes {
+export enum PhoneTypes {
   cell = 'cell',
   ground = 'ground',
 }
