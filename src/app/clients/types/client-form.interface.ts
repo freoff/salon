@@ -1,4 +1,4 @@
-import {Client} from './client.interface';
+import {Client} from '../models/client.interface';
 
 export interface ClientFormInterface {
     client: Client;
