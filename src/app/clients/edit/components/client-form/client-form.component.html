@@ -1,9 +1,9 @@
-<ion-grid [formGroup]="form">
-  <ion-card-header>
+<ion-grid [formGroup]="form" class="with-background">
+  <ion-card-header [translucent]="true">
     <ion-item lines="none" *ngIf="!isUpdate">
       <ion-icon name="contact" slot="start" size="large" color="primary"></ion-icon>
       <ion-content>
-        <ion-card-title> Nowy klient</ion-card-title>
+        <ion-card-title> Klient</ion-card-title>
         <ion-card-subtitle>Dodaj informacje o nowym kiliencie</ion-card-subtitle>
       </ion-content>
     </ion-item>
@@ -11,9 +11,9 @@
       <ion-icon name="contact" slot="start" size="large" color="primary"></ion-icon>
       <ion-content>
         <ion-card-title>
-          Popraw dane klienta <ion-badge>{{ formStatus }}</ion-badge></ion-card-title
+          Klient</ion-card-title
         >
-        <ion-card-subtitle>Update</ion-card-subtitle>
+        <ion-card-subtitle>Popraw dane</ion-card-subtitle>
       </ion-content>
     </ion-item>
   </ion-card-header>

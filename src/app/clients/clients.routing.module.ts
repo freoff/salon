@@ -6,7 +6,7 @@ const routes: Routes = [
             { path: '', pathMatch: 'full', loadChildren: './list/list.module#ListPageModule' },
             { path: 'list', loadChildren: './list/list.module#ListPageModule' },
             { path: 'detail', loadChildren: './detail/detail.module#DetailPageModule' },
-            { path: 'new', loadChildren: './new/new.module#NewPageModule' },
+            // { path: 'edit', loadChildren: './edit/edit.module#NewPageModule' },
             { path: 'edit', loadChildren: './edit/edit.module#EditPageModule' }
         ]}
 ];

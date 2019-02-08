@@ -4,7 +4,7 @@ import {RouterModule} from '@angular/router';
 import {ClientsRoutingModule} from './clients.routing.module';
 import {ClientFormController} from './service/client-form.controller';
 import {ReactiveFormsModule} from '@angular/forms';
-import { ClientFormComponent } from './new/components/client-form/client-form.component';
+import { ClientFormComponent } from './edit/components/client-form/client-form.component';
 import {IonicModule} from '@ionic/angular';
 
 @NgModule({

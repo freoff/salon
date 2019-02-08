@@ -1,4 +1,4 @@
-import { browser, by, element } from 'protractor';
+import { browser, by, element,  } from 'protractor';
 
 export class AppPage {
   navigateTo() {
@@ -6,6 +6,7 @@ export class AppPage {
   }
 
   getPageTitle() {
+
     return element(by.css('ion-title')).getText();
   }
 }

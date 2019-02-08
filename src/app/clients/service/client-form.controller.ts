@@ -12,6 +12,7 @@ export class ClientFormController {
     return this._form;
   }
   constructor(private fb: FormBuilder) {
+    console.log('in constructor');
     this.initializeForm();
   }
   getFormTelephones(): FormArray {
