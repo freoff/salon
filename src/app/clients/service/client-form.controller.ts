@@ -13,6 +13,8 @@ export class ClientFormController {
   }
   constructor(private fb: FormBuilder) {
     console.log('in constructor');
+    console.log('_ - ', x );
+
     this.initializeForm();
   }
   getFormTelephones(): FormArray {
@@ -23,11 +25,12 @@ export class ClientFormController {
   private initializeForm() {
     this._form = this.fb.group({
       client: this.fb.group({
-        fname: ['', [Validators.required, Validators.minLength(3)]],
-        lname: ['', [Validators.required, Validators.minLength(3)]],
-        telephones: this.fb.array([this.createTelephone()]),
-        email: ['', [Validators.email]],
-        clientNotes: [''],
+
+        fname          : ['', [Validators.required, Validators.minLength(3)]],
+        lname          : ['', [Validators.required, Validators.minLength(3)]],
+        telephones     : this.fb.array([this.createTelephone()]),
+        email          : ['', [Validators.email]],
+        clientNotes    : [''],
       }),
       state: [FormState.createNew],
     });
@@ -43,11 +46,11 @@ export class ClientFormController {
   ) {
     const { id, name, number, order, primary } = telephone;
     return this.fb.group({
-      id: [id, []],
-      name: [name, []],
-      number: [number, [Validators.required]],
-      primary: [primary, []],
-      order: [order, []],
+      id         : [id, []],
+      name       : [name, []],
+      number     : [number, [Validators.required]],
+      primary    : [primary, []],
+      order      : [order, []],
     });
   }
 
@@ -55,7 +58,7 @@ export class ClientFormController {
     this.getFormTelephones().removeAt(index);
   }
 
-    setFormState(state: FormState) {
-        this.form.get('state').patchValue(state)
-    }
+  setFormState(state: FormState) {
+    this.form.get('state').patchValue(state);
+  }
 }
