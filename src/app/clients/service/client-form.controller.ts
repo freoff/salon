@@ -13,7 +13,6 @@ export class ClientFormController {
   }
   constructor(private fb: FormBuilder) {
     console.log('in constructor');
-    console.log('_ - ', x );
 
     this.initializeForm();
   }
