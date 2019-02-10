@@ -6,5 +6,5 @@ export interface Client {
     lname: string;
     tel: Phone;
     email: string;
-    clientNotes: string[];
+    clientNotes: string;
 }

@@ -1,0 +1,7 @@
+<ion-list padding>
+  <ion-item>
+    <ion-label position="floating">Szukaj</ion-label>
+    <ion-input [formControl]="searchTerm" type="text"></ion-input>
+    <ion-button slot="end" align-self-end fill="transparent" (click)="clearInput()"><ion-icon name="close"></ion-icon></ion-button>
+  </ion-item>
+</ion-list>

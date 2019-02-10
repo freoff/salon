@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ClientStateService } from '../service/client-state.service';
+import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
+import { Client } from '../models/client.interface';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { isEmpty } from 'underscore';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.page.scss'],
 })
 export class ListPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit(): void {}
 }

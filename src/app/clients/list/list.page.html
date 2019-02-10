@@ -1,9 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>list</ion-title>
-  </ion-toolbar>
+  <ion-toolbar> <ion-title>list</ion-title> </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col [sizeXl]="6" offsetXl="3">
+        <ion-card padding> <app-lient-list-container></app-lient-list-container> </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
+  <ion-footer padding text-right color="dark">Total clients:</ion-footer>

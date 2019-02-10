@@ -1,0 +1,2 @@
+<app-client-search-input (changeSearchTerm)="setFilter($event)"></app-client-search-input>
+<app-clients-lists [clientLists]="clients$ | async" (showClient)="showClient($event)"></app-clients-lists>

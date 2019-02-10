@@ -23,8 +23,12 @@
                             </ion-label>
                         </ion-item-divider>
                         <ion-menu-toggle menu="mainMenu" [autoHide]="false">
+                            <ion-item detail [routerLink]="['/', 'secure', 'clients', 'list']" routerLinkActive="url-active">
+                                <ion-label>List</ion-label>
+                                <ion-icon slot="start" name="search"></ion-icon>
+                            </ion-item>
                             <ion-item detail [routerLink]="['/secure', 'clients', 'edit', {formState: 'update'}]" routerLinkActive="url-active">
-                                <ion-label>Lista</ion-label>
+                                <ion-label>Edit</ion-label>
                                 <ion-icon slot="start" name="search"></ion-icon>
                             </ion-item>
                             <ion-item detail routerLink="/secure/clients/edit">
@@ -64,10 +68,11 @@
         <ion-router-outlet id="menu-content" (activate)="changeRoute($event)"></ion-router-outlet>
 
     </ion-split-pane>
+
     <ion-menu contentId="menu-content" side="end" menuId="secondaryMenu">
         <ion-header>
             <ion-toolbar>
-                <ion-searchbar></ion-searchbar>
+                <ion-searchbar ></ion-searchbar>
             </ion-toolbar>
         </ion-header>
     </ion-menu>
