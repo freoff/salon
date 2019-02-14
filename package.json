@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "prettier": "npm run prettier -c ./src/app/**/*"
+    "prettier": "npm run prettier -c ./src/app/**/*",
+    "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --sort --format namespaced-json --marker _"
   },
   "private": true,
   "dependencies": {
@@ -32,6 +33,8 @@
     "@ngrx/router-store": "^7.2.0",
     "@ngrx/store": "^7.2.0",
     "@ngrx/store-devtools": "^7.2.0",
+    "@ngx-translate/core": "^11.0.1",
+    "@ngx-translate/http-loader": "^4.0.0",
     "cordova-sqlite-storage": "3.0.0",
     "core-js": "^2.5.4",
     "prettier": "^1.16.4",
@@ -49,6 +52,7 @@
     "@angular/compiler": "~7.2.2",
     "@angular/compiler-cli": "~7.2.2",
     "@angular/language-service": "~7.2.2",
+    "@biesbjerg/ngx-translate-extract": "^2.3.4",
     "@ionic/angular-toolkit": "~1.2.0",
     "@ionic/lab": "1.0.20",
     "@ngrx/schematics": "^7.2.0",

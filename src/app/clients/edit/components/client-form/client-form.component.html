@@ -21,13 +21,13 @@
     <ion-row>
       <ion-col size="12" size-md>
         <ion-item>
-          <ion-label position="floating">Imie</ion-label>
+          <ion-label position="floating">{{'fname' | translate}}</ion-label>
           <ion-input type="text" formControlName="fname" autofocus></ion-input>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-md>
         <ion-item>
-          <ion-label position="floating">Nazwisko</ion-label>
+          <ion-label position="floating">{{'lname' | translate}}</ion-label>
           <ion-input type="text" formControlName="lname"></ion-input>
         </ion-item>
       </ion-col>
@@ -39,7 +39,7 @@
     >
       <ion-col [formGroupName]="currentTelephoneIndex">
         <ion-item>
-          <ion-label position="floating">Numer:</ion-label>
+          <ion-label position="floating">{{'number' | translate}}</ion-label>
           <ion-input type="telephone" formControlName="number"></ion-input>
         </ion-item>
       </ion-col>

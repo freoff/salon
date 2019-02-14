@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, RouterEvent } from '@angular/router';
 import { ApplicationStateService } from './services/application-state.service';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent {
     private statusBar: StatusBar,
     private menuController: MenuController,
     private applicationStateService: ApplicationStateService,
+    public translateService: TranslateService,
   ) {
     this.initializeApp();
   }
@@ -27,9 +29,10 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(async () => {
       this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      this.translateService.setDefaultLang('pl');
       this.mainMenu = await this.menuController.get('mainMenu');
       this.applicationStateService.initializeAppData();
+      this.splashScreen.hide();
       // this.router.events.subscribe((event: RouterEvent) => (this.currentUrl = event.url));
     });
   }

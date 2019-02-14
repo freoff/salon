@@ -9,6 +9,7 @@ import { EditPage } from './edit.page';
 import { ClientFormContainerComponent } from './containers/client-form-container/client-form-container.component';
 import { ClientFormComponent } from './components/client-form/client-form.component';
 import { ClientFormFooterComponent } from './components/client-form-footer/client-form-footer.component';
+import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -18,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, RouterModule.forChild(routes), TranslateModule.forChild()],
   declarations: [EditPage, ClientFormContainerComponent, ClientFormComponent, ClientFormFooterComponent],
 })
 export class EditPageModule {}
