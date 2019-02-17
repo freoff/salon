@@ -3,6 +3,7 @@ import { ClientsModule } from '../clients.module';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormState } from '../../types/form-status.enum';
 import { Phone } from '../models/telephone.interface';
+import {PhoneTypes} from '../models/telephone-types.enum';
 
 @Injectable({ providedIn: ClientsModule })
 export class ClientFormController {
@@ -37,7 +38,7 @@ export class ClientFormController {
   public createTelephone(
     telephone: Phone = {
       id: '',
-      name: null,
+      name: PhoneTypes.cell,
       number: '',
       order: 1,
       primary: true,

@@ -5,7 +5,7 @@ import { Store } from '@ngrx/store';
 import { ClientFormInterface } from '../types/client-form.interface';
 import { CreateNewClient } from '../../state/clients/page/client-page.actions';
 import clientsSelectors from '../../state/selectors/clients.selectors';
-import { Observable } from 'rxjs';
+import {from, Observable, of} from 'rxjs';
 import { Client } from '../models/client.interface';
 
 @Injectable({ providedIn: ClientsModule })
@@ -17,5 +17,8 @@ export class ClientStateService {
   }
   getAllClients(): Observable<Array<Client>> {
     return this.store.select(clientsSelectors.getAllClients);
+  }
+  getClient(clientId: string): Observable<Client> {
+    return of({} as Client);
   }
 }

@@ -45,9 +45,9 @@
       </ion-col>
       <ion-col [formGroupName]="currentTelephoneIndex">
         <ion-item>
-          <ion-label position="floating">Etykieta</ion-label>
+          <ion-label position="floating">{{'etykieta' | translate}}</ion-label>
           <ion-select formControlName="name" interface="popover" style="width: 100%">
-            <ion-select-option *ngFor="let phoneType of phoneTypes"> {{ phoneType }} </ion-select-option>
+            <ion-select-option *ngFor="let phoneType of phoneTypes" [value]="phoneType"> {{phoneType | translate }} </ion-select-option>
           </ion-select>
           <ion-buttons slot="end" align-self-end>
             <ion-button
@@ -65,7 +65,7 @@
     <ion-row>
       <ion-col size="12" size-md>
         <ion-item>
-          <ion-label position="floating">Email:</ion-label>
+          <ion-label position="floating">{{'email' | translate}}</ion-label>
           <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
       </ion-col>
