@@ -57,6 +57,7 @@ export function reducer(
       return adapter.removeAll(state);
     }
 
+
     default: {
       return state;
     }

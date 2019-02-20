@@ -1,17 +1,17 @@
-import { namedRoute } from './named.route';
+import { APP_ROUTES } from '../../app-named-route';
 
 export const navigationMenuItems: NavigationMenuItem = {
   clients: [
     {
       label: 'nav.list',
       icon: 'search',
-      navigation: namedRoute.clients.list,
+      navigation: APP_ROUTES.clients.list,
     },
 
     {
       label: 'nav.add',
       icon: 'add',
-      navigation: namedRoute.clients.add,
+      navigation: APP_ROUTES.clients.add,
     },
   ],
 };

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {namedRoute} from '../../layouts/side-menu/named.route';
+import {APP_ROUTES} from '../../app-named-route';
 
 @Component({
   selector: 'app-detail',
@@ -7,7 +7,7 @@ import {namedRoute} from '../../layouts/side-menu/named.route';
   styleUrls: ['./detail.page.scss'],
 })
 export class DetailPage implements OnInit {
-  public clientListUrl = namedRoute.clients.list;
+  public clientListUrl = APP_ROUTES.clients.list;
   constructor() { }
     
   ngOnInit() {

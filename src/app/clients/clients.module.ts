@@ -1,22 +1,15 @@
-import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {RouterModule} from '@angular/router';
-import {ClientsRoutingModule} from './clients.routing.module';
-import {ClientFormController} from './service/client-form.controller';
-import {ReactiveFormsModule} from '@angular/forms';
-import { ClientFormComponent } from './edit/components/client-form/client-form.component';
-import {IonicModule} from '@ionic/angular';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ClientsRoutingModule } from './clients.routing.module';
+import { ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { ClientDetailsResolver } from './resolvers/client-details.resolver';
+import { ClientStateService } from './service/client-state.service';
 
 @NgModule({
-    declarations: [],
-    imports: [
-        CommonModule,
-        IonicModule,
-        ReactiveFormsModule,
-        ClientsRoutingModule
-    ],
-    exports: [],
-
+  declarations: [],
+  imports: [CommonModule, IonicModule, ReactiveFormsModule, ClientsRoutingModule],
+  exports: [],
+  providers: [],
 })
-export class ClientsModule {
-}
+export class ClientsModule {}

@@ -1,4 +1,4 @@
-import {ClientPageActions, ClientPageActionTypes} from './client-page.actions';
+import { ClientPageActions, ClientPageActionTypes } from './client-page.actions';
 
 export interface ClientPageState {
   creatingClient: boolean;
@@ -17,7 +17,9 @@ export function reducer(state = initialState, action: ClientPageActions): Client
     case ClientPageActionTypes.CreateNewClientSuccess:
       return { ...state, creatingClient: false };
     case ClientPageActionTypes.GoToClientDetails:
-      return {...state, selectedClientId: action.payload.client.id}
+      return { ...state, selectedClientId: action.payload.client.id };
+    case ClientPageActionTypes.SetSelectedClient:
+      return { ...state, selectedClientId: action.payload.clientId };
     default:
       return state;
   }

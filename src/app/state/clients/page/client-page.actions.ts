@@ -8,10 +8,18 @@ export enum ClientPageActionTypes {
   CreateNewClientSuccess = '[Client Api] create new client success',
   CreateNewClientFail= '[Client Api] create new client success',
   GoToClientDetails= '[Client list] Go to client details',
-
-
+  LoadClient= '[Client details Resolver] Load client with id',
+  SetSelectedClient= '[Client details Resolver] Set selected client',
 }
 
+export class SetSelectedClient implements Action {
+  readonly type = ClientPageActionTypes.SetSelectedClient;
+  public constructor(public payload: {clientId: string}) {}
+}
+export class LoadClient implements Action {
+  readonly type = ClientPageActionTypes.LoadClient;
+  public constructor(public payload: {clientId: string}) {}
+}
 export class GoToClientDetails implements Action {
   readonly type = ClientPageActionTypes.GoToClientDetails;
   public constructor(public payload: {client: Client}) {}
@@ -33,4 +41,4 @@ export class LoadAllClients implements Action {
 }
 
 
-export type ClientPageActions = LoadAllClients | CreateNewClient | CreateNewClientSuccess | GoToClientDetails;
+export type ClientPageActions = LoadAllClients | CreateNewClient | CreateNewClientSuccess | GoToClientDetails | LoadClient | SetSelectedClient;

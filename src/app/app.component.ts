@@ -28,6 +28,7 @@ export class AppComponent {
 
   initializeApp() {
     this.platform.ready().then(async () => {
+
       this.statusBar.styleDefault();
       this.translateService.setDefaultLang('pl');
       this.mainMenu = await this.menuController.get('mainMenu');

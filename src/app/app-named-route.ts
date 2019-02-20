@@ -1,11 +1,15 @@
 const clientsRoute = ['/', 'secure', 'clients'];
-
-export const namedRoute = {
+const errorsRoute = ['/', 'errors'];
+export const APP_ROUTES = {
     clients: {
 
         list       : [...clientsRoute, 'list'],
         edit       : [...clientsRoute, 'edit', {formState: 'update'}],
         add        : [...clientsRoute, 'edit'],
-        details    : [...clientsRoute, ],
+        details    : (clientId) => [...clientsRoute, clientId],
     },
+    errors: {
+        clientNotFound : [...errorsRoute, 'client-not-found'],
+    }
 };
+
