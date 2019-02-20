@@ -4,15 +4,13 @@
       <ion-icon name="contact" slot="start" size="large" color="primary"></ion-icon>
       <ion-content>
         <ion-card-title> Klient</ion-card-title>
-        <ion-card-subtitle>Dodaj informacje o nowym kiliencie</ion-card-subtitle>
+        <ion-card-subtitle>{{'dodajInformacjeONowymKliencie' | translate}}</ion-card-subtitle>
       </ion-content>
     </ion-item>
     <ion-item lines="none" *ngIf="isUpdate">
       <ion-icon name="contact" slot="start" size="large" color="primary"></ion-icon>
       <ion-content>
-        <ion-card-title>
-          Klient</ion-card-title
-        >
+        <ion-card-title> Klient</ion-card-title>
         <ion-card-subtitle>Popraw dane</ion-card-subtitle>
       </ion-content>
     </ion-item>
@@ -21,13 +19,13 @@
     <ion-row>
       <ion-col size="12" size-md>
         <ion-item>
-          <ion-label position="floating">{{'fname' | translate}}</ion-label>
+          <ion-label position="floating">{{ 'fname' | translate }}</ion-label>
           <ion-input type="text" formControlName="fname" autofocus></ion-input>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-md>
         <ion-item>
-          <ion-label position="floating">{{'lname' | translate}}</ion-label>
+          <ion-label position="floating">{{ 'lname' | translate }}</ion-label>
           <ion-input type="text" formControlName="lname"></ion-input>
         </ion-item>
       </ion-col>
@@ -37,35 +35,43 @@
       formArrayName="telephones"
       *ngFor="let telephone of formTelephonesControls; let currentTelephoneIndex = index"
     >
-      <ion-col [formGroupName]="currentTelephoneIndex">
+      <ion-col [formGroupName]="currentTelephoneIndex" size="12" sizeMd>
         <ion-item>
-          <ion-label position="floating">{{'number' | translate}}</ion-label>
+          <ion-label position="floating">{{ 'number' | translate }}</ion-label>
           <ion-input type="telephone" formControlName="number"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col [formGroupName]="currentTelephoneIndex">
-        <ion-item>
-          <ion-label position="floating">{{'etykieta' | translate}}</ion-label>
+      <ion-col [formGroupName]="currentTelephoneIndex" size="12" sizeMd>
+        <ion-item style="margin-top: 4px">
+          <ion-label position="floating">{{ '' }}</ion-label>
           <ion-select formControlName="name" interface="popover" style="width: 100%">
-            <ion-select-option *ngFor="let phoneType of phoneTypes" [value]="phoneType"> {{phoneType | translate }} </ion-select-option>
+            <ion-select-option *ngFor="let phoneType of phoneTypes" [value]="phoneType">
+              {{ phoneType | translate }}
+            </ion-select-option>
           </ion-select>
-          <ion-buttons slot="end" align-self-end>
+          <ion-buttons slot="end" align-self-end no-margin>
             <ion-button
               [hidden]="currentTelephoneIndex === 0"
               fill="clear"
+              size="small"
               (click)="removePhone.emit(currentTelephoneIndex)"
             >
-              <ion-icon name="remove"></ion-icon
+              <ion-icon slot="icon-only" name="remove"></ion-icon
             ></ion-button>
-            <ion-button fill="clear" (click)="addPhone.emit()"> <ion-icon name="add"></ion-icon></ion-button>
+            <ion-button size="large" fill="clear" (click)="addPhone.emit()">
+              <ion-icon slot="icon-only" name="add"></ion-icon
+            ></ion-button>
+
           </ion-buttons>
+
         </ion-item>
+
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col size="12" size-md>
         <ion-item>
-          <ion-label position="floating">{{'email' | translate}}</ion-label>
+          <ion-label position="floating">{{ 'email' | translate }}</ion-label>
           <ion-input type="email" formControlName="email"></ion-input>
         </ion-item>
       </ion-col>

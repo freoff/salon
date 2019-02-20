@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { APP_ROUTES } from './app-named-route';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'settings' },
@@ -10,6 +11,15 @@ const routes: Routes = [
       {
         path: 'clients',
         loadChildren: './clients/clients.module#ClientsModule',
+      },
+    ],
+  },
+  {
+    path: 'errors',
+    children: [
+      {
+        path: 'client-not-found',
+        loadChildren: './errors/no-client-error/no-client-error.module#NoClientErrorPageModule',
       },
     ],
   },

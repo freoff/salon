@@ -5,14 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DetailPage } from './detail.page';
+import { NoClientErrorPage } from './no-client-error.page';
 import {TranslateModule} from '@ngx-translate/core';
-import { DetailsContainerComponent } from './container/details-container/details-container.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: DetailPage
+    component: NoClientErrorPage
   }
 ];
 
@@ -22,8 +21,8 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    TranslateModule.forChild(),
+    TranslateModule.forChild()
   ],
-  declarations: [DetailPage, DetailsContainerComponent]
+  declarations: [NoClientErrorPage]
 })
-export class DetailPageModule {}
+export class NoClientErrorPageModule {}

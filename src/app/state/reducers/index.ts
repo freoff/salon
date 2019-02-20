@@ -18,7 +18,7 @@ export interface State {
   router: RouterReducerState;
   application: fromApplication.State;
   authorization: fromAuthorization.AuthorizationState;
-  clientPage: fromClientPage.State;
+  clientPage: fromClientPage.ClientPageState;
 }
 
 export const reducers: ActionReducerMap<State> = {

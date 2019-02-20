@@ -8,9 +8,12 @@ import { environment } from '../../environments/environment';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import {CustomSerializer} from './custom-router-serializer';
 import {ClientPageEffects} from './clients/page/client-page.effects';
+import {ApplicationEffects} from './application/application.effects';
 
 const APPLICATION_EFFECTS = [
-    ClientPageEffects
+    ClientPageEffects,
+    ApplicationEffects,
+
 ]
 
 @NgModule({

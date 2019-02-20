@@ -23,7 +23,7 @@ export class LientListContainerComponent implements OnInit {
     this.filter.next(filter);
   }
   showClient({ client }: { client: Client }) {
-
+    this.clientStateService.showClientDetails({client});
   }
   private prepereClientsStream() {
     this.clients$ = combineLatest(
@@ -39,7 +39,6 @@ export class LientListContainerComponent implements OnInit {
     if (!filter || filter.length < 0) {
       return clients;
     } else {
-      console.log('filtering people', filter, clients);
       return clients.filter(
           (client) =>
               client.lname.toLocaleLowerCase().includes(filter) || client.fname.toLocaleLowerCase().includes(filter),

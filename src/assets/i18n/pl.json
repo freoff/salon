@@ -1,9 +1,14 @@
 {
-	"etykieta": "Etykieta",
-	"fname": "Imie",
-	"klienci": "Klienci",
-	"lname": "Ostatnie imie",
-	"number": "Numer",
-	"ground": "Stacjonarny",
-	"cell": "Komorkowy"
+  "nav"         : {
+    "add"       : "Dodaj",
+    "edit"      : "Edytuj",
+    "list"      : "Lista"
+  },
+  "etykieta"    : "Etykieta",
+  "fname"       : "Imie",
+  "clients"     : "Klienci",
+  "lname"       : "Nazwisko",
+  "number"      : "Numer",
+  "ground"      : "Stacjonarny",
+  "cell"        : "Komorkowy"
 }

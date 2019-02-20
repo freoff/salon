@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Client not found</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-card padding>
+          <ion-card-content padding>
+
+            <ion-text color="danger" text-center >
+              <h1>{{'ClientDoNotExist' | translate}}</h1>
+              <p></p>
+              <div margin-top>
+                <ion-icon name="sad" style="font-size: 64px !important;"> </ion-icon>
+              </div>
+            </ion-text>
+          </ion-card-content>
+        </ion-card>
+      </ion-row>
+    </ion-grid>
+
+
+</ion-content>

@@ -1,9 +1,13 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>detail</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="clientListUrl"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'clients.details' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <app-details-container></app-details-container>
 
 </ion-content>
