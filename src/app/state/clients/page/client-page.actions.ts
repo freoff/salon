@@ -7,7 +7,14 @@ export enum ClientPageActionTypes {
   CreateNewClient = '[Client Form] crate new client',
   CreateNewClientSuccess = '[Client Api] create new client success',
   CreateNewClientFail= '[Client Api] create new client success',
+  GoToClientDetails= '[Client list] Go to client details',
 
+
+}
+
+export class GoToClientDetails implements Action {
+  readonly type = ClientPageActionTypes.GoToClientDetails;
+  public constructor(public payload: {client: Client}) {}
 }
 
 export class CreateNewClient implements Action {
@@ -26,4 +33,4 @@ export class LoadAllClients implements Action {
 }
 
 
-export type ClientPageActions = LoadAllClients | CreateNewClient | CreateNewClientSuccess;
+export type ClientPageActions = LoadAllClients | CreateNewClient | CreateNewClientSuccess | GoToClientDetails;

@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
-import { ClientPageActionTypes, CreateNewClient, CreateNewClientSuccess, LoadAllClients } from './client-page.actions';
+import {ClientPageActionTypes, CreateNewClient, CreateNewClientSuccess, GoToClientDetails, LoadAllClients} from './client-page.actions';
 import {filter, map, mergeMap, switchMap, tap} from 'rxjs/operators';
 import { ClientRepository } from '../../../repository/client-repository';
 import { LoadClients, UpsertClient } from '../client/actions/client.actions';
+import {GoTo} from '../../application/application.actions';
+import {namedRoute} from '../../../layouts/side-menu/named.route';
 
 @Injectable()
 export class ClientPageEffects {
@@ -28,6 +30,11 @@ export class ClientPageEffects {
         mergeMap((clients) => [new LoadClients({ clients: clients })]),
       ),
     ),
+  );
+  @Effect()
+  goToClientDetails$ = this.actions$.pipe(
+      ofType<GoToClientDetails>(ClientPageActionTypes.GoToClientDetails),
+      mergeMap(action => [new GoTo({navigationUrl: [...namedRoute.clients.details, action.payload.client.id]})])
   );
   constructor(private actions$: Actions, private clientRepository: ClientRepository) {}
 }

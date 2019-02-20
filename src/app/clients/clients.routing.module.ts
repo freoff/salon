@@ -7,8 +7,8 @@ const routes: Routes = [
     children: [
       { path: '', pathMatch: 'full', loadChildren: './list/list.module#ListPageModule' },
       { path: 'list', loadChildren: './list/list.module#ListPageModule' },
-      { path: 'detail', loadChildren: './detail/detail.module#DetailPageModule' },
       { path: 'edit', loadChildren: './edit/edit.module#EditPageModule' },
+      { path: ':clientId', loadChildren: './detail/detail.module#DetailPageModule' },
     ],
   },
 ];

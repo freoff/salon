@@ -23,7 +23,7 @@ export class LientListContainerComponent implements OnInit {
     this.filter.next(filter);
   }
   showClient({ client }: { client: Client }) {
-
+    this.clientStateService.showClientDetails({client});
   }
   private prepereClientsStream() {
     this.clients$ = combineLatest(

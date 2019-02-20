@@ -37,8 +37,5 @@ export class AppComponent {
     });
   }
 
-  changeRoute($event) {
-    console.log($event);
-    // this.mainMenu.close();
-  }
+
 }

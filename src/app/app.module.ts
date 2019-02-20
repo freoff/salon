@@ -13,6 +13,7 @@ import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { IonicStorageModule } from '@ionic/storage';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { SideMenuComponent } from './layouts/side-menu/side-menu.component';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -20,7 +21,7 @@ export function createTranslateLoader(http: HttpClient) {
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, SideMenuComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

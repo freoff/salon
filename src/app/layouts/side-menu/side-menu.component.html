@@ -1,0 +1,60 @@
+<ion-split-pane when="md" contentId="menu-content">
+
+  <ion-menu contentId="menu-content" menuId="mainMenu">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title color="primary">Menu</ion-title>
+        <ion-buttons slot="end">
+          <ion-menu-toggle autoHide="false"></ion-menu-toggle>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-icon color="primary" slot="start" name="person"></ion-icon>
+            <ion-label color="primary" text-center>
+              <ion-text text-center>
+                <h1 style="display: inline">{{'clients' | translate}}</h1>
+              </ion-text>
+            </ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle menu="mainMenu" [autoHide]="false">
+            <ion-item *ngFor="let navigationItem of navigationItems.clients" [routerLink]="navigationItem.navigation">
+              <ion-label>{{navigationItem.label | translate}}</ion-label>
+              <ion-icon slot="start" [name]="navigationItem.icon"></ion-icon>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-item-group>
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-icon color="primary" slot="start" name="person"></ion-icon>
+            <ion-label color="primary" text-center>
+              <ion-text text-center>
+                <h1 style="display: inline">Ustawienia</h1>
+              </ion-text>
+            </ion-label>
+          </ion-item-divider>
+          <ion-item detail routerLink="/settings" routerLinkActive="url-active">
+            <ion-label>Ustawienia</ion-label>
+            <ion-icon slot="start" name="search"></ion-icon>
+          </ion-item>
+
+        </ion-item-group>
+      </ion-list>
+    </ion-content>
+    <ion-footer>
+      <ion-grid>
+        <ion-row>
+          <ion-col></ion-col>
+          <ion-col>Build: BUILDNO</ion-col>
+        </ion-row>
+
+      </ion-grid>
+    </ion-footer>
+  </ion-menu>
+
+  <ion-router-outlet id="menu-content"></ion-router-outlet>
+
+</ion-split-pane>
