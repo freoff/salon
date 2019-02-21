@@ -20,6 +20,7 @@ import { of } from 'rxjs';
 export class ClientPageEffects {
   @Effect()
   createClient$ = this.actions$.pipe(
+    tap((action) => console.log('_____EFFECT', action.type)),
     ofType<CreateNewClient>(ClientPageActionTypes.CreateNewClient),
     tap((action) => console.log('creat client ', action.payload.client)),
     switchMap((action) =>
@@ -32,11 +33,13 @@ export class ClientPageEffects {
   loadClients$ = this.actions$.pipe(
     ofType<LoadAllClients>(ClientPageActionTypes.LoadAllClients),
     switchMap((action) =>
-      this.clientRepository.getAll().pipe(
-        filter((client) => !!client),
-        tap((clients) => console.log('all clients', clients)),
-        mergeMap((clients) => [new LoadClients({ clients: clients })]),
-      ),
+      this.clientRepository
+        .getAll()
+        .pipe(
+          filter((client) => !!client),
+          tap((clients) => console.log('all clients', clients)),
+          mergeMap((clients) => [new LoadClients({ clients: clients })]),
+        ),
     ),
   );
   @Effect()
@@ -49,11 +52,18 @@ export class ClientPageEffects {
   loadClient$ = this.actions$.pipe(
     ofType<LoadClient>(ClientPageActionTypes.LoadClient),
     switchMap((action) =>
-      this.clientRepository.getClient({ clientId: action.payload.clientId }).pipe(
-        mergeMap((client) => [new UpsertClient({ client })]),
-        catchError((error) => of(new GoTo({ navigationUrl: APP_ROUTES.errors.clientNotFound }))),
-      ),
+      this.clientRepository
+        .getClient({ clientId: action.payload.clientId })
+        .pipe(
+          mergeMap((client) => [new UpsertClient({ client })]),
+          catchError((error) => of(new GoTo({ navigationUrl: APP_ROUTES.errors.clientNotFound }))),
+        ),
     ),
+  );
+  @Effect()
+  createClientSuccess$ = this.actions$.pipe(
+    ofType<CreateNewClientSuccess>(ClientPageActionTypes.CreateNewClientSuccess),
+    map((action) => new GoToClientDetails({ client: action.payload.client })),
   );
   constructor(private actions$: Actions, private clientRepository: ClientRepository) {}
 }
