@@ -35,16 +35,16 @@
       formArrayName="telephones"
       *ngFor="let telephone of formTelephonesControls; let currentTelephoneIndex = index"
     >
-      <ion-col [formGroupName]="currentTelephoneIndex">
+      <ion-col [formGroupName]="currentTelephoneIndex" size="12" sizeMd>
         <ion-item>
           <ion-label position="floating">{{ 'number' | translate }}</ion-label>
           <ion-input type="telephone" formControlName="number"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col [formGroupName]="currentTelephoneIndex">
-        <ion-item>
+      <ion-col [formGroupName]="currentTelephoneIndex" size="12" sizeMd>
+        <ion-item style="margin-top: 4px">
           <ion-label position="floating">{{ '' }}</ion-label>
-          <ion-select formControlName="name" interface="popover" style="width: 100%" >
+          <ion-select formControlName="name" interface="popover" style="width: 100%">
             <ion-select-option *ngFor="let phoneType of phoneTypes" [value]="phoneType">
               {{ phoneType | translate }}
             </ion-select-option>
