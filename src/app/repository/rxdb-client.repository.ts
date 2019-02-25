@@ -13,22 +13,16 @@ export class RxdbClientRepository implements ClientRepositoryInterface {
     return from(
       this.rxdb
         .getDb()
-        .then((db) => db.clients.insert({ ...client, id: this.idGenerator.generate() }))
+        .then((db) => db.clients.insert({ ...client, id: newClient.id }))
         .then(() => newClient),
     );
   }
   // Promise<Observable<RxDocument<Client, ClientDocMethods>[]> | never>
   // Observable<Observable<RxDocument<Client, ClientDocMethods>[]>>
   getAll(): Observable<Array<Client>> {
-
-    const queryPromise = this.rxdb
-      .getDb()
-      .then((db) => db.clients.find().$)
-      .then((res$query$) => res$query$);
-
-    return fromPromise(queryPromise).pipe(
-      switchMap((query$) => query$),
-      tap((query) => console.log('query from getAll but from return', query)),
+    return from(this.rxdb.getDb()).pipe(
+        tap(clients => console.log('fromClients', clients)),
+        switchMap((db) => db.clients.find().$)
     );
   }
 

@@ -12,7 +12,7 @@ export interface ClientRepositoryInterface {
 
   saveClient({ client }: { client: Client }): Observable<Client>;
 
-  getAll();
+  getAll(): Observable<Array<Client>>;
   getClient({ clientId }): Observable<Client>;
 }
 

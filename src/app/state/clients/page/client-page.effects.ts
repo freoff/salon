@@ -37,7 +37,7 @@ export class ClientPageEffects {
       this.clientRepository.getAll().pipe(
         filter((client) => !!client),
         tap((clients) => console.log('all clients', clients)),
-        mergeMap((clients) => [new LoadClients({ clients: clients as Client[] })]),
+        mergeMap((clients) => [new LoadClients({ clients: clients })]),
       ),
     ),
   );
