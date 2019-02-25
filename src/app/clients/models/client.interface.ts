@@ -6,5 +6,6 @@ export interface Client {
     lname: string;
     tel: Phone;
     email: string;
+    sex: 'male' | 'female';
     clientNotes: string;
 }

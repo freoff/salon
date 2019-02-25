@@ -10,6 +10,7 @@ import { ClientFormContainerComponent } from './containers/client-form-container
 import { ClientFormComponent } from './components/client-form/client-form.component';
 import { ClientFormFooterComponent } from './components/client-form-footer/client-form-footer.component';
 import {TranslateModule} from '@ngx-translate/core';
+import {FlexLayoutModule} from '@angular/flex-layout';
 
 const routes: Routes = [
   {
@@ -19,7 +20,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, RouterModule.forChild(routes), TranslateModule.forChild()],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, RouterModule.forChild(routes), TranslateModule.forChild(), FlexLayoutModule],
   declarations: [EditPage, ClientFormContainerComponent, ClientFormComponent, ClientFormFooterComponent],
 })
 export class EditPageModule {}

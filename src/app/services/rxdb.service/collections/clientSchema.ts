@@ -19,6 +19,9 @@ export const clientSchema: RxJsonSchema = {
     lname: {
       type: 'string',
     },
+    sex: {
+      type: 'string',
+    },
     telephones: {
       type: 'array',
       items: {

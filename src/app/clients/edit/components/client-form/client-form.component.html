@@ -16,6 +16,20 @@
     </ion-item>
   </ion-card-header>
   <ion-card-content>
+    {{form.value.sex}}
+    <ion-row justify-content-end>
+      <ion-radio-group fxLayout="row" fxLayoutAlign="end center" formControlName="sex">
+        <ion-item lines="none">
+          <ion-radio value="female" style="margin-right: 10px"></ion-radio>
+          <ion-label>{{ 'female' | translate }}</ion-label>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-radio  value="male"></ion-radio>
+          <ion-label>{{ 'male' | translate }}</ion-label>
+        </ion-item>
+      </ion-radio-group>
+    </ion-row>
     <ion-row>
       <ion-col size="12" size-md>
         <ion-item>

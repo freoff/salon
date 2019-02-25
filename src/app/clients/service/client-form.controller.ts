@@ -31,6 +31,7 @@ export class ClientFormController {
         telephones     : this.fb.array([this.createTelephone()]),
         email          : ['', [Validators.email]],
         clientNotes    : [''],
+        sex            : ['female'],
       }),
       state: [FormState.createNew],
     });

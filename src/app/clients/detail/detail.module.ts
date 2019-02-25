@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { DetailPage } from './detail.page';
 import {TranslateModule} from '@ngx-translate/core';
 import { DetailsContainerComponent } from './container/details-container/details-container.component';
+import {ClientDetailsComponent} from './components/client-details/client-details.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     TranslateModule.forChild(),
   ],
-  declarations: [DetailPage, DetailsContainerComponent]
+  declarations: [DetailPage, DetailsContainerComponent, ClientDetailsComponent]
 })
 export class DetailPageModule {}
