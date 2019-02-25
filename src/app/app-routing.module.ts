@@ -3,7 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { APP_ROUTES } from './app-named-route';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'settings' },
+
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   {
     path: 'secure',

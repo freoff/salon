@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import {
@@ -10,11 +10,12 @@ import {
   LoadClient,
 } from './client-page.actions';
 import { catchError, filter, map, mergeMap, switchMap, tap } from 'rxjs/operators';
-import { ClientRepository } from '../../../repository/client-repository';
+import { ClientRepository, ClientRepositoryInterface } from '../../../repository/client-repository';
 import { LoadClients, UpsertClient } from '../client/actions/client.actions';
 import { GoTo } from '../../application/application.actions';
 import { APP_ROUTES } from '../../../app-named-route';
 import { of } from 'rxjs';
+import {Client} from '../../../clients/models/client.interface';
 
 @Injectable()
 export class ClientPageEffects {
@@ -33,13 +34,11 @@ export class ClientPageEffects {
   loadClients$ = this.actions$.pipe(
     ofType<LoadAllClients>(ClientPageActionTypes.LoadAllClients),
     switchMap((action) =>
-      this.clientRepository
-        .getAll()
-        .pipe(
-          filter((client) => !!client),
-          tap((clients) => console.log('all clients', clients)),
-          mergeMap((clients) => [new LoadClients({ clients: clients })]),
-        ),
+      this.clientRepository.getAll().pipe(
+        filter((client) => !!client),
+        tap((clients) => console.log('all clients', clients)),
+        mergeMap((clients) => [new LoadClients({ clients: clients as Client[] })]),
+      ),
     ),
   );
   @Effect()
@@ -52,12 +51,10 @@ export class ClientPageEffects {
   loadClient$ = this.actions$.pipe(
     ofType<LoadClient>(ClientPageActionTypes.LoadClient),
     switchMap((action) =>
-      this.clientRepository
-        .getClient({ clientId: action.payload.clientId })
-        .pipe(
-          mergeMap((client) => [new UpsertClient({ client })]),
-          catchError((error) => of(new GoTo({ navigationUrl: APP_ROUTES.errors.clientNotFound }))),
-        ),
+      this.clientRepository.getClient({ clientId: action.payload.clientId }).pipe(
+        mergeMap((client) => [new UpsertClient({ client })]),
+        catchError((error) => of(new GoTo({ navigationUrl: APP_ROUTES.errors.clientNotFound }))),
+      ),
     ),
   );
   @Effect()
@@ -65,5 +62,5 @@ export class ClientPageEffects {
     ofType<CreateNewClientSuccess>(ClientPageActionTypes.CreateNewClientSuccess),
     map((action) => new GoToClientDetails({ client: action.payload.client })),
   );
-  constructor(private actions$: Actions, private clientRepository: ClientRepository) {}
+  constructor(private actions$: Actions, @Inject(ClientRepository) private clientRepository: ClientRepositoryInterface) {}
 }

@@ -1,4 +1,4 @@
-import { ClientRepository } from './client-repository';
+import {ClientRepository, ClientRepositoryInterface} from './client-repository';
 import { Storage } from '@ionic/storage';
 import { Injectable } from '@angular/core';
 import { from, Observable, of } from 'rxjs';
@@ -14,7 +14,7 @@ export const CLIENTS_KEY = 'CLIENTS';
  */
 
 @Injectable()
-export class LocalStorageClientRepository implements ClientRepository {
+export class LocalStorageClientRepository implements ClientRepositoryInterface {
   constructor(private store: Storage, private id: EntityIdGeneratorService) {}
   saveClient({ client }) {
     const createClientPromise = this.getClientsFromStore().then((clients) => {

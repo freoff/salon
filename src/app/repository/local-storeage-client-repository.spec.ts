@@ -2,6 +2,5 @@ import { LocalStorageClientRepository } from './local-storage-client-repository.
 
 describe('LocalStorageClientRepository', () => {
   it('should create an instance', () => {
-    expect(new LocalStorageClientRepository()).toBeTruthy();
   });
 });

@@ -50,6 +50,7 @@ export function reducer(
     }
 
     case ClientActionTypes.LoadClients: {
+      console.log('adapter add', action.payload.clients);
       return adapter.addAll(action.payload.clients, state);
     }
 
