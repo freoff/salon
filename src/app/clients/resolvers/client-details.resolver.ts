@@ -14,8 +14,6 @@ export class ClientDetailsResolver implements Resolve<any> {
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
     const clientId = this.getCLientId(route);
     this.clientStateService = this.injector.get(ClientStateService);
-    console.log(this.clientStateService, 'stateService');
-
     return this.clientStateService.getClient(clientId).pipe(
       tap((client) => {
         if (!client) {

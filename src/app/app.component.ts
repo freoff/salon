@@ -36,8 +36,8 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.translateService.setDefaultLang('pl');
       this.mainMenu = await this.menuController.get('mainMenu');
-      await this.dbService.initializeDB();
-      this.applicationStateService.initializeAppData();
+      // await this.dbService.initializeDB();
+      // this.applicationStateService.initializeAppData();
 
     });
 

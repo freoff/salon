@@ -17,6 +17,7 @@ export class LientListContainerComponent implements OnInit {
   constructor(private clientStateService: ClientStateService) { }
 
   ngOnInit() {
+    this.clientStateService.loadAllClients();
     this.prepereClientsStream();
   }
   setFilter(filter) {

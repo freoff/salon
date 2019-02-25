@@ -1,15 +1,19 @@
-import RxDB, { RxDatabase } from 'rxdb';
+import RxDB, { RxDatabase, RxDatabaseBase } from 'rxdb';
 import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { SalonDatabase, SalonDatabaseCollections } from './collections';
 import { clientCollectionMethods, clientDocMethods, clientSchema } from './collections/clientSchema';
 import { ClientDocMethods, ClientCollectionMethods } from './collections/clients.collection';
-
+import { from, Observable } from 'rxjs';
 
 export class RxdbService {
   _dbConnection: SalonDatabase;
 
   constructor() {}
+
+  getDb$(): Observable<RxDatabaseBase<SalonDatabaseCollections> & SalonDatabaseCollections> {
+    return from(this.getDb());
+  }
 
   async getDb(): Promise<SalonDatabase> {
     if (!this._dbConnection) {

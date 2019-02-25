@@ -4,7 +4,8 @@ import { Client } from '../clients/models/client.interface';
 import { from, Observable, of } from 'rxjs';
 import { EntityIdGeneratorService } from '../services/entity-id-generator.service';
 import { fromPromise } from 'rxjs/internal-compatibility';
-import { mergeMap, switchMap, tap } from 'rxjs/operators';
+import { map, mergeMap, switchMap, tap } from 'rxjs/operators';
+import { MonoTypeOperatorFunction } from 'rxjs/src/internal/types';
 
 export class RxdbClientRepository implements ClientRepositoryInterface {
   constructor(private rxdb: RxdbService, private idGenerator: EntityIdGeneratorService) {}
@@ -13,7 +14,7 @@ export class RxdbClientRepository implements ClientRepositoryInterface {
     return from(
       this.rxdb
         .getDb()
-        .then((db) => db.clients.insert({ ...client, id: newClient.id }))
+        .then((db) => db.clients.insert(newClient))
         .then(() => newClient),
     );
   }
@@ -21,12 +22,18 @@ export class RxdbClientRepository implements ClientRepositoryInterface {
   // Observable<Observable<RxDocument<Client, ClientDocMethods>[]>>
   getAll(): Observable<Array<Client>> {
     return from(this.rxdb.getDb()).pipe(
-        tap(clients => console.log('fromClients', clients)),
-        switchMap((db) => db.clients.find().$)
+      tap((clients) => console.log('fromClients', clients)),
+      switchMap((db) => db.clients.find().$),
     );
   }
 
   getClient({ clientId }: { clientId: any }): Observable<Client> {
-    return undefined;
+    return this.rxdb.getDb$().pipe(
+      switchMap((db) => db.clients.findOne({ id: { $eq: clientId } }).$),
+      map((query) => ({ ...query })),
+      tap((data) => console.log(data)),
+    );
   }
 }
+
+export const log = tap((data) => console.log(data));

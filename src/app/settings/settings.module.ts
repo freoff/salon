@@ -6,6 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { SettingsPage } from './settings.page';
+import {SharedModule} from '../shared/shared.module';
+import {TranslateModule} from '@ngx-translate/core';
 
 const routes: Routes = [
   {
@@ -16,10 +18,11 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
+    SharedModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    TranslateModule.forChild()
   ],
   declarations: [SettingsPage]
 })

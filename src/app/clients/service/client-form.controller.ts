@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { ClientsModule } from '../clients.module';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormState } from '../../types/form-status.enum';
-import { Phone } from '../models/telephone.interface';
-import {PhoneTypes} from '../models/telephone-types.enum';
+import { Phone } from '../models/phone.interface';
+import {PhoneTypes} from '../models/phone-types.enum';
 
 @Injectable({ providedIn: ClientsModule })
 export class ClientFormController {
@@ -17,8 +17,8 @@ export class ClientFormController {
 
     this.initializeForm();
   }
-  getFormTelephones(): FormArray {
-    return this._form && (this.form.get(['client', 'telephones']) as FormArray);
+  getFormPhones(): FormArray {
+    return this._form && (this.form.get(['client', 'phones']) as FormArray);
   }
   isUpdateForm = () => FormState.isUpdate(this._form.get(['formState', 'formStatus']).value);
 
@@ -28,7 +28,7 @@ export class ClientFormController {
 
         fname          : ['', [Validators.required, Validators.minLength(3)]],
         lname          : ['', [Validators.required, Validators.minLength(3)]],
-        telephones     : this.fb.array([this.createTelephone()]),
+        phones     : this.fb.array([this.createPhone()]),
         email          : ['', [Validators.email]],
         clientNotes    : [''],
         sex            : ['female'],
@@ -36,8 +36,8 @@ export class ClientFormController {
       state: [FormState.createNew],
     });
   }
-  public createTelephone(
-    telephone: Phone = {
+  public createPhone(
+    phone: Phone = {
       id: '',
       name: PhoneTypes.cell,
       number: '',
@@ -45,7 +45,7 @@ export class ClientFormController {
       primary: true,
     },
   ) {
-    const { id, name, number, order, primary } = telephone;
+    const { id, name, number, order, primary } = phone;
     return this.fb.group({
       id         : [id, []],
       name       : [name, []],
@@ -56,7 +56,7 @@ export class ClientFormController {
   }
 
   removePhone({ index }) {
-    this.getFormTelephones().removeAt(index);
+    this.getFormPhones().removeAt(index);
   }
 
   setFormState(state: FormState) {

@@ -1,22 +1,22 @@
 <ion-grid [formGroup]="form" class="with-background">
   <ion-card-header [translucent]="true">
     <ion-item lines="none" *ngIf="!isUpdate">
-      <ion-icon name="contact" slot="start" size="large" color="primary"></ion-icon>
-      <ion-content>
-        <ion-card-title> Klient</ion-card-title>
-        <ion-card-subtitle>{{'dodajInformacjeONowymKliencie' | translate}}</ion-card-subtitle>
+
+      <ion-img  [src]="getIcon()" slot="start" style="max-width: 96px; height: auto;"></ion-img>
+      <ion-content fxLayout="column" fxLayoutAlign="space-between, start">
+        <ion-card-subtitle>{{'addInformationAboutClient' | translate}}</ion-card-subtitle>
+        <ion-card-title margin-top><b>{{form.value.lname}}</b> {{form.value.fname}}</ion-card-title>
       </ion-content>
     </ion-item>
     <ion-item lines="none" *ngIf="isUpdate">
       <ion-icon name="contact" slot="start" size="large" color="primary"></ion-icon>
       <ion-content>
-        <ion-card-title> Klient</ion-card-title>
-        <ion-card-subtitle>Popraw dane</ion-card-subtitle>
+        <ion-card-title>{{'client' | translate}}</ion-card-title>
+        <ion-card-subtitle>{{'updateClientData' | translate}}</ion-card-subtitle>
       </ion-content>
     </ion-item>
   </ion-card-header>
   <ion-card-content>
-    {{form.value.sex}}
     <ion-row justify-content-end>
       <ion-radio-group fxLayout="row" fxLayoutAlign="end center" formControlName="sex">
         <ion-item lines="none">
@@ -33,29 +33,29 @@
     <ion-row>
       <ion-col size="12" size-md>
         <ion-item>
-          <ion-label position="floating">{{ 'fname' | translate }}</ion-label>
-          <ion-input type="text" formControlName="fname" autofocus></ion-input>
+          <ion-label position="floating">{{ 'lname' | translate }}</ion-label>
+          <ion-input type="text" formControlName="lname"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col size="12" size-md>
         <ion-item>
-          <ion-label position="floating">{{ 'lname' | translate }}</ion-label>
-          <ion-input type="text" formControlName="lname"></ion-input>
+          <ion-label position="floating">{{ 'fname' | translate }}</ion-label>
+          <ion-input type="text" formControlName="fname" autofocus></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
 
     <ion-row
-      formArrayName="telephones"
-      *ngFor="let telephone of formTelephonesControls; let currentTelephoneIndex = index"
+      formArrayName="phones"
+      *ngFor="let phone of phones; let currentPhoneIndex = index"
     >
-      <ion-col [formGroupName]="currentTelephoneIndex" size="12" sizeMd>
+      <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>
         <ion-item>
           <ion-label position="floating">{{ 'number' | translate }}</ion-label>
-          <ion-input type="telephone" formControlName="number"></ion-input>
+          <ion-input type="phone" formControlName="number"></ion-input>
         </ion-item>
       </ion-col>
-      <ion-col [formGroupName]="currentTelephoneIndex" size="12" sizeMd>
+      <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>
         <ion-item style="margin-top: 4px">
           <ion-label position="floating">{{ '' }}</ion-label>
           <ion-select formControlName="name" interface="popover" style="width: 100%">
@@ -63,12 +63,12 @@
               {{ phoneType | translate }}
             </ion-select-option>
           </ion-select>
-          <ion-buttons slot="end" align-self-end no-margin>
+          <ion-buttons slot="end" style="margin-bottom: 6px; margin-left: 10px" slot="end" align-self-end>
             <ion-button
-              [hidden]="currentTelephoneIndex === 0"
+              [hidden]="currentPhoneIndex === 0"
               fill="clear"
               size="small"
-              (click)="removePhone.emit(currentTelephoneIndex)"
+              (click)="removePhone.emit(currentPhoneIndex)"
             >
               <ion-icon slot="icon-only" name="remove"></ion-icon
             ></ion-button>
@@ -93,8 +93,8 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label position="stacked">Notatki</ion-label>
-          <ion-textarea rows="3" formControlName="clientNotes"></ion-textarea>
+          <ion-label position="stacked">{{'notes' | translate}}</ion-label>
+          <ion-textarea rows="3" formControlName="clientNotes" placeholder="{{'notesTooltip' | translate}}"></ion-textarea>
         </ion-item>
       </ion-col>
     </ion-row>

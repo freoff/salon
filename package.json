@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "prettier": "npm run prettier -c ./src/app/**/*",
-    "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json --clean --sort --format namespaced-json --marker _"
+    "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json  --sort --format namespaced-json --marker _"
   },
   "private": true,
   "dependencies": {
@@ -37,6 +37,7 @@
     "@ngrx/store-devtools": "^7.2.0",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
+    "bootstrap": "^4.3.1",
     "cordova-sqlite-storage": "3.0.0",
     "core-js": "^2.5.4",
     "pouchdb-adapter-idb": "^7.0.0",

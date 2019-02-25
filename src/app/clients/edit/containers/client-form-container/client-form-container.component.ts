@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { PhoneTypes } from '../../../models/telephone-types.enum';
+import { PhoneTypes } from '../../../models/phone-types.enum';
 import { ClientFormController } from '../../../service/client-form.controller';
 import { ClientFormInterface } from '../../../types/client-form.interface';
 import { Params } from '@angular/router';
@@ -28,11 +28,11 @@ export class ClientFormContainerComponent implements OnInit {
     this.clientState.createClient({ client: this.form.value as ClientFormInterface });
   }
   ngOnInit() {}
-  get formTelephonesControls() {
-    return this.formController.getFormTelephones().controls;
+  get formPhonesControls() {
+    return this.formController.getFormPhones().controls;
   }
   addPhone() {
-    this.formController.getFormTelephones().push(this.formController.createTelephone());
+    this.formController.getFormPhones().push(this.formController.createPhone());
   }
 
   removePhone(index: number) {

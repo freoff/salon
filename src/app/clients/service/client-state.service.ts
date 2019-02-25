@@ -3,7 +3,13 @@ import { ClientsModule } from '../clients.module';
 import { State } from '../../state/reducers';
 import { Store } from '@ngrx/store';
 import { ClientFormInterface } from '../types/client-form.interface';
-import {CreateNewClient, GoToClientDetails, LoadClient, SetSelectedClient} from '../../state/clients/page/client-page.actions';
+import {
+  CreateNewClient,
+  GoToClientDetails,
+  LoadAllClients,
+  LoadClient,
+  SetSelectedClient
+} from '../../state/clients/page/client-page.actions';
 import * as fromClientsSelectors from '../../state/selectors/clients.selectors';
 import { from, Observable, of } from 'rxjs';
 import { Client } from '../models/client.interface';
@@ -30,7 +36,9 @@ export class ClientStateService {
   showClientDetails({ client }: { client: Client }) {
     this.store.dispatch(new GoToClientDetails({ client }));
   }
-
+  loadAllClients() {
+    this.store.dispatch(new LoadAllClients());
+  }
   loadClient({clientId}: { clientId: string }) {
       this.store.dispatch(new LoadClient({clientId}));
   }

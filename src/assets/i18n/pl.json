@@ -1,14 +1,25 @@
 {
-  "nav"         : {
-    "add"       : "Dodaj",
-    "edit"      : "Edytuj",
-    "list"      : "Lista"
-  },
-  "etykieta"    : "Etykieta",
-  "fname"       : "Imie",
-  "clients"     : "Klienci",
-  "lname"       : "Nazwisko",
-  "number"      : "Numer",
-  "ground"      : "Stacjonarny",
-  "cell"        : "Komorkowy"
+	"ClientDoNotExist": "Ten klient nie istnieje",
+	"addInformationAboutClient": "Dodaj informacje o nowy kliencie",
+	"cell": "Komorkowy",
+	"clients": "Klienci",
+	"email": "Email",
+	"etykieta": "Etykieta",
+	"female": "Kobieta",
+	"fname": "Imie",
+	"ground": "Stacjonarny",
+	"klient": "",
+	"lname": "Nazwisko",
+	"male": "Meczyzna",
+	"nav": {
+		"add": "Dodaj",
+		"edit": "Edytuj",
+		"list": "Lista"
+	},
+	"notes": "Notatki",
+	"notesTooltip": "Tutaj mozesz dodac dodtkowe informacje o kliencie",
+	"number": "Numer",
+	"updateClientData": "",
+	"details": "Szczegoly klienta",
+	"clientList": "Lista klientow"
 }

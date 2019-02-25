@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { NoClientErrorPage } from './no-client-error.page';
 import {TranslateModule} from '@ngx-translate/core';
+import {SharedModule} from '../../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -17,10 +18,10 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
+    SharedModule,
     TranslateModule.forChild()
   ],
   declarations: [NoClientErrorPage]

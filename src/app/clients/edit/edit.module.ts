@@ -9,8 +9,9 @@ import { EditPage } from './edit.page';
 import { ClientFormContainerComponent } from './containers/client-form-container/client-form-container.component';
 import { ClientFormComponent } from './components/client-form/client-form.component';
 import { ClientFormFooterComponent } from './components/client-form-footer/client-form-footer.component';
-import {TranslateModule} from '@ngx-translate/core';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { TranslateModule } from '@ngx-translate/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { SharedModule } from '../../shared/shared.module';
 
 const routes: Routes = [
   {
@@ -20,7 +21,14 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, IonicModule, RouterModule.forChild(routes), TranslateModule.forChild(), FlexLayoutModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    IonicModule,
+    RouterModule.forChild(routes),
+    SharedModule,
+    TranslateModule.forChild()
+  ],
   declarations: [EditPage, ClientFormContainerComponent, ClientFormComponent, ClientFormFooterComponent],
 })
 export class EditPageModule {}

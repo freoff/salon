@@ -3,6 +3,7 @@ import {RxCollection, RxDocument} from 'rxdb';
 
 export interface ClientDocMethods  {
     getFullName: () => string;
+    getClientData: () => Client;
 };
 export type ClientDocument = RxDocument<Client, ClientDocMethods>;
 

@@ -1,15 +1,10 @@
-<ng-container *ngIf="client">
-  <pre>
-    {{client | json}}
-  </pre>
 
-</ng-container>
 <ion-card style="max-width: 500px" *ngIf="client">
     <ion-card-header padding>
         <ion-card-title>
             <ion-row>
                 <ion-col size="auto">
-                    <ion-icon  color="primary" src="/assets/images/female_head.svg" size="large"></ion-icon>
+                    <ion-icon  style="font-size: 64px" color="primary" src="/assets/images/female_head.svg"></ion-icon>
                 </ion-col>
                 <ion-col color="tertiary" align-items-center>
                     <b>{{client.fname}}</b> {{client.fname}}
