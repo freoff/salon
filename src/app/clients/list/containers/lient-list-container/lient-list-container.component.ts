@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
 import {Client} from '../../../models/client.interface';
-import {ClientStateService} from '../../../service/client-state.service';
+import {ClientStateService} from '../../../../services/state/client-state.service';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
 @Component({

@@ -1,5 +1,5 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { ClientStateService } from '../service/client-state.service';
+import { ClientStateService } from '../../services/state/client-state.service';
 import { from, Observable } from 'rxjs';
 import { first, tap } from 'rxjs/operators';
 import { Host, Injectable, Injector, Optional, SkipSelf } from '@angular/core';

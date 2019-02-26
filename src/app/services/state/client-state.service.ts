@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ClientsModule } from '../clients.module';
+import { ClientsModule } from '../../clients/clients.module';
 import { State } from '../../state/reducers';
 import { Store } from '@ngrx/store';
-import { ClientFormInterface } from '../types/client-form.interface';
+import { ClientFormInterface } from '../../clients/types/client-form.interface';
 import {
   CreateNewClient,
   GoToClientDetails,
@@ -12,10 +12,10 @@ import {
 } from '../../state/clients/page/client-page.actions';
 import * as fromClientsSelectors from '../../state/selectors/clients.selectors';
 import { from, Observable, of } from 'rxjs';
-import { Client } from '../models/client.interface';
-import {ClientsRoutingModule} from '../clients.routing.module';
+import { Client } from '../../clients/models/client.interface';
+import {ClientsRoutingModule} from '../../clients/clients.routing.module';
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class ClientStateService {
   constructor(private store: Store<State>) {}
 

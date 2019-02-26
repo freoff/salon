@@ -4,6 +4,8 @@
 
 export const environment = {
   production: false,
+  logEffects: false,
+  debug: false,
   db: {
     name: 'salondb',
     password: 'topsecretpassword123!@#',

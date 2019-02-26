@@ -6,7 +6,7 @@ import { ClientFormInterface } from '../../../types/client-form.interface';
 import { Params } from '@angular/router';
 import { FormState } from '../../../../types/form-status.enum';
 import { isEmpty } from 'rxjs/operators';
-import { ClientStateService } from '../../../service/client-state.service';
+import { ClientStateService } from '../../../../services/state/client-state.service';
 
 @Component({
   selector: 'app-client-form-container',

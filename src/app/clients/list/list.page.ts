@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ClientStateService } from '../service/client-state.service';
+import { ClientStateService } from '../../services/state/client-state.service';
 import { BehaviorSubject, combineLatest, Observable, Subject } from 'rxjs';
 import { Client } from '../models/client.interface';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';

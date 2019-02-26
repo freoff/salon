@@ -1,5 +1,5 @@
-import { Inject, Injectable } from '@angular/core';
-import { Actions, Effect, ofType } from '@ngrx/effects';
+import {Inject, Injectable} from '@angular/core';
+import {Actions, Effect, ofType} from '@ngrx/effects';
 
 import {
   ClientPageActionTypes,
@@ -9,19 +9,21 @@ import {
   LoadAllClients,
   LoadClient,
 } from './client-page.actions';
-import { catchError, filter, map, mergeMap, switchMap, tap } from 'rxjs/operators';
-import { ClientRepository, ClientRepositoryInterface } from '../../../repository/client-repository';
-import { LoadClients, UpsertClient } from '../client/actions/client.actions';
-import { GoTo } from '../../application/application.actions';
-import { APP_ROUTES } from '../../../app-named-route';
-import { of } from 'rxjs';
-import {Client} from '../../../clients/models/client.interface';
+import {catchError, filter, map, mergeMap, switchMap, tap, withLatestFrom} from 'rxjs/operators';
+import {ClientRepository, ClientRepositoryInterface} from '../../../repository/client-repository';
+import {LoadClients, UpsertClient} from '../client/actions/client.actions';
+import {GoTo} from '../../application/application.actions';
+import {APP_ROUTES} from '../../../app-named-route';
+import {of} from 'rxjs';
+import {environment} from '../../../../environments/environment';
+import {ClientStateService} from '../../../services/state/client-state.service';
+import {isEmpty} from 'underscore';
 
 @Injectable()
 export class ClientPageEffects {
   @Effect()
   createClient$ = this.actions$.pipe(
-    tap((action) => console.log('_____EFFECT', action.type)),
+    tap((action) => (environment.logEffects ? console.log(`____EFFECT ${action.type}`) : null)),
     ofType<CreateNewClient>(ClientPageActionTypes.CreateNewClient),
     tap((action) => console.log('creat client ', action.payload.client)),
     switchMap((action) =>
@@ -33,6 +35,9 @@ export class ClientPageEffects {
   @Effect()
   loadClients$ = this.actions$.pipe(
     ofType<LoadAllClients>(ClientPageActionTypes.LoadAllClients),
+    withLatestFrom(this.clientStateService.getAllClients()),
+    filter(([action, allClients]) => isEmpty(allClients)),
+    map(([action, allClients]) => action),
     switchMap((action) =>
       this.clientRepository.getAll().pipe(
         filter((client) => !!client),
@@ -62,5 +67,9 @@ export class ClientPageEffects {
     ofType<CreateNewClientSuccess>(ClientPageActionTypes.CreateNewClientSuccess),
     map((action) => new GoToClientDetails({ client: action.payload.client })),
   );
-  constructor(private actions$: Actions, @Inject(ClientRepository) private clientRepository: ClientRepositoryInterface) {}
+  constructor(
+    private actions$: Actions,
+    @Inject(ClientRepository) private clientRepository: ClientRepositoryInterface,
+    private clientStateService: ClientStateService,
+  ) {}
 }

@@ -23,15 +23,18 @@ export class RxdbClientRepository implements ClientRepositoryInterface {
   getAll(): Observable<Array<Client>> {
     return from(this.rxdb.getDb()).pipe(
       tap((clients) => console.log('fromClients', clients)),
-      switchMap((db) => db.clients.find().$),
+      switchMap((db) => db.clients.find().$.pipe(
+          map(result => result.map(client => client.getClientData()))
+      )),
     );
   }
 
   getClient({ clientId }: { clientId: any }): Observable<Client> {
+
     return this.rxdb.getDb$().pipe(
       switchMap((db) => db.clients.findOne({ id: { $eq: clientId } }).$),
-      map((query) => ({ ...query })),
       tap((data) => console.log(data)),
+        map(result => ({...result.getClientData()}))
     );
   }
 }

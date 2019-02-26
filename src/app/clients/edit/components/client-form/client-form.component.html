@@ -1,18 +1,25 @@
 <ion-grid [formGroup]="form" class="with-background">
   <ion-card-header [translucent]="true">
-    <ion-item lines="none" *ngIf="!isUpdate">
 
-      <ion-img  [src]="getIcon()" slot="start" style="max-width: 96px; height: auto;"></ion-img>
+    <ion-item lines="none" *ngIf="!isUpdate" style="--min-height: 150px">
+      <div fxShow fxHide.lt-sm>
+        <ion-img  [src]="getIcon()" slot="start" style="max-width: 96px; height: auto;"></ion-img>
+      </div>
       <ion-content fxLayout="column" fxLayoutAlign="space-between, start">
-        <ion-card-subtitle>{{'addInformationAboutClient' | translate}}</ion-card-subtitle>
-        <ion-card-title margin-top><b>{{form.value.lname}}</b> {{form.value.fname}}</ion-card-title>
+        <ion-card-subtitle>{{ 'addInformationAboutClient' | translate }}</ion-card-subtitle>
+        <ion-card-title margin-top>
+          <ion-text style="--font-size: 12px">
+            <b>{{ form.value.lname }}</b>
+            {{ form.value.fname }}
+          </ion-text>
+        </ion-card-title>
       </ion-content>
     </ion-item>
     <ion-item lines="none" *ngIf="isUpdate">
       <ion-icon name="contact" slot="start" size="large" color="primary"></ion-icon>
       <ion-content>
-        <ion-card-title>{{'client' | translate}}</ion-card-title>
-        <ion-card-subtitle>{{'updateClientData' | translate}}</ion-card-subtitle>
+        <ion-card-title>{{ 'client' | translate }}</ion-card-title>
+        <ion-card-subtitle>{{ 'updateClientData' | translate }}</ion-card-subtitle>
       </ion-content>
     </ion-item>
   </ion-card-header>
@@ -25,7 +32,7 @@
         </ion-item>
 
         <ion-item lines="none">
-          <ion-radio  value="male"></ion-radio>
+          <ion-radio value="male"></ion-radio>
           <ion-label>{{ 'male' | translate }}</ion-label>
         </ion-item>
       </ion-radio-group>
@@ -45,10 +52,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row
-      formArrayName="phones"
-      *ngFor="let phone of phones; let currentPhoneIndex = index"
-    >
+    <ion-row formArrayName="phones" *ngFor="let phone of phones; let currentPhoneIndex = index">
       <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>
         <ion-item>
           <ion-label position="floating">{{ 'number' | translate }}</ion-label>
@@ -70,16 +74,13 @@
               size="small"
               (click)="removePhone.emit(currentPhoneIndex)"
             >
-              <ion-icon slot="icon-only" name="remove"></ion-icon
-            ></ion-button>
+              <ion-icon slot="icon-only" name="remove"></ion-icon>
+            </ion-button>
             <ion-button size="large" fill="clear" (click)="addPhone.emit()">
-              <ion-icon slot="icon-only" name="add"></ion-icon
-            ></ion-button>
-
+              <ion-icon slot="icon-only" name="add"></ion-icon>
+            </ion-button>
           </ion-buttons>
-
         </ion-item>
-
       </ion-col>
     </ion-row>
     <ion-row>
@@ -93,8 +94,12 @@
     <ion-row>
       <ion-col>
         <ion-item>
-          <ion-label position="stacked">{{'notes' | translate}}</ion-label>
-          <ion-textarea rows="3" formControlName="clientNotes" placeholder="{{'notesTooltip' | translate}}"></ion-textarea>
+          <ion-label position="stacked">{{ 'notes' | translate }}</ion-label>
+          <ion-textarea
+            rows="3"
+            formControlName="clientNotes"
+            placeholder="{{ 'notesTooltip' | translate }}"
+          ></ion-textarea>
         </ion-item>
       </ion-col>
     </ion-row>

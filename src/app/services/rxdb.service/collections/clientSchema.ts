@@ -18,6 +18,7 @@ export const clientSchema: RxJsonSchema = {
     },
     lname: {
       type: 'string',
+      encrypted: true,
     },
     sex: {
       type: 'string',
@@ -62,7 +63,7 @@ export const clientDocMethods: ClientDocMethods = {
     return {
       id: this.get('id'),
       fname: this.get('fname'),
-      lname: this.get('lname'),
+      lname: this.lname,
       clientNotes: this.get('clientNotes'),
       email: this.get('emial'),
       sex: this.get('sex'),

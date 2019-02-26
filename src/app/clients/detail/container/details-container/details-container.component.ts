@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {ClientStateService} from '../../../service/client-state.service';
+import {ClientStateService} from '../../../../services/state/client-state.service';
 
 @Component({
   selector: 'app-details-container',

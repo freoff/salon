@@ -30,7 +30,10 @@ export class RxdbService {
       adapter: 'idb',
     });
     await this.initializeCollections();
-    console.log('Db opened', this._dbConnection);
+    if (!environment.production) {
+      window['d'] = this._dbConnection;
+      console.log(window['d']);
+    }
   }
 
   private async initializeCollections() {
