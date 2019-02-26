@@ -4,20 +4,25 @@ import { environment } from '../../../environments/environment';
 import { SalonDatabase, SalonDatabaseCollections } from './collections';
 import { clientCollectionMethods, clientDocMethods, clientSchema } from './collections/clientSchema';
 import { ClientDocMethods, ClientCollectionMethods } from './collections/clients.collection';
-import { from, Observable } from 'rxjs';
+import {from, Observable, ReplaySubject, Subject} from 'rxjs';
+import {share} from 'rxjs/operators';
 
 export class RxdbService {
   _dbConnection: SalonDatabase;
-
+  activeConnection = new ReplaySubject<SalonDatabase>(1);
+  dbCreateInProgress = false;
   constructor() {}
 
   getDb$(): Observable<RxDatabaseBase<SalonDatabaseCollections> & SalonDatabaseCollections> {
-    return from(this.getDb());
+    this.getDb();
+    return this.activeConnection.pipe();
   }
 
   async getDb(): Promise<SalonDatabase> {
-    if (!this._dbConnection) {
+    if (!this._dbConnection && !this.dbCreateInProgress) {
+      this.dbCreateInProgress = true;
       await this.initializeDB();
+      this.activeConnection.next(this._dbConnection);
     }
     return this._dbConnection;
   }

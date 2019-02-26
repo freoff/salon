@@ -37,7 +37,7 @@ export class AppComponent {
       this.translateService.setDefaultLang('pl');
       this.mainMenu = await this.menuController.get('mainMenu');
       // await this.dbService.initializeDB();
-      // this.applicationStateService.initializeAppData();
+      this.applicationStateService.initializeAppData();
 
     });
 
