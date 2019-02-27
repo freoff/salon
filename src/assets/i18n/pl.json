@@ -1,25 +1,32 @@
 {
-	"ClientDoNotExist": "Ten klient nie istnieje",
-	"addInformationAboutClient": "Dodaj informacje o nowy kliencie",
-	"cell": "Komorkowy",
-	"clients": "Klienci",
-	"email": "Email",
-	"etykieta": "Etykieta",
-	"female": "Kobieta",
-	"fname": "Imie",
-	"ground": "Stacjonarny",
-	"klient": "",
-	"lname": "Nazwisko",
-	"male": "Meczyzna",
-	"nav": {
-		"add": "Dodaj",
-		"edit": "Edytuj",
-		"list": "Lista"
-	},
-	"notes": "Notatki",
-	"notesTooltip": "Tutaj mozesz dodac dodtkowe informacje o kliencie",
-	"number": "Numer",
-	"updateClientData": "",
-	"details": "Szczegoly klienta",
-	"clientList": "Lista klientow"
+    "ClientDoNotExist": "Ten klient nie istnieje",
+    "addInformationAboutClient": "Dodaj informacje o nowy kliencie",
+    "cell": "Komórkowy",
+    "client": "Klient",
+    "clientList": "Lista klientow",
+    "clientNotes": "Notatki",
+    "clients": "Klienci",
+    "details": "Szczegoly klienta",
+    "email": "Email",
+    "etykieta": "Etykieta",
+    "female": "Kobieta",
+    "fname": "Imie",
+    "ground": "Stacjonarny",
+    "klient": "Klient",
+    "lname": "Nazwisko",
+    "male": "Mężczyzna",
+    "nav": {
+        "add": "Dodaj",
+        "edit": "Edytuj",
+        "list": "Lista"
+    },
+    "notes": "Notatki",
+    "notesTooltip": "Tutaj mozesz dodac dodtkowe informacje o kliencie",
+    "number": "Numer",
+    "phones": "Telefony",
+    "updateClientData": "Poprawe dane klienta",
+
+    "js": {
+        "details": {}
+    }
 }

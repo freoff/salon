@@ -1,121 +1,128 @@
 {
-  "name": "salon",
-  "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
-  "scripts": {
-    "ng": "ng",
-    "start": "ionic serve --no-open",
-    "build": "ng build",
-    "test": "ng test",
-    "lint": "ng lint",
-    "e2e": "ng e2e",
-    "prettier": "npm run prettier -c ./src/app/**/*",
-    "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json  --sort --format namespaced-json --marker _"
-  },
-  "private": true,
-  "dependencies": {
-    "@angular/cdk": "^7.3.3",
-    "@angular/common": "^7.2.2",
-    "@angular/core": "^7.2.2",
-    "@angular/flex-layout": "^7.0.0-beta.23",
-    "@angular/forms": "^7.2.2",
-    "@angular/http": "^7.2.2",
-    "@angular/platform-browser": "^7.2.2",
-    "@angular/platform-browser-dynamic": "^7.2.2",
-    "@angular/router": "^7.2.2",
-    "@ionic-native/core": "^5.0.0",
-    "@ionic-native/splash-screen": "^5.0.0",
-    "@ionic-native/status-bar": "^5.0.0",
-    "@ionic/angular": "^4.0.0",
-    "@ionic/pro": "2.0.4",
-    "@ionic/storage": "^2.2.0",
-    "@ngrx/effects": "^7.2.0",
-    "@ngrx/entity": "^7.2.0",
-    "@ngrx/router-store": "^7.2.0",
-    "@ngrx/store": "^7.2.0",
-    "@ngrx/store-devtools": "^7.2.0",
-    "@ngx-translate/core": "^11.0.1",
-    "@ngx-translate/http-loader": "^4.0.0",
-    "bootstrap": "^4.3.1",
-    "cordova-sqlite-storage": "3.0.0",
-    "core-js": "^2.5.4",
-    "pouchdb-adapter-idb": "^7.0.0",
-    "prettier": "^1.16.4",
-    "rxdb": "^8.0.5",
-    "rxjs": "~6.3.3",
-    "shortid": "^2.2.14",
-    "underscore": "^1.9.1",
-    "zone.js": "~0.8.29"
-  },
-  "devDependencies": {
-    "@angular-devkit/architect": "~0.12.3",
-    "@angular-devkit/build-angular": "~0.12.3",
-    "@angular-devkit/core": "~7.2.3",
-    "@angular-devkit/schematics": "~7.2.3",
-    "@angular/cli": "~7.2.3",
-    "@angular/compiler": "~7.2.2",
-    "@angular/compiler-cli": "~7.2.2",
-    "@angular/language-service": "~7.2.2",
-    "@biesbjerg/ngx-translate-extract": "^2.3.4",
-    "@ionic/angular-toolkit": "~1.2.0",
-    "@ionic/lab": "1.0.20",
-    "@ngrx/schematics": "^7.2.0",
-    "@types/jasmine": "~2.8.8",
-    "@types/jasminewd2": "~2.0.3",
-    "@types/node": "^10.12.27",
-    "@types/shortid": "0.0.29",
-    "@types/underscore": "^1.8.9",
-    "codelyzer": "~4.5.0",
-    "jasmine-core": "~2.99.1",
-    "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~3.1.4",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "~2.0.1",
-    "karma-jasmine": "~1.1.2",
-    "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "~5.4.0",
-    "ts-node": "~8.0.0",
-    "tslint": "~5.12.0",
-    "typescript": "~3.1.6",
-    "webpack-bundle-analyzer": "^3.0.3"
-  },
-  "description": "An Ionic project",
-  "prettier": {
-    "parser": "typescript",
-    "trailingComma": "all",
-    "tabWidth": 2,
-    "semi": true,
-    "singleQuote": true,
-    "arrowParens": "always",
-    "printWidth": 120,
-    "overrides": [
-      {
-        "files": "*.json",
-        "options": {
-          "parser": "json",
-          "tabWidth": 4
+    "name": "salon",
+    "version": "0.0.1",
+    "author": "Ionic Framework",
+    "homepage": "https://ionicframework.com/",
+    "scripts": {
+        "ng": "ng",
+        "run:device": "ionic cordova run android --device",
+        "run:devapp": "ionic serve --devapp -c -l ",
+        "run:firefox": "which ionic && ionic serve --browser=firefox",
+        "start": "ionic serve --no-open",
+        "build": "ng build",
+        "test": "ng test",
+        "lint": "ng lint",
+        "e2e": "ng e2e",
+        "prettier": "npm run prettier -c ./src/app/**/*",
+
+        "extract-translations": "ngx-translate-extract --input ./src --output ./src/assets/i18n/*.json  --sort --format namespaced-json --marker _"
+    },
+    "private": true,
+    "dependencies": {
+        "@angular/cdk": "^7.3.3",
+        "@angular/common": "^7.2.2",
+        "@angular/core": "^7.2.2",
+        "@angular/flex-layout": "^7.0.0-beta.23",
+        "@angular/forms": "^7.2.2",
+        "@angular/http": "^7.2.2",
+        "@angular/platform-browser": "^7.2.2",
+        "@angular/platform-browser-dynamic": "^7.2.2",
+        "@angular/router": "^7.2.2",
+        "@ionic-native/call-number": "^5.2.0",
+        "@ionic-native/core": "^5.0.0",
+        "@ionic-native/splash-screen": "^5.0.0",
+        "@ionic-native/status-bar": "^5.0.0",
+        "@ionic/angular": "^4.0.0",
+        "@ionic/pro": "2.0.4",
+        "@ionic/storage": "^2.2.0",
+        "@ngrx/effects": "^7.2.0",
+        "@ngrx/entity": "^7.2.0",
+        "@ngrx/router-store": "^7.2.0",
+        "@ngrx/store": "^7.2.0",
+        "@ngrx/store-devtools": "^7.2.0",
+        "@ngx-translate/core": "^11.0.1",
+        "@ngx-translate/http-loader": "^4.0.0",
+        "ak-call-number-modified": "^1.0.9",
+        "bootstrap": "^4.3.1",
+        "cordova-sqlite-storage": "3.0.0",
+        "core-js": "^2.5.4",
+        "pouchdb-adapter-idb": "^7.0.0",
+        "prettier": "^1.16.4",
+        "rxdb": "^8.0.5",
+        "rxjs": "~6.3.3",
+        "shortid": "^2.2.14",
+        "underscore": "^1.9.1",
+        "zone.js": "~0.8.29"
+    },
+    "devDependencies": {
+        "@angular-devkit/architect": "~0.12.3",
+        "@angular-devkit/build-angular": "~0.12.3",
+        "@angular-devkit/core": "~7.2.3",
+        "@angular-devkit/schematics": "~7.2.3",
+        "@angular/cli": "~7.2.3",
+        "@angular/compiler": "~7.2.2",
+        "@angular/compiler-cli": "~7.2.2",
+        "@angular/language-service": "~7.2.2",
+        "@biesbjerg/ngx-translate-extract": "^2.3.4",
+        "@ionic/angular-toolkit": "~1.2.0",
+        "@ionic/lab": "1.0.20",
+        "@ngrx/schematics": "^7.2.0",
+        "@types/jasmine": "~2.8.8",
+        "@types/jasminewd2": "~2.0.3",
+        "@types/node": "^10.12.27",
+        "@types/shortid": "0.0.29",
+        "@types/underscore": "^1.8.9",
+        "codelyzer": "~4.5.0",
+        "jasmine-core": "~2.99.1",
+        "jasmine-spec-reporter": "~4.2.1",
+        "karma": "~3.1.4",
+        "karma-chrome-launcher": "~2.2.0",
+        "karma-coverage-istanbul-reporter": "~2.0.1",
+        "karma-jasmine": "~1.1.2",
+        "karma-jasmine-html-reporter": "^0.2.2",
+        "protractor": "~5.4.0",
+        "ts-node": "~8.0.0",
+        "tslint": "~5.12.0",
+        "typescript": "~3.1.6",
+        "webpack-bundle-analyzer": "^3.0.3"
+    },
+    "description": "An Ionic project",
+    "prettier": {
+        "parser": "typescript",
+        "trailingComma": "all",
+        "tabWidth": 2,
+        "semi": true,
+        "singleQuote": true,
+        "arrowParens": "always",
+        "printWidth": 120,
+        "overrides": [
+            {
+                "files": "*.json",
+                "options": {
+                    "parser": "json",
+                    "tabWidth": 4
+                }
+            },
+            {
+                "files": "*.html",
+                "options": {
+                    "parser": "angular",
+                    "htmlWhitespaceSensitivity": "ignore"
+                }
+            },
+            {
+                "files": "*.scss",
+                "options": {
+                    "parser": "scss",
+                    "htmlWhitespaceSensitivity": "css"
+                }
+            }
+        ]
+    },
+    "cordova": {
+        "plugins": {
+            "cordova-sqlite-storage": {},
+            "mx.ferreyra.callnumber": {}
         }
-      },
-      {
-        "files": "*.html",
-        "options": {
-          "parser": "angular",
-          "htmlWhitespaceSensitivity": "ignore"
-        }
-      },
-      {
-        "files": "*.scss",
-        "options": {
-          "parser": "scss",
-          "htmlWhitespaceSensitivity": "css"
-        }
-      }
-    ]
-  },
-  "cordova": {
-    "plugins": {
-      "cordova-sqlite-storage": {}
     }
-  }
 }

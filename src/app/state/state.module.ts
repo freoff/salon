@@ -9,10 +9,12 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import {CustomSerializer} from './custom-router-serializer';
 import {ClientPageEffects} from './clients/page/client-page.effects';
 import {ApplicationEffects} from './application/application.effects';
+import {PhoneEffets} from './phone/phone.effets';
 
 const APPLICATION_EFFECTS = [
     ClientPageEffects,
     ApplicationEffects,
+    PhoneEffets,
 
 ]
 

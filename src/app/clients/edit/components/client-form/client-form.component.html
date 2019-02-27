@@ -2,8 +2,8 @@
   <ion-card-header [translucent]="true">
 
     <ion-item lines="none" *ngIf="!isUpdate" style="--min-height: 150px">
-      <div fxShow fxHide.lt-sm>
-        <ion-img  [src]="getIcon()" slot="start" style="max-width: 96px; height: auto;"></ion-img>
+      <div fxShow="true" fxHide.lt-sm="true">
+        <ion-img  [src]="getIcon()" slot="start" style="width: 96px; height: auto;"></ion-img>
       </div>
       <ion-content fxLayout="column" fxLayoutAlign="space-between, start">
         <ion-card-subtitle>{{ 'addInformationAboutClient' | translate }}</ion-card-subtitle>
