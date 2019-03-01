@@ -1,0 +1,35 @@
+<ion-content [formGroup]="form" padding>
+  <ion-list>
+    <ion-list-header>
+      <ion-label>{{ 'clients.events.labels.title' | translate }}</ion-label>
+    </ion-list-header>
+    <ion-item lines="none" detail detailIcon="time">
+      <ion-label>{{ 'clients.events.labels.date' | translate }}</ion-label>
+      <ion-datetime displayFormat="DD-MM-YYYY HH:mm " slot="end" formControlName="eventDate"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>{{ 'clients.events.labels.price' | translate }}</ion-label>
+      <ion-input
+        text-right
+        formControlName="price"
+        inputmode="numeric"
+        type="number"
+        placeholder="{{ 'clients.events.placeholders.price' | translate }}"
+      ></ion-input>
+    </ion-item>
+    <ion-item *ngIf="showPriceError()">
+      <ion-text color="danger" class="form-error" >
+        {{ 'clients.event.errors.priceSeemsBeInvalid' | translate }}
+      </ion-text>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="stacked">{{ 'clients.events.labels.notes' | translate }}</ion-label>
+      <ion-textarea
+        formControlName="eventNotes"
+        rows="3"
+        placeholder="{{ 'clients.events.placeholders.notes' | translate}}"
+      ></ion-textarea>
+    </ion-item>
+  </ion-list>
+</ion-content>

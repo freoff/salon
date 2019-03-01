@@ -1,15 +1,10 @@
 <ion-card style="max-width: 500px" *ngIf="client" no-margin>
   <ion-card-header padding>
     <ion-grid fixed>
-      <ion-row>
+      <ion-row justify-content-between>
         <ion-col size>Actions</ion-col>
         <ion-col size="auto">
-            <ion-col size="auto">
-                <ion-fab-list side="bottom">
-                  <ion-fab-button><ion-icon name="edit"></ion-icon></ion-fab-button>
-                  <ion-fab-button><ion-icon name="delete"></ion-icon></ion-fab-button>
-                </ion-fab-list>
-              </ion-col>
+          
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -32,12 +27,12 @@
     <ion-grid>
       <ion-row>
         <ion-col size="12">
-          <h1 padding-start>
+          <h1>
             <ion-text color="secondary">{{ 'phones' | translate }}</ion-text>
           </h1>
           <ion-item lines="none" *ngFor="let phone of client.phones" text-left>
             <ion-label color="dark">{{ phone.number }}</ion-label>
-            <ion-button slot="start" fill="clear" (click)="onCall(phone.number)">
+            <ion-button slot="start" fill="clear" size="large" (click)="onCall(phone.number)">
               <ion-icon src="/assets/icon/018-phone-contact.svg" color="dark"></ion-icon>
             </ion-button>
           </ion-item>
@@ -45,7 +40,7 @@
       </ion-row>
       <ion-row>
         <ion-col size="12">
-          <h1 padding-start margin-start margin-bottom>
+          <h1>
             <ion-text color="secondary">{{ 'clientNotes' | translate }}</ion-text>
           </h1>
           <ion-item>
@@ -54,6 +49,7 @@
         </ion-col>
       </ion-row>
     </ion-grid>
+    <app-client-events></app-client-events>
   </ion-card-content>
 </ion-card>
 

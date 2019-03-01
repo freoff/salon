@@ -1,32 +1,53 @@
 {
-    "ClientDoNotExist": "Ten klient nie istnieje",
-    "addInformationAboutClient": "Dodaj informacje o nowy kliencie",
-    "cell": "Komórkowy",
-    "client": "Klient",
-    "clientList": "Lista klientow",
-    "clientNotes": "Notatki",
-    "clients": "Klienci",
-    "details": "Szczegoly klienta",
-    "email": "Email",
-    "etykieta": "Etykieta",
-    "female": "Kobieta",
-    "fname": "Imie",
-    "ground": "Stacjonarny",
-    "klient": "Klient",
-    "lname": "Nazwisko",
-    "male": "Mężczyzna",
-    "nav": {
-        "add": "Dodaj",
-        "edit": "Edytuj",
-        "list": "Lista"
-    },
-    "notes": "Notatki",
-    "notesTooltip": "Tutaj mozesz dodac dodtkowe informacje o kliencie",
-    "number": "Numer",
-    "phones": "Telefony",
-    "updateClientData": "Poprawe dane klienta",
-
-    "js": {
-        "details": {}
-    }
+	"ClientDoNotExist": "Ten klient nie istnieje",
+	"addClientEvent": "Dodaj obsługę",
+	"addInformationAboutClient": "Dodaj informacje o nowy kliencie",
+	"cell": "Komórkowy",
+	"client": "Klient",
+	"clientList": "Lista klientow",
+	"clientNotes": "Notatki",
+	"clients": {
+		"event": {
+			"errors": {
+				"priceSeemsBeInvalid": "Ta kwota wydaje się nie być prawidłowa"
+			}
+		},
+		"events": {
+			"labels": {
+				"date": "Data usługi",
+				"notes": "Dodatkowe informacje",
+				"price": "Wartość usługi",
+				"title": "Dodaj usługe dla klienta"
+			},
+			"notes": {
+				"label": ""
+			},
+			"placeholders": {
+				"notes": "Tutaj można dodać dodatkow informację na temat usługi",
+				"price": "Wpisz tuaj kwotę jaką zapłacił klient"
+			}
+		}
+	},
+	"details": "Szczegoly klienta",
+	"email": "Email",
+	"etykieta": "Etykieta",
+	"female": "Kobieta",
+	"fname": "Imię",
+	"ground": "Stacjonarny",
+	"js": {
+		"details": {}
+	},
+	"klient": "Klient",
+	"lname": "Nazwisko",
+	"male": "Mężczyzna",
+	"nav": {
+		"add": "Dodaj",
+		"edit": "Edytuj",
+		"list": "Lista"
+	},
+	"notes": "Notatki",
+	"notesTooltip": "Tutaj możęsz dodać dodtkowe informacje o kliencie",
+	"number": "Numer",
+	"phones": "Telefony",
+	"updateClientData": "Poprawe dane klienta"
 }

@@ -18,5 +18,7 @@ export class ClientDetailsComponent implements OnInit {
   }
   onCall(number: string) {
     this.call.emit({ number });
+    
   }
+
 }

@@ -7,6 +7,7 @@ import { ClientDetailsResolver } from './resolvers/client-details.resolver';
 import { ClientStateService } from '../services/state/client-state.service';
 import {SharedModule} from '../shared/shared.module';
 import {TranslateModule} from '@ngx-translate/core';
+import { ClientEventsComponent } from './shared/components/client-events/client-events.component';
 
 @NgModule({
   declarations: [],
