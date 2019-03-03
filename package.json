@@ -5,10 +5,11 @@
     "homepage": "https://ionicframework.com/",
     "scripts": {
         "ng": "ng",
+        "ionic": "ionic",
         "run:device": "ionic cordova run android --device",
         "run:devapp": "ionic serve --devapp -c -l ",
         "run:firefox": "which ionic && ionic serve --browser=firefox",
-        "start": "ionic serve --no-open",
+        "start": "npx ionic serve --no-open",
         "build": "ng build",
         "test": "ng test",
         "lint": "ng lint",
@@ -53,7 +54,8 @@
         "rxjs": "~6.3.3",
         "shortid": "^2.2.14",
         "underscore": "^1.9.1",
-        "zone.js": "~0.8.29"
+        "zone.js": "~0.8.29",
+        "moneyjs": "^0.3.0"
     },
     "devDependencies": {
         "@angular-devkit/architect": "~0.12.3",

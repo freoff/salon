@@ -1,4 +1,5 @@
 import {Phone} from './phone.interface';
+import { ClientEvent } from './client-event';
 
 export interface Client {
     id: string;
@@ -8,4 +9,5 @@ export interface Client {
     email: string;
     sex: 'male' | 'female';
     clientNotes: string;
+
 }

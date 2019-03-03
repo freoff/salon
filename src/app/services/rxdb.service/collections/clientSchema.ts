@@ -1,6 +1,6 @@
 import { RxJsonSchema, RxSchema } from 'rxdb';
 import { Phone } from '../../../clients/models/phone.interface';
-import {ClientDocMethods, ClientsCollection, ClientCollectionMethods, ClientDocument} from './clients.collection';
+import { ClientDocMethods, ClientsCollection, ClientCollectionMethods, ClientDocument } from './clients.collection';
 
 export const clientSchema: RxJsonSchema = {
   title: 'Client schema',
@@ -38,11 +38,11 @@ export const clientSchema: RxJsonSchema = {
             type: 'string',
           },
           order: {
-            type: 'number'
+            type: 'number',
           },
           primary: {
-            type: 'boolean'
-          }
+            type: 'boolean',
+          },
         },
       },
     },
@@ -59,7 +59,7 @@ export const clientDocMethods: ClientDocMethods = {
   getFullName: function() {
     return `${this.fname} ${this.lname}`;
   },
-  getClientData: function (this: ClientDocument) {
+  getClientData: function(this: ClientDocument) {
     return {
       id: this.get('id'),
       fname: this.get('fname'),
@@ -67,9 +67,9 @@ export const clientDocMethods: ClientDocMethods = {
       clientNotes: this.get('clientNotes'),
       email: this.get('emial'),
       sex: this.get('sex'),
-      phones: this.get('phones')
-    }
-  }
+      phones: this.get('phones'),
+    };
+  },
 };
 export const clientCollectionMethods: ClientCollectionMethods = {
   totalClients: async function(this: ClientsCollection) {

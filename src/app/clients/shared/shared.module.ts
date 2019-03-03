@@ -5,6 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { ClientEventFormComponent } from './components/client-event-form/client-event-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { FlexModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [ClientEventsComponent, ClientEventFormComponent],
@@ -13,7 +14,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     IonicModule,
     ReactiveFormsModule,
-    TranslateModule.forChild()
+    TranslateModule.forChild(),
+    FlexModule,
   ],
   entryComponents: [ClientEventFormComponent]
 })

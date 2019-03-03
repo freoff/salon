@@ -4,8 +4,9 @@ import { environment } from '../../../environments/environment';
 import { SalonDatabase, SalonDatabaseCollections } from './collections';
 import { clientCollectionMethods, clientDocMethods, clientSchema } from './collections/clientSchema';
 import { ClientDocMethods, ClientCollectionMethods } from './collections/clients.collection';
-import {from, Observable, ReplaySubject, Subject} from 'rxjs';
-import {share} from 'rxjs/operators';
+import { from, Observable, ReplaySubject, Subject } from 'rxjs';
+import { share } from 'rxjs/operators';
+import { clientEventSchema } from './collections/clientEventSchema';
 
 export class RxdbService {
   _dbConnection: SalonDatabase;
@@ -47,6 +48,10 @@ export class RxdbService {
       schema: clientSchema,
       methods: clientDocMethods as any,
       statics: clientCollectionMethods as any,
+    });
+    await this._dbConnection.collection({
+      name: 'client_events',
+      schema: clientEventSchema,
     });
   }
 }

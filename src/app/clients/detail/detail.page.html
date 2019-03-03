@@ -3,11 +3,12 @@
     <ion-buttons slot="start">
       <ion-back-button [defaultHref]="clientListUrl"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'details' | translate}}</ion-title>
+    <ion-title>{{ 'details' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <app-details-container></app-details-container>
-
+  <section fxLayout="row" fxLayoutAlign="center center">
+    <app-details-container></app-details-container>
+  </section>
 </ion-content>

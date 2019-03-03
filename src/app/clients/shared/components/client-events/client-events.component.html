@@ -4,10 +4,18 @@
 
     <ion-col>
 
-          <ion-button color="primary" expand="block" (click)="onAddEvent()">{{'addClientEvent' | translate}}</ion-button>
+          <ion-button color="primary" expand="block" (click)="onAddEvent($event)">{{'addClientEvent' | translate}}</ion-button>
 
     </ion-col>
-
+    <ion-col size="12">
+      <ion-fab vertical="center" horizontal="center" slot="fixed">
+        <ion-fab-button><ion-icon name="code"></ion-icon></ion-fab-button>
+        <ion-fab-list side="start">
+          <ion-fab-button><ion-icon name="logo-ionic"></ion-icon></ion-fab-button>
+          <ion-fab-button><ion-icon name="logo-angular"></ion-icon></ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-col>  
   </ion-row>
 
 

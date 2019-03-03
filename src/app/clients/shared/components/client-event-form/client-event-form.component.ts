@@ -1,6 +1,8 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
+import { PopoverController } from '@ionic/angular';
+
 @Component({
   selector: 'app-client-event-form',
   templateUrl: './client-event-form.component.html',
@@ -12,7 +14,7 @@ export class ClientEventFormComponent implements OnInit {
   @Input() event: any;
   form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder, private popOver: PopoverController) {}
 
   ngOnInit() {
     this.initForm();
@@ -28,5 +30,11 @@ export class ClientEventFormComponent implements OnInit {
   showPriceError() {
     const {touched, invalid } = this.form.get('price');
     return touched && invalid;
+  }
+  cancel() {
+    this.popOver.dismiss(null, 'backdrop');
+  }
+  add() {
+    this.popOver.dismiss(this.form.value);
   }
 }

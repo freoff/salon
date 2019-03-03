@@ -28,6 +28,13 @@
 			}
 		}
 	},
+	"commons": {
+		"labels": {
+			"add": "Dodaj",
+			"cancel": "Anuluj",
+			"close": "Zamknij"
+		}
+	},
 	"details": "Szczegoly klienta",
 	"email": "Email",
 	"etykieta": "Etykieta",
