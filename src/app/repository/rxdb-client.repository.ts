@@ -6,6 +6,7 @@ import { EntityIdGeneratorService } from '../services/entity-id-generator.servic
 import { fromPromise, subscribeToPromise } from 'rxjs/internal-compatibility';
 import { map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { MonoTypeOperatorFunction } from 'rxjs/src/internal/types';
+import { ClientEvent } from '../clients/models/client-event';
 
 export class RxdbClientRepository implements ClientRepositoryInterface {
   constructor(private rxdb: RxdbService, private idGenerator: EntityIdGeneratorService) {}
@@ -38,6 +39,11 @@ export class RxdbClientRepository implements ClientRepositoryInterface {
         map((result) => ({ ...result.getClientData() })),
       );
   }
+
+  addClientEvent(payload: { client: Client; clientEvent: ClientEvent }): Observable<any> {
+
+  }
+
 }
 
 export const log = tap((data) => console.log(data));

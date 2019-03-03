@@ -8,7 +8,6 @@ export const clientEventSchema: RxJsonSchema = {
   properties: {
     eventDate: {
       type: 'string',
-      format: 'date-time',
     },
     price: {
       type: 'object',
