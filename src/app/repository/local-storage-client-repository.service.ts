@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { from, Observable, of } from 'rxjs';
 import { Client } from '../clients/models/client.interface';
 import { EntityIdGeneratorService } from '../services/entity-id-generator.service';
+import { ClientEvent } from '../clients/models/client-event';
 
 export const CLIENTS_KEY = 'CLIENTS';
 /*
@@ -42,6 +43,12 @@ export class LocalStorageClientRepository implements ClientRepositoryInterface {
           }
         })
     );
+  }
+
+  addClientEvent(payload: { client: Client; clientEvent: ClientEvent }): Observable<any> {
+    // TODO implement for localstoreage persist impolementation
+
+      return undefined;
   }
 
   private getClientsFromStore(): Promise<{ [key: string]: Client }> {

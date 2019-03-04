@@ -11,6 +11,7 @@ import {routerReducer, RouterReducerState} from '@ngrx/router-store';
 import * as fromApplication from '../application/application.reducer';
 import * as fromAuthorization from '../authorization/authorization.reducer';
 import * as fromClientPage from '../clients/page/client-page.reducer';
+import * as fromClientEvents from '../clients/clientEvents/client-event.reducer';
 
 export interface State {
 
@@ -19,6 +20,7 @@ export interface State {
   application: fromApplication.State;
   authorization: fromAuthorization.AuthorizationState;
   clientPage: fromClientPage.ClientPageState;
+  clientEvents: fromClientEvents.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
@@ -27,6 +29,7 @@ export const reducers: ActionReducerMap<State> = {
   application: fromApplication.reducer,
   authorization: fromAuthorization.reducer,
   clientPage: fromClientPage.reducer,
+  clientEvents: fromClientEvents.reducer,
 };
 
 export const getClients = (state: State) => state.client;

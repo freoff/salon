@@ -41,7 +41,7 @@ export class RxdbClientRepository implements ClientRepositoryInterface {
   }
 
   addClientEvent(payload: { client: Client; clientEvent: ClientEvent }): Observable<any> {
-
+    return of('dupa');
   }
 
 }

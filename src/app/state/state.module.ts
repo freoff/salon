@@ -16,7 +16,7 @@ const APPLICATION_EFFECTS = [
     ApplicationEffects,
     PhoneEffets,
 
-]
+];
 
 @NgModule({
   declarations: [],

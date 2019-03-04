@@ -78,4 +78,15 @@
 
   /* Set the font family of the entire app */
   --ion-font-family: -apple-system, BlinkMacSystemFont, "Lato", "Roboto", sans-serif;
+
+  ion-split-pane {
+    --ion-background-color: rgba(255,255,255,0.5);
+    //& > ion-content {
+    //  --ion-background-color: rgba(255,255,255,0.8);
+    //}
+    ion-card, ion-card *{
+      --ion-background-color: rgba(255,255,255,1);
+    }
+
+  }
 }

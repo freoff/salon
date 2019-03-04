@@ -12,7 +12,7 @@ export class ClientDetailsResolver implements Resolve<any> {
   constructor(@Host() @Optional() private injector: Injector) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<any> | Promise<any> | any {
-    const clientId = this.getCLientId(route);
+    const clientId = this.getClientId(route);
     this.clientStateService = this.injector.get(ClientStateService);
     return this.clientStateService.getClient(clientId).pipe(
       tap((client) => {
@@ -25,7 +25,7 @@ export class ClientDetailsResolver implements Resolve<any> {
     ); // pipe 1
   }
 
-  private getCLientId(route: ActivatedRouteSnapshot) {
+  private getClientId(route: ActivatedRouteSnapshot) {
     return route.paramMap.get('clientId');
   }
 }

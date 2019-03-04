@@ -1,6 +1,5 @@
-<ion-card style="max-width: 500px" *ngIf="client" no-margin>
+<ion-card style="max-width: 500px" *ngIf="client">
   <ion-card-header padding>
-   
     <ion-card-title>
       <ion-row>
         <ion-col size="auto">
@@ -10,7 +9,6 @@
           <b>{{ client?.lname }}</b>
           {{ client?.fname }}
         </ion-col>
-       
       </ion-row>
     </ion-card-title>
   </ion-card-header>
@@ -36,7 +34,7 @@
             <ion-text color="secondary">{{ 'clientNotes' | translate }}</ion-text>
           </h1>
           <ion-item>
-            <ion-text [innerHTML]="client.clientNotes | nl2br "></ion-text>
+            <ion-text [innerHTML]="client.clientNotes | nl2br"></ion-text>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -45,6 +43,8 @@
   </ion-card-content>
 </ion-card>
 
-<pre>
-    {{ client | json }}
-</pre>
+<pre style="max-width: 500px">
+        {{ client | json }}
+      </pre
+>
+<ion-card></ion-card>
