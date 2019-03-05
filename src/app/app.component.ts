@@ -15,7 +15,6 @@ import {APP_ROUTES} from './app-named-route';
   styles: [],
 })
 export class AppComponent {
-  private currentUrl;
   private mainMenu;
   constructor(
     private platform: Platform,
@@ -36,7 +35,6 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.translateService.setDefaultLang('pl');
       this.mainMenu = await this.menuController.get('mainMenu');
-      // await this.dbService.initializeDB();
       this.applicationStateService.initializeAppData();
 
     });

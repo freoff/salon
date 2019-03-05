@@ -5,16 +5,16 @@
 :root {
   /** primary **/
   --ion-color-primary: #1838b6;
-  --ion-color-primary-rgb: 24,56,182;
+  --ion-color-primary-rgb: 24, 56, 182;
   --ion-color-primary-contrast: #ffffff;
-  --ion-color-primary-contrast-rgb: 255,255,255;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
   --ion-color-primary-shade: #1531a0;
   --ion-color-primary-tint: #2f4cbd;
 
   --ion-color-secondary: #da9e00;
-  --ion-color-secondary-rgb: 218,158,0;
+  --ion-color-secondary-rgb: 218, 158, 0;
   --ion-color-secondary-contrast: #000000;
-  --ion-color-secondary-contrast-rgb: 0,0,0;
+  --ion-color-secondary-contrast-rgb: 0, 0, 0;
   --ion-color-secondary-shade: #c08b00;
   --ion-color-secondary-tint: #dea81a;
 
@@ -74,19 +74,16 @@
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
 
-
-
   /* Set the font family of the entire app */
-  --ion-font-family: -apple-system, BlinkMacSystemFont, "Lato", "Roboto", sans-serif;
+  --ion-font-family: -apple-system, BlinkMacSystemFont, 'Lato', 'Roboto', sans-serif;
 
   ion-split-pane {
-    --ion-background-color: rgba(255,255,255,0.5);
-    //& > ion-content {
-    //  --ion-background-color: rgba(255,255,255,0.8);
-    //}
-    ion-card, ion-card *{
-      --ion-background-color: rgba(255,255,255,1);
-    }
+  }
+  .transparent {
+    --background: transparent;
+  }
+  .background-default {
 
+    --background: #fff;
   }
 }

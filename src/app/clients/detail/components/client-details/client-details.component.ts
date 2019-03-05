@@ -23,7 +23,6 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   addClientEvent(data: ClientEvent) {
-    console.log('data', data);
     this.clientStateService.addClientEvent({client: this.client, clientEvent: data});
   }
 }
