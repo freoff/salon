@@ -33,6 +33,7 @@ export const reducers: ActionReducerMap<State> = {
 };
 
 export const getClients = (state: State) => state.client;
+export const getClientEvents = (state: State) => state.clientEvents;
 export const getClientsPageState = (state: State) => state.clientPage;
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];

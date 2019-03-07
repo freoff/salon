@@ -18,6 +18,7 @@ export class ClientDetailsResolver implements Resolve<any> {
       tap((client) => {
         if (!client) {
           this.clientStateService.loadClient({ clientId });
+          this.clientStateService.fetchClientEvents({ clientId });
           this.clientStateService.setSelectedClient({ clientId });
         }
       }),

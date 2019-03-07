@@ -6,8 +6,26 @@
           <ion-icon style="font-size: 64px" color="primary" [src]="getIcon(client)"></ion-icon>
         </ion-col>
         <ion-col color="tertiary" align-items-center>
-          <b>{{ client?.lname }}</b>
-          {{ client?.fname }}
+          <ion-row>
+            <ion-col>
+              <b>{{ client?.lname }}</b>
+              {{ client?.fname }}
+            </ion-col>
+
+            <ion-col size="auto">
+              <ion-col size="auto">
+                <ion-fab vertical="center" horizontal="center">
+                  <ion-fab-button size="small" translucent="true" color="light">
+                    <ion-icon name="more"></ion-icon>
+                  </ion-fab-button>
+                  <ion-fab-list side="bottom">
+                    <ion-fab-button><ion-icon name="color-wand"></ion-icon></ion-fab-button>
+                    <ion-fab-button><ion-icon name="trash"></ion-icon></ion-fab-button>
+                  </ion-fab-list>
+                </ion-fab>
+              </ion-col>
+            </ion-col>
+          </ion-row>
         </ion-col>
       </ion-row>
     </ion-card-title>
@@ -40,11 +58,26 @@
       </ion-row>
     </ion-grid>
     <app-client-events (addClientEvent)="addClientEvent($event)"></app-client-events>
+
+    <ion-list>
+      <ng-container *ngFor="let ce of clientEvents; trackBy: trackEventsBy">
+        <ion-item button detail detailIcon="arrow-down" (click)="setExpanded(ce._id)">
+          <ion-label text-wrap>
+            <ion-text>{{ ce.eventDate }} - {{ ce.price.amount / 100 }} {{ ce.price.currency }}</ion-text>
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="ce._id === expandedRow">
+          <section fxLayout="column">
+            <span>{{ 'clients.labels.clientEventsNote' | translate }}</span>
+            <span [innerHTML]="ce.eventNotes | nl2br"></span>
+          </section>
+        </ion-item>
+      </ng-container>
+    </ion-list>
   </ion-card-content>
 </ion-card>
 
-<pre style="max-width: 500px">
+<pre style="max-width: 0px">
         {{ client | json }}
       </pre
 >
-

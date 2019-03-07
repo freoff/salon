@@ -20,7 +20,7 @@ export enum ClientEventActionTypes {
 export class FetchClientEvents implements Action {
   readonly type = ClientEventActionTypes.FetchClientEvents;
 
-  constructor(public payload: any) {}
+  constructor(public payload: {clientId: string}) {}
 }
 
 export class LoadClientEvents implements Action {

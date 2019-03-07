@@ -10,7 +10,10 @@ import { ClientStateService } from '../../../../services/state/client-state.serv
 })
 export class ClientDetailsComponent implements OnInit {
   @Input() client: Client;
+  @Input() clientEvents: ClientEvent[];
   @Output() call = new EventEmitter<{ number: string }>();
+  trackEventsBy = (index, item) => item._id;
+  public expandedRow: string;
   constructor(private clientStateService: ClientStateService) {}
 
   ngOnInit() {}
@@ -23,6 +26,10 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   addClientEvent(data: ClientEvent) {
-    this.clientStateService.addClientEvent({client: this.client, clientEvent: data});
+    this.clientStateService.addClientEvent({ client: this.client, clientEvent: data });
+  }
+
+  setExpanded(_id: string) {
+    this.expandedRow = _id;
   }
 }

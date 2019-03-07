@@ -9,7 +9,7 @@ import { PhoneService } from '../../../../services/phone.service';
 })
 export class DetailsContainerComponent implements OnInit {
   selectedClient$ = this.clientStateService.getSelectedClient();
-
+  clientEvents$ = this.clientStateService.getClientEvents();
   constructor(private clientStateService: ClientStateService, private phoneService: PhoneService) {}
 
   ngOnInit() {}

@@ -17,6 +17,8 @@ import { ClientsRoutingModule } from '../../clients/clients.routing.module';
 import { ClientEvent } from '../../clients/models/client-event';
 import { RxdbService } from '../rxdb.service';
 import { switchMap, tap } from 'rxjs/operators';
+import { FetchClientEvents } from '../../state/clients/clientEvents/client-event.actions';
+import { getClientEvents } from '../../state/selectors/clients.selectors';
 
 @Injectable({ providedIn: 'root' })
 export class ClientStateService {
@@ -52,10 +54,25 @@ export class ClientStateService {
 
   addClientEvent(param: { clientEvent: ClientEvent; client: Client }) {
     console.log('create clientEvent', param);
-    const client$ = this.db.getDb$().pipe(switchMap(db => db.clients.findOne({id: {$eq: param.client.id}}).$));
+    const client$ = this.db.getDb$().pipe(switchMap((db) => db.clients.findOne({ id: { $eq: param.client.id } }).$));
     // forkJoin([this.db.getDb$().pipe(switchMap(db => db.clients.findOne())])
-    this.db.getDb$().pipe(tap((db) => db.client_events.insert(param.clientEvent).then((d) => console.log(d)))).subscribe();
+    this.db
+      .getDb$()
+      .pipe(
+        tap(() => console.log(param.clientEvent)),
+        tap((db) =>
+          db.client_events.insert({ ...param.clientEvent, client: param.client.id }).then((d) => console.log(d)),
+        ),
+      )
+      .subscribe();
 
     // this.store.dispatch(new AddClientEvent({clientEvent, client}));
+  }
+
+  fetchClientEvents({ clientId }) {
+    this.store.dispatch(new FetchClientEvents({ clientId }));
+  }
+  getClientEvents() {
+    return this.store.select(getClientEvents);
   }
 }
