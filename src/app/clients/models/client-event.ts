@@ -8,3 +8,7 @@ export interface ClientEvent {
   eventNotes: string;
   client: string | Client;
 }
+export interface Money {
+  currency: string;
+  amount: number;
+}

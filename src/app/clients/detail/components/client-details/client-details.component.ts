@@ -12,6 +12,7 @@ export class ClientDetailsComponent implements OnInit {
   @Input() client: Client;
   @Input() clientEvents: ClientEvent[];
   @Output() call = new EventEmitter<{ number: string }>();
+  displayNotesCheckbox = false;
   trackEventsBy = (index, item) => item._id;
   public expandedRow: string;
   constructor(private clientStateService: ClientStateService) {}
@@ -32,4 +33,8 @@ export class ClientDetailsComponent implements OnInit {
   setExpanded(_id: string) {
     this.expandedRow = _id;
   }
+
+    toggleNotes() {
+      this.displayNotesCheckbox = !this.displayNotesCheckbox;
+    }
 }

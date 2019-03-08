@@ -19,8 +19,12 @@
                     <ion-icon name="more"></ion-icon>
                   </ion-fab-button>
                   <ion-fab-list side="bottom">
-                    <ion-fab-button><ion-icon name="color-wand"></ion-icon></ion-fab-button>
-                    <ion-fab-button><ion-icon name="trash"></ion-icon></ion-fab-button>
+                    <ion-fab-button>
+                      <ion-icon name="color-wand"></ion-icon>
+                    </ion-fab-button>
+                    <ion-fab-button>
+                      <ion-icon name="trash"></ion-icon>
+                    </ion-fab-button>
                   </ion-fab-list>
                 </ion-fab>
               </ion-col>
@@ -38,21 +42,37 @@
           <h1>
             <ion-text color="secondary">{{ 'phones' | translate }}</ion-text>
           </h1>
-          <ion-item lines="none" *ngFor="let phone of client.phones" text-left>
-            <ion-label color="dark">{{ phone.number }}</ion-label>
-            <ion-button slot="start" fill="clear" size="large" (click)="onCall(phone.number)">
-              <ion-icon src="/assets/icon/018-phone-contact.svg" color="dark"></ion-icon>
-            </ion-button>
+          <ion-item lines="none" *ngFor="let phone of client.phones" text-left class="ps-0">
+            <section fxFlex fxLayoutAlign="start center" fxLayoutGap="15px">
+              <ion-text color="dark">{{ phone.number }}</ion-text>
+              <ion-button (click)="onCall(phone.number)" fill="outline">
+                <ion-icon src="/assets/icon/018-phone-contact.svg"></ion-icon>
+                &nbsp;
+                {{ 'clients.details.labels.call' | translate }}
+              </ion-button>
+            </section>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="12">
-          <h1>
-            <ion-text color="secondary">{{ 'clientNotes' | translate }}</ion-text>
+        <ion-col size="12" class="ps-0">
+          <h1 fxLayout="row center">
+            <ion-text color="secondary">{{ 'clients.details.labels.notes' | translate }}</ion-text>
+            <ion-button size="small" fill="clear" *ngIf="displayNotesCheckbox" (click)="toggleNotes()">
+              <small>
+                {{ 'clients.details.labels.hideNotes' | translate }}
+              </small>
+            </ion-button>
           </h1>
-          <ion-item>
-            <ion-text [innerHTML]="client.clientNotes | nl2br"></ion-text>
+          <ion-item lines="none" style="--min-height: 50px"  class="ps-0">
+            <section fxLayout="column" fxLayoutAlign="start start">
+                <ion-button size="small" fill="clear" size="small" *ngIf="!displayNotesCheckbox" (click)="toggleNotes()">
+                  {{ 'clients.details.labels.showNotes' | translate }}
+                </ion-button>
+              <ion-text *ngIf="displayNotesCheckbox" class="text-left" no-padding>
+                <span [innerHTML]="(client.clientNotes.length > 3 ? client.clientNotes : 'no notes')  | nl2br"></span>
+              </ion-text>
+            </section>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -68,7 +88,7 @@
         </ion-item>
         <ion-item *ngIf="ce._id === expandedRow">
           <section fxLayout="column">
-            <span>{{ 'clients.labels.clientEventsNote' | translate }}</span>
+
             <span [innerHTML]="ce.eventNotes | nl2br"></span>
           </section>
         </ion-item>

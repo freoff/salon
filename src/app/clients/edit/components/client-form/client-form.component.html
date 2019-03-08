@@ -1,22 +1,22 @@
 <ng-container [formGroup]="form">
   <ion-card-header>
+    <ion-item lines="none" *ngIf="!isUpdate">
+      <section fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="start center" fxFill fxLayoutAlign="start start">
+        <ion-img padding-end [src]="getIcon()" slot="start" style="width: 96px; height: auto;"></ion-img>
 
-    <ion-item lines="none" *ngIf="!isUpdate" style="--min-height: 150px">
-      <div fxShow="true" fxHide.lt-sm="true" >
-        <ion-img  padding-end [src]="getIcon()" slot="start" style="width: 96px; height: auto;"></ion-img>
-      </div>
-      <section fxLayout="column" fxLayoutAlign="space-between, start">
-        <ion-card-subtitle>{{ 'addInformationAboutClient' | translate }}</ion-card-subtitle>
-        <ion-card-title margin-top>
-          <ion-text style="--font-size: 12px">
-            <b>{{ form.value.lname }}</b>
-            {{ form.value.fname }}
-          </ion-text>
-        </ion-card-title>
+        <section fxLayout="column" fxFlexAlign.lt-sm="start" fxLayoutAlign="space-between, start" fxFlex.lt-sm="100%">
+          <ion-card-subtitle fxHide.lt-sm>{{ 'addInformationAboutClient' | translate }}</ion-card-subtitle>
+          <ion-card-title margin-top>
+            <ion-text style="--font-size: 12px">
+              {{ form.value.lname }}
+              {{ form.value.fname }}
+            </ion-text>
+          </ion-card-title>
+        </section>
       </section>
     </ion-item>
     <ion-item lines="none" *ngIf="isUpdate">
-      <ion-icon  padding-end name="contact" slot="start" size="large" color="primary"></ion-icon>
+      <ion-icon padding-end name="contact" slot="start" size="large" color="primary"></ion-icon>
       <section>
         <ion-card-title>{{ 'client' | translate }}</ion-card-title>
         <ion-card-subtitle>{{ 'updateClientData' | translate }}</ion-card-subtitle>
@@ -52,7 +52,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row formArrayName="phones" *ngFor="let phone of phones; let currentPhoneIndex = index">
+    <ion-row [ngClass.lt-sm]="'border-telephones'" ngClass.gt-sm="" formArrayName="phones" *ngFor="let phone of phones; let currentPhoneIndex = index">
       <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>
         <ion-item>
           <ion-label position="floating">{{ 'number' | translate }}</ion-label>

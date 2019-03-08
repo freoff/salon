@@ -1,60 +1,70 @@
 {
-	"ClientDoNotExist": "Ten klient nie istnieje",
-	"addClientEvent": "Dodaj obsługę",
-	"addInformationAboutClient": "Dodaj informacje o nowy kliencie",
-	"cell": "Komórkowy",
-	"client": "Klient",
-	"clientList": "Lista klientow",
-	"clientNotes": "Notatki",
-	"clients": {
-		"event": {
-			"errors": {
-				"priceSeemsBeInvalid": "Ta kwota wydaje się nie być prawidłowa"
-			}
-		},
-		"events": {
-			"labels": {
-				"date": "Data usługi",
-				"notes": "Dodatkowe informacje",
-				"price": "Wartość usługi",
-				"title": "Dodaj usługe dla klienta"
-			},
-			"notes": {
-				"label": ""
-			},
-			"placeholders": {
-				"notes": "Tutaj można dodać dodatkow informację na temat usługi",
-				"price": "Wpisz tuaj kwotę jaką zapłacił klient"
-			}
-		}
-	},
-	"commons": {
-		"labels": {
-			"add": "Dodaj",
-			"cancel": "Anuluj",
-			"close": "Zamknij"
-		}
-	},
-	"details": "Szczegoly klienta",
-	"email": "Email",
-	"etykieta": "Etykieta",
-	"female": "Kobieta",
-	"fname": "Imię",
-	"ground": "Stacjonarny",
-	"js": {
-		"details": {}
-	},
-	"klient": "Klient",
-	"lname": "Nazwisko",
-	"male": "Mężczyzna",
-	"nav": {
-		"add": "Dodaj",
-		"edit": "Edytuj",
-		"list": "Lista"
-	},
-	"notes": "Notatki",
-	"notesTooltip": "Tutaj możęsz dodać dodtkowe informacje o kliencie",
-	"number": "Numer",
-	"phones": "Telefony",
-	"updateClientData": "Poprawe dane klienta"
+    "ClientDoNotExist": "Ten klient nie istnieje",
+    "addClientEvent": "Dodaj wizyte klienta",
+    "addInformationAboutClient": "Dodaj informacje o nowy kliencie",
+    "cell": "Komórkowy",
+    "client": "Klient",
+    "clientList": "Lista klientow",
+    "clientNotes": "Notatki",
+    "clients": {
+        "details": {
+            "labels": {
+                "call": "Zadzwon",
+                "clientEventsNote": "Notatki",
+                "hideNotes": "ukryj notatki",
+                "notes": "Notatki",
+                "previousVisit": "Poprzednie wizyty w salonie",
+                "showNotes": "pokarz notatki"
+            }
+        },
+        "event": {
+            "errors": {
+                "priceSeemsBeInvalid": "Ta kwota wydaje się nie być prawidłowa"
+            }
+        },
+        "events": {
+            "labels": {
+                "date": "Data usługi",
+                "notes": "Dodatkowe informacje",
+                "price": "Wartość usługi",
+                "title": "Dodaj usług dla klienta"
+            },
+            "notes": {
+                "label": ""
+            },
+            "placeholders": {
+                "notes": "Tutaj można dodać dodatkow informację na temat usługi",
+                "price": "Wpisz tuaj kwotę jaką zapłacił klient"
+            }
+        }
+    },
+    "commons": {
+        "labels": {
+            "add": "Dodaj",
+            "cancel": "Anuluj",
+            "close": "Zamknij"
+        }
+    },
+    "details": "Szczegoly klienta",
+    "email": "Email",
+    "etykieta": "Etykieta",
+    "female": "Kobieta",
+    "fname": "Imię",
+    "ground": "Stacjonarny",
+    "js": {
+        "details": {}
+    },
+    "klient": "Klient",
+    "lname": "Nazwisko",
+    "male": "Mężczyzna",
+    "nav": {
+        "add": "Dodaj",
+        "edit": "Edytuj",
+        "list": "Lista"
+    },
+    "notes": "Notatki",
+    "notesTooltip": "Tutaj możęsz dodać dodtkowe informacje o kliencie",
+    "number": "Numer",
+    "phones": "Telefony",
+    "updateClientData": "Poprawe dane klienta"
 }
