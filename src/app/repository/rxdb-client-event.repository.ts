@@ -5,10 +5,10 @@ import { ClientEvent } from '../clients/models/client-event';
 import { from, Observable } from 'rxjs';
 import { RxDatabaseBase, RxDocumentBase } from 'rxdb';
 import { SalonDatabaseCollections } from '../services/rxdb.service/collections';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class ClientEventsRepository {
   private db$: Observable<RxDatabaseBase<SalonDatabaseCollections> & SalonDatabaseCollections>;
 
@@ -19,15 +19,15 @@ export class ClientEventsRepository {
   getEventForClient(client: Client | string): Observable<Array<ClientEvent>> {
     const clientId = typeof client === 'string' ? client : client.id;
     return this.db$.pipe(
-      switchMap((db) => db.client_events.find({ client: { $eq: clientId } }).sort({'eventDate': 'desc'}).$),
+      switchMap((db) => db.client_events.find({ client: { $eq: clientId } }).sort({ eventDate: 'desc' }).$),
       map((clientEventsDocs) => clientEventsDocs.map((ce) => ce.toJSON())),
     );
   }
 
-  createClientEvent(client: Client, event: ClientEvent): Observable<RxDocumentBase<ClientEvent, {}> & ClientEvent & {}> {
+  createClientEvent(
+    client: Client,
+    event: ClientEvent,
+  ): Observable<RxDocumentBase<ClientEvent, {}> & ClientEvent & {}> {
     return from(this.rxdb.getDb().then((db) => db.client_events.insert(event)));
   }
-
-
-
 }

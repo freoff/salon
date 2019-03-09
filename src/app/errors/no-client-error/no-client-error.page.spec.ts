@@ -9,10 +9,9 @@ describe('NoClientErrorPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NoClientErrorPage ],
+      declarations: [NoClientErrorPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

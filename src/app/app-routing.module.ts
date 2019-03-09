@@ -1,9 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { APP_ROUTES } from './app-named-route';
 
 const routes: Routes = [
-
   { path: 'settings', loadChildren: './settings/settings.module#SettingsPageModule' },
   {
     path: 'secure',

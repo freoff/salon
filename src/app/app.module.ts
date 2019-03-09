@@ -18,9 +18,9 @@ import { ClientRepository } from './repository/client-repository';
 import { RxdbClientRepository } from './repository/rxdb-client.repository';
 import { RxdbService } from './services/rxdb.service';
 import { EntityIdGeneratorService } from './services/entity-id-generator.service';
-import {FlexLayoutModule} from '@angular/flex-layout';
-import {MomentModule} from 'ngx-moment';
-import {PaginationModule} from 'ngx-bootstrap';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MomentModule } from 'ngx-moment';
+import { PaginationModule } from 'ngx-bootstrap';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -44,12 +44,12 @@ export function createTranslateLoader(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
-      MomentModule.forRoot({
-        relativeTimeThresholdOptions: {
-          m: 59
-        }
-      }),
-    PaginationModule.forRoot()
+    MomentModule.forRoot({
+      relativeTimeThresholdOptions: {
+        m: 59,
+      },
+    }),
+    PaginationModule.forRoot(),
   ],
   providers: [
     StatusBar,

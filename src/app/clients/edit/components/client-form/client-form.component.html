@@ -1,7 +1,13 @@
 <ng-container [formGroup]="form">
   <ion-card-header>
     <ion-item lines="none" *ngIf="!isUpdate">
-      <section fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="start center" fxFill fxLayoutAlign="start start">
+      <section
+        fxLayout="row"
+        fxLayout.lt-sm="column"
+        fxLayoutAlign.lt-sm="start center"
+        fxFill
+        fxLayoutAlign="start start"
+      >
         <ion-img padding-end [src]="getIcon()" slot="start" style="width: 96px; height: auto;"></ion-img>
 
         <section fxLayout="column" fxFlexAlign.lt-sm="start" fxLayoutAlign="space-between, start" fxFlex.lt-sm="100%">
@@ -52,7 +58,12 @@
       </ion-col>
     </ion-row>
 
-    <ion-row [ngClass.lt-sm]="'border-telephones'" ngClass.gt-sm="" formArrayName="phones" *ngFor="let phone of phones; let currentPhoneIndex = index">
+    <ion-row
+      [ngClass.lt-sm]="'border-telephones'"
+      ngClass.gt-sm=""
+      formArrayName="phones"
+      *ngFor="let phone of phones; let currentPhoneIndex = index"
+    >
       <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>
         <ion-item>
           <ion-label position="floating">{{ 'number' | translate }}</ion-label>

@@ -8,9 +8,8 @@ describe('ClientFormFooterComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ClientFormFooterComponent ]
-    })
-    .compileComponents();
+      declarations: [ClientFormFooterComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

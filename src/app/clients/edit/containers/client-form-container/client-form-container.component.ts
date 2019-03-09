@@ -3,9 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { PhoneTypes } from '../../../models/phone-types.enum';
 import { ClientFormController } from '../../../service/client-form.controller';
 import { ClientFormInterface } from '../../../types/client-form.interface';
-import { Params } from '@angular/router';
-import { FormState } from '../../../../types/form-status.enum';
-import { isEmpty } from 'rxjs/operators';
 import { ClientStateService } from '../../../../services/state/client-state.service';
 
 @Component({

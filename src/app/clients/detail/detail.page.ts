@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {APP_ROUTES} from '../../app-named-route';
+import { APP_ROUTES } from '../../app-named-route';
 
 @Component({
   selector: 'app-detail',
@@ -8,9 +8,7 @@ import {APP_ROUTES} from '../../app-named-route';
 })
 export class DetailPage implements OnInit {
   public clientListUrl = APP_ROUTES.clients.list;
-  constructor() { }
-    
-  ngOnInit() {
-  }
+  constructor() {}
 
+  ngOnInit() {}
 }

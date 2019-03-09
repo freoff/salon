@@ -1,9 +1,13 @@
 <app-client-form
-        [form]="form.get('client')"
-        [phones]="formPhonesControls"
-        [phoneTypes]="phoneTypes"
-        [isUpdate]="isUpdate"
-        (addPhone)="addPhone()"
-        (removePhone)="removePhone($event)"
+  [form]="form.get('client')"
+  [phones]="formPhonesControls"
+  [phoneTypes]="phoneTypes"
+  [isUpdate]="isUpdate"
+  (addPhone)="addPhone()"
+  (removePhone)="removePhone($event)"
 ></app-client-form>
-<app-client-form-footer [isUpdate]="isUpdate" (addClient)="addClient()" (resetForm)="resetForm()"></app-client-form-footer>
+<app-client-form-footer
+  [isUpdate]="isUpdate"
+  (addClient)="addClient()"
+  (resetForm)="resetForm()"
+></app-client-form-footer>

@@ -1,7 +1,5 @@
 <app-client-details
-        [client]="selectedClient$ | async"
-        [clientEvents]="clientEvents$ | async"
-        (call)="call($event)"
->
-
-</app-client-details>
+  [client]="selectedClient$ | async"
+  [clientEvents]="clientEvents$ | async"
+  (call)="call($event)"
+></app-client-details>

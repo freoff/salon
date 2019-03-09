@@ -7,6 +7,7 @@ import { map, mergeMap, tap } from 'rxjs/operators';
 import { from } from 'rxjs';
 import { ToastController } from '@ionic/angular';
 import { ToastOptions } from '@ionic/core';
+
 @Injectable()
 export class ApplicationEffects {
   DEFAULT_TOAST_OPTIONS: Partial<ToastOptions> = {

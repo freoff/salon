@@ -1,4 +1,4 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { ClientEventActions, ClientEventActionTypes } from './client-event.actions';
 import { ClientEvent } from '../../../clients/models/client-event';
 
@@ -8,7 +8,7 @@ export interface State extends EntityState<ClientEvent> {
 }
 
 export const adapter: EntityAdapter<ClientEvent> = createEntityAdapter<ClientEvent>({
-  selectId: clientEvent => clientEvent._id,
+  selectId: (clientEvent) => clientEvent._id,
   sortComparer: (c1, c2) => c2.eventDate - c1.eventDate,
 });
 
@@ -16,10 +16,7 @@ export const initialState: State = adapter.getInitialState({
   fetchingClienEvents: false,
 });
 
-export function reducer(
-  state = initialState,
-  action: ClientEventActions
-): State {
+export function reducer(state = initialState, action: ClientEventActions): State {
   switch (action.type) {
     case ClientEventActionTypes.AddClientEvent: {
       return adapter.addOne(action.payload.clientEvent, state);
@@ -67,9 +64,4 @@ export function reducer(
   }
 }
 
-export const {
-  selectIds,
-  selectEntities,
-  selectAll: allClientEvents,
-  selectTotal,
-} = adapter.getSelectors();
+export const { selectIds, selectEntities, selectAll: allClientEvents, selectTotal } = adapter.getSelectors();

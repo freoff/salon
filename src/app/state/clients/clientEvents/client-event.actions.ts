@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
 import { ClientEvent } from '../../../clients/models/client-event';
-import {Client} from '../../../clients/models/client.interface';
+import { Client } from '../../../clients/models/client.interface';
 
 export enum ClientEventActionTypes {
   FetchClientEvents = '[ClientEvent] Fetch CLient',
@@ -24,23 +24,23 @@ export enum ClientEventActionTypes {
 export class StartUpdateClientEvents implements Action {
   readonly type = ClientEventActionTypes.StartUpdateClientEvents;
 
-  constructor(public payload: {client: Client}) {}
+  constructor(public payload: { client: Client }) {}
 }
 export class StartDeleteeClientEvents implements Action {
   readonly type = ClientEventActionTypes.StartDeleteeClientEvents;
 
-  constructor(public payload: {clientId: string}) {}
+  constructor(public payload: { clientId: string }) {}
 }
 export class StartAddClientEvent implements Action {
   readonly type = ClientEventActionTypes.StartDeleteeClientEvents;
 
-  constructor(public payload: {client: Partial<Client>}) {}
+  constructor(public payload: { client: Partial<Client> }) {}
 }
 
 export class FetchClientEvents implements Action {
   readonly type = ClientEventActionTypes.FetchClientEvents;
 
-  constructor(public payload: {clientId: string}) {}
+  constructor(public payload: { clientId: string }) {}
 }
 
 export class LoadClientEvents implements Action {
@@ -114,4 +114,4 @@ export type ClientEventActions =
   | StartUpdateClientEvents
   | StartDeleteeClientEvents
   | StartAddClientEvent
-| ClearClientEvents;
+  | ClearClientEvents;

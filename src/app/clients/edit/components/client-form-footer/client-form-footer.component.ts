@@ -1,5 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormState} from '../../../../types/form-status.enum';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-client-form-footer',
@@ -12,8 +11,7 @@ export class ClientFormFooterComponent implements OnInit {
   @Output() addClient = new EventEmitter();
   @Output() updateClient = new EventEmitter();
   @Input() isUpdate: boolean;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

@@ -1,4 +1,4 @@
-import { getClients, getClientsPageState, getClientEvents as clientEventsState } from '../reducers';
+import { getClientEvents as clientEventsState, getClients, getClientsPageState } from '../reducers';
 import * as fromClients from '../clients/client/reducers/client.reducer';
 import * as fromClientEvents from '../clients/clientEvents/client-event.reducer';
 import { createSelector } from '@ngrx/store';

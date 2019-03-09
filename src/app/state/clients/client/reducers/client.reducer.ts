@@ -1,6 +1,6 @@
-import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
 import { ClientActions, ClientActionTypes } from '../actions/client.actions';
-import {Client} from '../../../../clients/models/client.interface';
+import { Client } from '../../../../clients/models/client.interface';
 
 export interface State extends EntityState<Client> {
   // additional entities state properties
@@ -12,10 +12,7 @@ export const initialState: State = adapter.getInitialState({
   // additional entity state properties
 });
 
-export function reducer(
-  state = initialState,
-  action: ClientActions
-): State {
+export function reducer(state = initialState, action: ClientActions): State {
   switch (action.type) {
     case ClientActionTypes.AddClient: {
       return adapter.addOne(action.payload.client, state);
@@ -58,7 +55,6 @@ export function reducer(
       return adapter.removeAll(state);
     }
 
-
     default: {
       return state;
     }
@@ -70,5 +66,4 @@ export const {
   selectEntities: clientsEntitisAsMap,
   selectAll: clients,
   selectTotal: totalClients,
-
 } = adapter.getSelectors();

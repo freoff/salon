@@ -3,7 +3,7 @@ import { ClientsModule } from '../clients.module';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FormState } from '../../types/form-status.enum';
 import { Phone } from '../models/phone.interface';
-import {PhoneTypes} from '../models/phone-types.enum';
+import { PhoneTypes } from '../models/phone-types.enum';
 
 @Injectable({ providedIn: ClientsModule })
 export class ClientFormController {
@@ -13,8 +13,6 @@ export class ClientFormController {
     return this._form;
   }
   constructor(private fb: FormBuilder) {
-    
-
     this.initializeForm();
   }
   getFormPhones(): FormArray {
@@ -25,13 +23,12 @@ export class ClientFormController {
   private initializeForm() {
     this._form = this.fb.group({
       client: this.fb.group({
-
-        fname          : ['', [Validators.required, Validators.minLength(3)]],
-        lname          : ['', [Validators.required, Validators.minLength(3)]],
-        phones     : this.fb.array([this.createPhone()]),
-        email          : ['', [Validators.email]],
-        clientNotes    : [''],
-        sex            : ['female'],
+        fname: ['', [Validators.required, Validators.minLength(3)]],
+        lname: ['', [Validators.required, Validators.minLength(3)]],
+        phones: this.fb.array([this.createPhone()]),
+        email: ['', [Validators.email]],
+        clientNotes: [''],
+        sex: ['female'],
       }),
       state: [FormState.createNew],
     });
@@ -47,11 +44,11 @@ export class ClientFormController {
   ) {
     const { id, name, number, order, primary } = phone;
     return this.fb.group({
-      id         : [id, []],
-      name       : [name, []],
-      number     : [number, [Validators.required]],
-      primary    : [primary, []],
-      order      : [order, []],
+      id: [id, []],
+      name: [name, []],
+      number: [number, [Validators.required]],
+      primary: [primary, []],
+      order: [order, []],
     });
   }
 

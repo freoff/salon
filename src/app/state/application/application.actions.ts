@@ -1,6 +1,6 @@
-import {Action} from '@ngrx/store';
-import {ToastOptions} from '@ionic/core';
-import {NavigationExtras} from '@angular/router';
+import { Action } from '@ngrx/store';
+import { ToastOptions } from '@ionic/core';
+import { NavigationExtras } from '@angular/router';
 
 export enum ApplicationActionTypes {
   LoadApplications = '[Application] Load Applications',

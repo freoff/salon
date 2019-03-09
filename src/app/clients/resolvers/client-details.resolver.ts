@@ -1,9 +1,8 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { ClientStateService } from '../../services/state/client-state.service';
-import { from, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { first, tap } from 'rxjs/operators';
-import { Host, Injectable, Injector, Optional, SkipSelf } from '@angular/core';
-import { ClientsModule } from '../clients.module';
+import { Host, Injectable, Injector, Optional } from '@angular/core';
 
 @Injectable()
 export class ClientDetailsResolver implements Resolve<any> {

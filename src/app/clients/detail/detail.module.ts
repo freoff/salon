@@ -11,6 +11,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule as ClientSharedModule } from '../shared/shared.module';
 import { PaginationModule } from 'ngx-bootstrap';
+
 const routes: Routes = [
   {
     path: '',

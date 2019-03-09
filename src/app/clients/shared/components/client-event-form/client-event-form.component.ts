@@ -2,9 +2,7 @@ import { Component, HostBinding, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { PopoverController } from '@ionic/angular';
-import { Client } from '../../../models/client.interface';
 import { ClientEvent } from '../../../models/client-event';
-import * as Money from 'moneyjs';
 
 @Component({
   selector: 'app-client-event-form',

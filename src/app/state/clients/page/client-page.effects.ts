@@ -1,5 +1,5 @@
-import {Inject, Injectable} from '@angular/core';
-import {Actions, Effect, ofType} from '@ngrx/effects';
+import { Inject, Injectable } from '@angular/core';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 
 import {
   ClientPageActionTypes,
@@ -9,15 +9,15 @@ import {
   LoadAllClients,
   LoadClient,
 } from './client-page.actions';
-import {catchError, filter, map, mergeMap, switchMap, tap, withLatestFrom} from 'rxjs/operators';
-import {ClientRepository, ClientRepositoryInterface} from '../../../repository/client-repository';
-import {LoadClients, UpsertClient} from '../client/actions/client.actions';
-import {GoTo} from '../../application/application.actions';
-import {APP_ROUTES} from '../../../app-named-route';
-import {of} from 'rxjs';
-import {environment} from '../../../../environments/environment';
-import {ClientStateService} from '../../../services/state/client-state.service';
-import {isEmpty} from 'underscore';
+import { catchError, filter, map, mergeMap, switchMap, tap, withLatestFrom } from 'rxjs/operators';
+import { ClientRepository, ClientRepositoryInterface } from '../../../repository/client-repository';
+import { LoadClients, UpsertClient } from '../client/actions/client.actions';
+import { GoTo } from '../../application/application.actions';
+import { APP_ROUTES } from '../../../app-named-route';
+import { of } from 'rxjs';
+import { environment } from '../../../../environments/environment';
+import { ClientStateService } from '../../../services/state/client-state.service';
+import { isEmpty } from 'underscore';
 
 @Injectable()
 export class ClientPageEffects {

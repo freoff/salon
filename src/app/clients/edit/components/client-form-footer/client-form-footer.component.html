@@ -1,18 +1,18 @@
-  <ion-row justify-content-end *ngIf="isUpdate; else noUpdate">
+<ion-row justify-content-end *ngIf="isUpdate; else noUpdate">
+  <ion-col size="6" justify-content-end>
+    <section style="display: flex; justify-content: flex-end;">
+      <ion-button (click)="resetForm.emit()" fill="outline"><ion-text>Anuluj</ion-text></ion-button>
+      <ion-button (click)="addClient.emit()"><ion-text>Update</ion-text></ion-button>
+    </section>
+  </ion-col>
+</ion-row>
+<ng-template #noUpdate>
+  <ion-row justify-content-end>
     <ion-col size="6" justify-content-end>
       <section style="display: flex; justify-content: flex-end;">
-        <ion-button (click)="resetForm.emit()" fill="outline"> <ion-text>Anuluj</ion-text> </ion-button>
-        <ion-button (click)="addClient.emit()"> <ion-text>Update</ion-text> </ion-button>
+        <ion-button (click)="resetForm.emit()" fill="outline"><ion-text>Anuluj</ion-text></ion-button>
+        <ion-button (click)="addClient.emit()"><ion-text>Dodaj</ion-text></ion-button>
       </section>
     </ion-col>
   </ion-row>
-  <ng-template #noUpdate>
-    <ion-row justify-content-end>
-      <ion-col size="6" justify-content-end>
-        <section style="display: flex; justify-content: flex-end;">
-          <ion-button (click)="resetForm.emit()" fill="outline"> <ion-text>Anuluj</ion-text> </ion-button>
-          <ion-button (click)="addClient.emit()"> <ion-text>Dodaj</ion-text> </ion-button>
-        </section>
-      </ion-col>
-    </ion-row>
-  </ng-template>
+</ng-template>

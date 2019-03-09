@@ -6,7 +6,7 @@ export enum PhonesActionsTypes {
 
 export class CallToNumber implements Action {
   readonly type = PhonesActionsTypes.CallToNumber;
-  constructor(public payload: {number: string}) {}
+  constructor(public payload: { number: string }) {}
 }
 
 export type PhoneActions = CallToNumber;

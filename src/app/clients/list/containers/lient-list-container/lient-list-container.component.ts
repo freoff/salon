@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
-import {Client} from '../../../models/client.interface';
-import {ClientStateService} from '../../../../services/state/client-state.service';
-import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { Client } from '../../../models/client.interface';
+import { ClientStateService } from '../../../../services/state/client-state.service';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-lient-list-container',
   templateUrl: './lient-list-container.component.html',
-  styleUrls: ['./lient-list-container.component.css']
+  styleUrls: ['./lient-list-container.component.css'],
 })
 export class LientListContainerComponent implements OnInit {
   filter = new BehaviorSubject('');
   allClients$ = this.clientStateService.getAllClients();
   clients$: Observable<Array<Client>>;
-  constructor(private clientStateService: ClientStateService) { }
+  constructor(private clientStateService: ClientStateService) {}
 
   ngOnInit() {
     this.clientStateService.loadAllClients();
@@ -24,15 +23,15 @@ export class LientListContainerComponent implements OnInit {
     this.filter.next(filter);
   }
   showClient({ client }: { client: Client }) {
-    this.clientStateService.showClientDetails({client});
+    this.clientStateService.showClientDetails({ client });
   }
   private prepereClientsStream() {
     this.clients$ = combineLatest(
-        this.filter.pipe(
-            distinctUntilChanged(),
-            debounceTime(500),
-        ),
-        this.allClients$,
+      this.filter.pipe(
+        distinctUntilChanged(),
+        debounceTime(500),
+      ),
+      this.allClients$,
     ).pipe(map(([filter, clients]) => this.filterClients(filter.toLowerCase(), clients)));
   }
 
@@ -41,10 +40,9 @@ export class LientListContainerComponent implements OnInit {
       return clients;
     } else {
       return clients.filter(
-          (client) =>
-              client.lname.toLocaleLowerCase().includes(filter) || client.fname.toLocaleLowerCase().includes(filter),
+        (client) =>
+          client.lname.toLocaleLowerCase().includes(filter) || client.fname.toLocaleLowerCase().includes(filter),
       );
     }
   }
-
 }

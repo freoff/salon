@@ -1,4 +1,4 @@
-import { reducer, initialState } from './client-event.reducer';
+import { initialState, reducer } from './client-event.reducer';
 
 describe('ClientEvent Reducer', () => {
   describe('unknown action', () => {

@@ -1,8 +1,7 @@
-import { AfterViewChecked, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { filter, map, tap } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { isEmpty } from 'underscore';
 import { FormState } from '../../types/form-status.enum';
 
 @Component({

@@ -1,4 +1,4 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { provideMockActions } from '@ngrx/effects/testing';
 import { Observable } from 'rxjs';
 
@@ -10,10 +10,7 @@ describe('ApplicationEffects', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [
-        ApplicationEffects,
-        provideMockActions(() => actions$)
-      ]
+      providers: [ApplicationEffects, provideMockActions(() => actions$)],
     });
 
     effects = TestBed.get(ApplicationEffects);

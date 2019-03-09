@@ -1,20 +1,13 @@
-import {
-  ActionReducer,
-  ActionReducerMap,
-  createFeatureSelector,
-  createSelector,
-  MetaReducer
-} from '@ngrx/store';
+import { ActionReducerMap, MetaReducer } from '@ngrx/store';
 import { environment } from '../../../environments/environment';
 import * as fromClient from '../clients/client/reducers/client.reducer';
-import {routerReducer, RouterReducerState} from '@ngrx/router-store';
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import * as fromApplication from '../application/application.reducer';
 import * as fromAuthorization from '../authorization/authorization.reducer';
 import * as fromClientPage from '../clients/page/client-page.reducer';
 import * as fromClientEvents from '../clients/clientEvents/client-event.reducer';
 
 export interface State {
-
   client: fromClient.State;
   router: RouterReducerState;
   application: fromApplication.State;
