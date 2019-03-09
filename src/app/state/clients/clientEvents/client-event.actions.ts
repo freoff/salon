@@ -32,9 +32,9 @@ export class StartDeleteeClientEvents implements Action {
   constructor(public payload: { clientId: string }) {}
 }
 export class StartAddClientEvent implements Action {
-  readonly type = ClientEventActionTypes.StartDeleteeClientEvents;
+  readonly type = ClientEventActionTypes.StartAddClientEvent;
 
-  constructor(public payload: { client: Partial<Client> }) {}
+  constructor(public payload: { client: Partial<Client>, clientEvent: ClientEvent }) {}
 }
 
 export class FetchClientEvents implements Action {

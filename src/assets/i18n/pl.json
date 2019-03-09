@@ -38,6 +38,12 @@
 				"notes": "Tutaj moż na dodać dodatków informację na temat usługi",
 				"price": "Wpisz tutaj kwotę jaką zapłacił klient"
 			}
+		},
+		"messages": {
+			"cantLoadEvents": "Nie można pobrać listy wizytk klienta",
+			"wasAdded": "Wizyta została dodana",
+			"wasAddedFail": "Dodanie wizyty się nie powiodło",
+			"wasDeleted":"Wizyta usunięta"
 		}
 	},
 	"commons": {

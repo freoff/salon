@@ -14,6 +14,7 @@ import { Pager } from '../../../../shared/class/Pager.class';
 export class ClientDetailsComponent implements OnInit {
   private CLIENT_EVENTS_PAGE_SIEZE = 10;
   @Input() client: Client;
+  @Output() deleteClientEvent = new EventEmitter<ClientEvent>();
   _clientEvents: ClientEvent[];
   length;
   @Input() set clientEvents(ce) {
@@ -66,5 +67,8 @@ export class ClientDetailsComponent implements OnInit {
   }
   get showPager() {
     return this.length && this.length > this.CLIENT_EVENTS_PAGE_SIEZE;
+  }
+  onDeleteClientEvent(clientEvent: ClientEvent) {
+    this.deleteClientEvent.emit(clientEvent);
   }
 }

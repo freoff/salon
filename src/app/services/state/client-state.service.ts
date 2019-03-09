@@ -16,7 +16,7 @@ import { Client } from '../../clients/models/client.interface';
 import { ClientEvent } from '../../clients/models/client-event';
 import { RxdbService } from '../rxdb.service';
 import { tap } from 'rxjs/operators';
-import { FetchClientEvents } from '../../state/clients/clientEvents/client-event.actions';
+import {FetchClientEvents, StartAddClientEvent, StartDeleteeClientEvents} from '../../state/clients/clientEvents/client-event.actions';
 import * as moment from 'moment';
 
 @Injectable({ providedIn: 'root' })
@@ -51,24 +51,8 @@ export class ClientStateService {
     this.store.dispatch(new SetSelectedClient({ clientId }));
   }
 
-  addClientEvent(param: { clientEvent: ClientEvent; client: Client }) {
-    this.db
-      .getDb$()
-      .pipe(
-        tap(() => console.log(param.clientEvent)),
-        tap((db) =>
-          db.client_events
-            .insert({
-              ...param.clientEvent,
-              client: param.client.id,
-              eventDate: moment(param.clientEvent.eventDate).valueOf(),
-            })
-            .then((d) => console.log(d)),
-        ),
-      )
-      .subscribe();
-
-    // this.store.dispatch(new AddClientEvent({clientEvent, client}));
+  addClientEvent({ clientEvent, client }: { clientEvent: ClientEvent; client: Client }) {
+    this.store.dispatch(new StartAddClientEvent({ clientEvent, client }));
   }
 
   fetchClientEvents({ clientId }) {
@@ -76,5 +60,9 @@ export class ClientStateService {
   }
   getClientEvents() {
     return this.store.select(getClientEvents);
+  }
+
+  deleteClientEvent({clientEventId}) {
+    this.store.dispatch(new StartDeleteeClientEvents({clientId: clientEventId}));
   }
 }

@@ -99,8 +99,10 @@
         <ion-item *ngIf="ce._id === expandedRow">
           <section fxLayout="column" fxFill fxLayoutAlign="end start">
             <p fxFlex align-self-end>
-              <ion-button fill="clear">{{ 'clients.details.labels.edit' | translate }}</ion-button>
-              <ion-button fill="clear">{{ 'clients.details.labels.delete' | translate }}</ion-button>
+              <!--<ion-button fill="clear">{{ 'clients.details.labels.edit' | translate }}</ion-button>-->
+              <ion-button fill="clear" (click)="onDeleteClientEvent(ce)">
+                {{ 'clients.details.labels.delete' | translate }}
+              </ion-button>
             </p>
             <p float-left>
               <span [innerHTML]="ce.eventNotes | nl2br"></span>

@@ -2,4 +2,5 @@
   [client]="selectedClient$ | async"
   [clientEvents]="clientEvents$ | async"
   (call)="call($event)"
+  (deleteClientEvent)="deleteClientEvent($event)"
 ></app-client-details>
