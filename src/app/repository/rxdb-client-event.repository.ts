@@ -19,7 +19,7 @@ export class ClientEventsRepository {
   getEventForClient(client: Client | string): Observable<Array<ClientEvent>> {
     const clientId = typeof client === 'string' ? client : client.id;
     return this.db$.pipe(
-      switchMap((db) => db.client_events.find({ client: { $eq: clientId } }).$),
+      switchMap((db) => db.client_events.find({ client: { $eq: clientId } }).sort({'eventDate': 'desc'}).$),
       map((clientEventsDocs) => clientEventsDocs.map((ce) => ce.toJSON())),
     );
   }

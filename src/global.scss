@@ -9,5 +9,8 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
-@import 'theme/fonts';
 @import './app/clients/themes';
+
+@import '~bootstrap/dist/css/bootstrap.css';
+@import 'theme/fonts';
+@import 'theme/pagination';

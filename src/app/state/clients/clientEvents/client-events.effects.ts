@@ -20,7 +20,10 @@ export class ClientEventsEffects {
       this.clientEventsRepository.getEventForClient(clientId as string).pipe(
         takeUntil(this.unsubscribe),
         map((clientEvents) => new UpsertClientEvents({ clientEvents })),
-        catchError((err) => of(new DisplayToast({ toastOptions: { message: 'clients.error.cantLoadEvents' } }))),
+        catchError((err) => {
+          console.error('clientEventsFetch$', err);
+          return of(new DisplayToast({ toastOptions: { message: 'clients.error.cantLoadEvents' + err } }));
+        }),
       ),
     ),
   );

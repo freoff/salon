@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ClientsModule } from '../../clients/clients.module';
 import { State } from '../../state/reducers';
 import { Store } from '@ngrx/store';
 import { ClientFormInterface } from '../../clients/types/client-form.interface';
@@ -11,14 +10,14 @@ import {
   SetSelectedClient,
 } from '../../state/clients/page/client-page.actions';
 import * as fromClientsSelectors from '../../state/selectors/clients.selectors';
-import { forkJoin, from, Observable, of } from 'rxjs';
+import { getClientEvents } from '../../state/selectors/clients.selectors';
+import { Observable } from 'rxjs';
 import { Client } from '../../clients/models/client.interface';
-import { ClientsRoutingModule } from '../../clients/clients.routing.module';
 import { ClientEvent } from '../../clients/models/client-event';
 import { RxdbService } from '../rxdb.service';
-import { switchMap, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { FetchClientEvents } from '../../state/clients/clientEvents/client-event.actions';
-import { getClientEvents } from '../../state/selectors/clients.selectors';
+import * as moment from 'moment';
 
 @Injectable({ providedIn: 'root' })
 export class ClientStateService {
@@ -53,15 +52,18 @@ export class ClientStateService {
   }
 
   addClientEvent(param: { clientEvent: ClientEvent; client: Client }) {
-    console.log('create clientEvent', param);
-    const client$ = this.db.getDb$().pipe(switchMap((db) => db.clients.findOne({ id: { $eq: param.client.id } }).$));
-    // forkJoin([this.db.getDb$().pipe(switchMap(db => db.clients.findOne())])
     this.db
       .getDb$()
       .pipe(
         tap(() => console.log(param.clientEvent)),
         tap((db) =>
-          db.client_events.insert({ ...param.clientEvent, client: param.client.id }).then((d) => console.log(d)),
+          db.client_events
+            .insert({
+              ...param.clientEvent,
+              client: param.client.id,
+              eventDate: moment(param.clientEvent.eventDate).valueOf(),
+            })
+            .then((d) => console.log(d)),
         ),
       )
       .subscribe();

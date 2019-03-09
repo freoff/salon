@@ -10,6 +10,7 @@ import { ClientDetailsComponent } from './components/client-details/client-detai
 import { SharedModule } from '../../shared/shared.module';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule as ClientSharedModule } from '../shared/shared.module';
+import { PaginationModule } from 'ngx-bootstrap';
 const routes: Routes = [
   {
     path: '',
@@ -18,7 +19,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [SharedModule, ClientSharedModule, FormsModule, IonicModule, RouterModule.forChild(routes), TranslateModule.forChild()],
+  imports: [
+    SharedModule,
+    ClientSharedModule,
+    FormsModule,
+    IonicModule,
+    RouterModule.forChild(routes),
+    TranslateModule.forChild(),
+    PaginationModule,
+  ],
   declarations: [DetailPage, DetailsContainerComponent, ClientDetailsComponent],
 })
 export class DetailPageModule {}

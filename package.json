@@ -48,14 +48,16 @@
         "core-js": "^2.5.4",
         "diff-so-fancy": "^1.2.5",
         "moment": "^2.24.0",
+        "moneyjs": "^0.3.0",
+        "ngx-bootstrap": "^3.2.0",
+        "ngx-moment": "^3.4.0",
         "pouchdb-adapter-idb": "^7.0.0",
         "prettier": "^1.16.4",
         "rxdb": "^8.0.5",
         "rxjs": "~6.3.3",
         "shortid": "^2.2.14",
         "underscore": "^1.9.1",
-        "zone.js": "~0.8.29",
-        "moneyjs": "^0.3.0"
+        "zone.js": "~0.8.29"
     },
     "devDependencies": {
         "@angular-devkit/architect": "~0.12.3",

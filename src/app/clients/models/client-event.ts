@@ -3,7 +3,7 @@ import { Client } from './client.interface';
 
 export interface ClientEvent {
   _id: string;
-  eventDate: string;
+  eventDate: number;
   price: Money;
   eventNotes: string;
   client: string | Client;

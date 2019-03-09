@@ -9,6 +9,7 @@ export interface State extends EntityState<ClientEvent> {
 
 export const adapter: EntityAdapter<ClientEvent> = createEntityAdapter<ClientEvent>({
   selectId: clientEvent => clientEvent._id,
+  sortComparer: (c1, c2) => c2.eventDate - c1.eventDate,
 });
 
 export const initialState: State = adapter.getInitialState({
