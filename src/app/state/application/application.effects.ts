@@ -19,7 +19,7 @@ export class ApplicationEffects {
   @Effect({ dispatch: false })
   loadApplications$ = this.actions$.pipe(
     ofType<GoTo>(ApplicationActionTypes.GoTo),
-    tap((action) => from(this.router.navigate(action.payload.navigationUrl, {}))),
+    tap((action) => from(this.router.navigate(action.payload.navigationUrl, action.payload.navigationExtra))),
   );
 
   @Effect({ dispatch: false })

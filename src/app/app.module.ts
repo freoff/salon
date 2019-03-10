@@ -21,6 +21,7 @@ import { EntityIdGeneratorService } from './services/entity-id-generator.service
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MomentModule } from 'ngx-moment';
 import { PaginationModule } from 'ngx-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -30,13 +31,15 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [AppComponent, SideMenuComponent],
   entryComponents: [],
   imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
     AppRoutingModule,
-    StateModule,
-    IonicStorageModule.forRoot(),
-    HttpClientModule,
+    BrowserModule,
     FlexLayoutModule,
+    HttpClientModule,
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
+    ReactiveFormsModule,
+    StateModule,
+    PaginationModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -49,7 +52,6 @@ export function createTranslateLoader(http: HttpClient) {
         m: 59,
       },
     }),
-    PaginationModule.forRoot(),
   ],
   providers: [
     StatusBar,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
 import { Client } from '../../../models/client.interface';
-import { ClientStateService } from '../../../../services/state/client-state.service';
+import { ClientStateService } from '../../../../services/client-state.service';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 
 @Component({

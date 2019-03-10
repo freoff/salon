@@ -1,11 +1,12 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
-import { ClientStateService } from '../../services/state/client-state.service';
+import { ClientStateService } from '../../services/client-state.service';
 import { Observable } from 'rxjs';
-import { first, tap } from 'rxjs/operators';
+import {filter, first, tap} from 'rxjs/operators';
 import { Host, Injectable, Injector, Optional } from '@angular/core';
+import {Client} from '../models/client.interface';
 
 @Injectable()
-export class ClientDetailsResolver implements Resolve<any> {
+export class ClientDetailsResolver implements Resolve<Client> {
   route: ActivatedRouteSnapshot;
   private clientStateService: ClientStateService;
   constructor(@Host() @Optional() private injector: Injector) {}
@@ -15,12 +16,14 @@ export class ClientDetailsResolver implements Resolve<any> {
     this.clientStateService = this.injector.get(ClientStateService);
     return this.clientStateService.getClient(clientId).pipe(
       tap((client) => {
-        if (!client) {
-          this.clientStateService.loadClient({ clientId });
+        if (client) {
           this.clientStateService.fetchClientEvents({ clientId });
           this.clientStateService.setSelectedClient({ clientId });
+        } else {
+          this.clientStateService.loadClient({ clientId });
         }
       }),
+      filter(client => !!client),
       first(),
     ); // pipe 1
   }

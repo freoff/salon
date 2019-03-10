@@ -27,7 +27,6 @@ export class ClientDetailsClientNotesComponent implements OnInit {
   ngOnInit() {}
 
   onCancel() {
-    debugger;
     this.editMessage = false;
     this.formControl.patchValue(this.client.clientNotes);
   }

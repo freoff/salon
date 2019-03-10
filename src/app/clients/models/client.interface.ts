@@ -9,5 +9,4 @@ export interface Client {
   email: string;
   sex: 'male' | 'female';
   clientNotes: string;
-  clientEvents?: null | ClientEvent[];
 }

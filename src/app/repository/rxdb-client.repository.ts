@@ -1,11 +1,11 @@
-import {ClientRepositoryInterface} from './client-repository';
-import {RxdbService} from '../services/rxdb.service';
-import {Client} from '../clients/models/client.interface';
-import {from, Observable, of} from 'rxjs';
-import {EntityIdGeneratorService} from '../services/entity-id-generator.service';
-import {fromPromise} from 'rxjs/internal-compatibility';
-import {first, map, switchMap, tap} from 'rxjs/operators';
-import {ClientEvent} from '../clients/models/client-event';
+import { ClientRepositoryInterface } from './client-repository';
+import { RxdbService } from '../services/rxdb.service';
+import { Client } from '../clients/models/client.interface';
+import { forkJoin, from, Observable, of } from 'rxjs';
+import { EntityIdGeneratorService } from '../services/entity-id-generator.service';
+import { fromPromise } from 'rxjs/internal-compatibility';
+import { exhaustMap, first, map, switchMap, take, tap } from 'rxjs/operators';
+import { ClientEvent } from '../clients/models/client-event';
 
 export class RxdbClientRepository implements ClientRepositoryInterface {
   constructor(private rxdb: RxdbService, private idGenerator: EntityIdGeneratorService) {}
@@ -17,8 +17,42 @@ export class RxdbClientRepository implements ClientRepositoryInterface {
       map((addedClient) => addedClient.getClientData()),
     );
   }
-  // Promise<Observable<RxDocument<Client, ClientDocMethods>[]> | never>
-  // Observable<Observable<RxDocument<Client, ClientDocMethods>[]>>
+  updateClient({ client }: { client: Client }) {
+    return this.rxdb.getDb$().pipe(
+      switchMap((db) =>
+        from(
+          db.clients
+            .findOne(client.id)
+            .exec()
+            .then((clientDoc) =>
+              clientDoc.atomicUpdate((oldData) => {
+                console.log(`old ${oldData}\n client: ${client}`);
+                return { ...oldData, ...client };
+              }),
+            ),
+        ),
+      ),
+    );
+  }
+  deleteClient(clientId) {
+    const deleteClientEvents$ = this.rxdb.getDb$().pipe(
+      exhaustMap((db) =>
+        from(
+          db.client_events
+            .find()
+            .where('client')
+            .equals(clientId)
+            .remove(),
+        ),
+      ),
+      first(),
+    );
+    const deleteClient$ = this.rxdb.getDb$().pipe(
+      exhaustMap((db) => from(db.clients.findOne(clientId).remove())),
+      first(),
+    );
+    return forkJoin(deleteClient$, deleteClientEvents$);
+  }
   getAll(): Observable<Array<Client>> {
     return this.rxdb.getDb$().pipe(
       tap((clients) => console.log('fromClients', clients)),

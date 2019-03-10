@@ -1,10 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Client} from '../../../models/client.interface';
-import {ClientEvent} from '../../../models/client-event';
-import {ClientStateService} from '../../../../services/state/client-state.service';
-import {PageChangedEvent} from 'ngx-bootstrap';
-import {distinctUntilChanged, filter} from 'rxjs/operators';
-import {Pager} from '../../../../shared/class/Pager.class';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Client } from '../../../models/client.interface';
+import { ClientEvent } from '../../../models/client-event';
+import { ClientStateService } from '../../../../services/client-state.service';
+import { PageChangedEvent } from 'ngx-bootstrap';
+import { distinctUntilChanged, filter, take } from 'rxjs/operators';
+import { Pager } from '../../../../shared/class/Pager.class';
+import { ActionSheetController, PopoverController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-client-details',
@@ -24,10 +26,16 @@ export class ClientDetailsComponent implements OnInit {
   }
   @Output() call = new EventEmitter<{ number: string }>();
   @Output() saveNote = new EventEmitter<string>();
+  @Output() editClient = new EventEmitter<Client>();
+  @Output() deleteClient = new EventEmitter<Client>();
   displayNotesCheckbox = false;
   pager = new Pager(this.CLIENT_EVENTS_PAGE_SIEZE);
   public expandedRow: string;
-  constructor(private clientStateService: ClientStateService) {}
+  constructor(
+    private clientStateService: ClientStateService,
+    public actionSheetController: ActionSheetController,
+    private translationService: TranslateService,
+  ) {}
   get clientEventToDisplay() {
     return this.pager.data.pipe(
       distinctUntilChanged(),
@@ -63,7 +71,6 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   changePage($event: PageChangedEvent) {
-    console.log('change page', $event.page);
     this.pager.goToPage($event.page);
   }
   get showPager() {
@@ -71,5 +78,26 @@ export class ClientDetailsComponent implements OnInit {
   }
   onDeleteClientEvent(clientEvent: ClientEvent) {
     this.deleteClientEvent.emit(clientEvent);
+  }
+
+  onEditClient(client: Client) {
+    this.editClient.emit(client);
+  }
+
+  deleteClientConfirmation(client: Client) {
+    this.translationService
+      .get('clients.js')
+      .pipe(take(1))
+      .subscribe(({ removeClientHeader, deleteClient, abortDelete }) => {
+        const actionSheet = this.actionSheetController
+          .create({
+            header: removeClientHeader,
+            buttons: [
+              { text: abortDelete, icon: 'close' },
+              { text: deleteClient, icon: 'trash', handler: () => this.deleteClient.emit(client) },
+            ],
+          })
+          .then((dialog) => dialog.present());
+      });
   }
 }

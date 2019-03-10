@@ -48,7 +48,13 @@
             "wasAdded": "Wizyta została dodana",
             "wasAddedFail": "Dodanie wizyty się nie powiodło",
             "wasDeleted": "Wizyta usunięta",
-            "messageUpdated": "Notatka zostala zapisana"
+            "messageUpdated": "Notatka zostala zapisana",
+            "clientWasDeleted": "Klient został usunięty"
+        },
+        "js": {
+            "removeClientHeader": "Czy napewno chcesz usunąć klienta ?",
+            "deleteClient": "Tak. Usuń klienta i wszystkie dane",
+            "abortDelete": "Anuluj"
         }
     },
     "commons": {
@@ -64,9 +70,7 @@
     "female": "Kobieta",
     "fname": "Imię",
     "ground": "Stacjonarny",
-    "js": {
-        "details": {}
-    },
+
     "klient": "Klient",
     "lname": "Nazwisko",
     "male": "Mężczyzna",

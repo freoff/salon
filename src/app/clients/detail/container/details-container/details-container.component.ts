@@ -1,7 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {ClientStateService} from '../../../../services/state/client-state.service';
+import {ClientStateService} from '../../../../services/client-state.service';
 import {PhoneService} from '../../../../services/phone.service';
 import {ClientEvent} from '../../../models/client-event';
+import {Client} from '../../../models/client.interface';
 
 @Component({
   selector: 'app-details-container',
@@ -25,5 +26,13 @@ export class DetailsContainerComponent implements OnInit {
 
     saveNote({client, note}) {
         this.clientStateService.saveClientNote({client, note});
+    }
+
+    editClient(client: Client) {
+        this.clientStateService.editClient({client});
+    }
+
+    deleteClient(client: Client) {
+        this.clientStateService.deleteClient(client);
     }
 }

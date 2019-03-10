@@ -3,9 +3,9 @@ const errorsRoute = ['/', 'errors'];
 export const APP_ROUTES = {
   clients: {
     list: [...clientsRoute, 'list'],
-    edit: [...clientsRoute, 'edit', { formState: 'update' }],
     add: [...clientsRoute, 'edit'],
     details: (clientId) => [...clientsRoute, clientId],
+    edit: (clientId) => [...clientsRoute, clientId, 'edit']
   },
   errors: {
     clientNotFound: [...errorsRoute, 'client-not-found'],

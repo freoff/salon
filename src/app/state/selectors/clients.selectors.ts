@@ -37,7 +37,7 @@ export const getSelectedClient = createSelector(
 );
 export const getClientById = (clientId: string) =>
   createSelector(
-    getAllClients,
+      getAllClientsMap,
     (clients) => clients[clientId],
   );
 

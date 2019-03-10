@@ -11,7 +11,18 @@ export enum ClientPageActionTypes {
   LoadClient = '[Client details Resolver] Load client with id',
   SetSelectedClient = '[Client details Resolver] Set selected client',
   SaveClientNote = '[Client] Save Client Note',
+  EditClient = '[Client] Edit client',
+  StartUpdateClient = '[Client] Update client data',
+  StartDeleteClient = '[Client] Delete client data',
 }
+
+
+
+export class EditClient implements Action {
+  readonly type = ClientPageActionTypes.EditClient;
+  constructor(public paylaod: {  client: Client }) {}
+}
+
 export class SaveClientNote implements Action {
   readonly type = ClientPageActionTypes.SaveClientNote;
   constructor(public paylaod: { note: string; client: Client }) {}
@@ -34,6 +45,14 @@ export class CreateNewClient implements Action {
   readonly type = ClientPageActionTypes.CreateNewClient;
   public constructor(public payload: { client: ClientFormInterface }) {}
 }
+export class StartUpdateClient implements Action {
+  readonly type = ClientPageActionTypes.StartUpdateClient;
+  public constructor(public payload: { client: ClientFormInterface }) {}
+}
+export class StartDeleteClient implements Action {
+  readonly type = ClientPageActionTypes.StartDeleteClient;
+  public constructor(public payload: { client: Client }) {}
+}
 
 export class CreateNewClientSuccess implements Action {
   readonly type = ClientPageActionTypes.CreateNewClientSuccess;
@@ -51,5 +70,8 @@ export type ClientPageActions =
   | CreateNewClientSuccess
   | GoToClientDetails
   | LoadClient
+  | EditClient
   | SaveClientNote
+  | StartUpdateClient
+  | StartDeleteClient
   | SetSelectedClient;

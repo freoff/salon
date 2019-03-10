@@ -9,5 +9,9 @@
 <app-client-form-footer
   [isUpdate]="isUpdate"
   (addClient)="addClient()"
+  (updateClient)="updateClient($event)"
   (resetForm)="resetForm()"
 ></app-client-form-footer>
+<pre>
+    {{form.value | json}}
+</pre>

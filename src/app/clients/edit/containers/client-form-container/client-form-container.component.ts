@@ -1,16 +1,16 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { PhoneTypes } from '../../../models/phone-types.enum';
-import { ClientFormController } from '../../../service/client-form.controller';
+import { ClientFormController } from '../../../../services/client-form.controller';
 import { ClientFormInterface } from '../../../types/client-form.interface';
-import { ClientStateService } from '../../../../services/state/client-state.service';
+import { ClientStateService } from '../../../../services/client-state.service';
 
 @Component({
   selector: 'app-client-form-container',
   templateUrl: './client-form-container.component.html',
   styleUrls: ['./client-form-container.component.scss'],
 })
-export class ClientFormContainerComponent implements OnInit {
+export class ClientFormContainerComponent implements OnInit, OnDestroy {
   @Input() isUpdate: boolean;
 
   public form: FormGroup;
@@ -19,10 +19,14 @@ export class ClientFormContainerComponent implements OnInit {
     this.form = formController.form;
   }
   resetForm() {
-    this.form.reset();
+    this.formController.reset();
   }
   addClient() {
-    this.clientState.createClient({ client: this.form.value as ClientFormInterface });
+    this.clientState.createClient({ client: this.formController.getValue() as ClientFormInterface });
+  }
+  updateClient() {
+    console.log('update ', this.formController.getValue());
+    this.clientState.updateClient({ client: this.formController.getValue() as ClientFormInterface });
   }
   ngOnInit() {}
   get formPhonesControls() {
@@ -34,5 +38,10 @@ export class ClientFormContainerComponent implements OnInit {
 
   removePhone(index: number) {
     this.formController.removePhone({ index });
+  }
+
+  ngOnDestroy(): void {
+    console.log('destroing');
+    this.formController.reset();
   }
 }

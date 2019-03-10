@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
+import {distinctUntilChanged, map, tap} from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { FormState } from '../../types/form-status.enum';
 
@@ -22,6 +22,12 @@ export class EditPage implements OnInit {
     this.params$ = this.route.paramMap.pipe(
       map((params) => (params.has('formState') ? (params.get('formState') as FormState) : FormState.createNew)),
     );
-    this.isUpdate$ = this.params$.pipe(map((formState) => FormState.isUpdate(formState)));
+
+    // this.isUpdate$ = this.params$.pipe(map((formState) => FormState.isUpdate(formState)));
+    this.isUpdate$ = this.route.data.pipe(
+        distinctUntilChanged(),
+        tap(data => console.log('resolve with', data)),
+        map(data => !!data.client )
+    );
   }
 }
