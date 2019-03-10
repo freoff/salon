@@ -1,6 +1,6 @@
-import { Action } from '@ngrx/store';
-import { ClientFormInterface } from '../../../clients/types/client-form.interface';
-import { Client } from '../../../clients/models/client.interface';
+import {Action} from '@ngrx/store';
+import {ClientFormInterface} from '../../../clients/types/client-form.interface';
+import {Client} from '../../../clients/models/client.interface';
 
 export enum ClientPageActionTypes {
   LoadAllClients = '[AppInitializer] Load all Client ClientPages',
@@ -10,6 +10,11 @@ export enum ClientPageActionTypes {
   GoToClientDetails = '[Client list] Go to client details',
   LoadClient = '[Client details Resolver] Load client with id',
   SetSelectedClient = '[Client details Resolver] Set selected client',
+  SaveClientNote = '[Client] Save Client Note',
+}
+export class SaveClientNote implements Action {
+  readonly type = ClientPageActionTypes.SaveClientNote;
+  constructor(public paylaod: { note: string; client: Client }) {}
 }
 
 export class SetSelectedClient implements Action {
@@ -46,4 +51,5 @@ export type ClientPageActions =
   | CreateNewClientSuccess
   | GoToClientDetails
   | LoadClient
+  | SaveClientNote
   | SetSelectedClient;

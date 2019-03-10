@@ -7,13 +7,17 @@
 	"clients": {
 		"details": {
 			"labels": {
+				"addNote": "",
+				"addNoteHere": "",
 				"call": "Call",
+				"cancel": "",
 				"delete": "Remove",
 				"edit": "Edit",
 				"hideNotes": "Hide",
 				"notes": "Notes",
 				"previousVisit": "Previous visits",
-				"showNotes": "Show notes"
+				"showNotes": "Show notes",
+				"update": ""
 			}
 		},
 		"event": {

@@ -1,23 +1,23 @@
-import { Injectable } from '@angular/core';
-import { State } from '../../state/reducers';
-import { Store } from '@ngrx/store';
-import { ClientFormInterface } from '../../clients/types/client-form.interface';
+import {Injectable} from '@angular/core';
+import {State} from '../../state/reducers';
+import {Store} from '@ngrx/store';
+import {ClientFormInterface} from '../../clients/types/client-form.interface';
 import {
-  CreateNewClient,
-  GoToClientDetails,
-  LoadAllClients,
-  LoadClient,
-  SetSelectedClient,
+    CreateNewClient,
+    GoToClientDetails,
+    LoadAllClients,
+    LoadClient,
+    SaveClientNote,
+    SetSelectedClient,
 } from '../../state/clients/page/client-page.actions';
 import * as fromClientsSelectors from '../../state/selectors/clients.selectors';
-import { getClientEvents } from '../../state/selectors/clients.selectors';
-import { Observable } from 'rxjs';
-import { Client } from '../../clients/models/client.interface';
-import { ClientEvent } from '../../clients/models/client-event';
-import { RxdbService } from '../rxdb.service';
-import { tap } from 'rxjs/operators';
+import {getClientEvents} from '../../state/selectors/clients.selectors';
+import {Observable} from 'rxjs';
+import {Client} from '../../clients/models/client.interface';
+import {ClientEvent} from '../../clients/models/client-event';
+import {RxdbService} from '../rxdb.service';
 import {FetchClientEvents, StartAddClientEvent, StartDeleteeClientEvents} from '../../state/clients/clientEvents/client-event.actions';
-import * as moment from 'moment';
+
 
 @Injectable({ providedIn: 'root' })
 export class ClientStateService {
@@ -64,5 +64,9 @@ export class ClientStateService {
 
   deleteClientEvent({clientEventId}) {
     this.store.dispatch(new StartDeleteeClientEvents({clientId: clientEventId}));
+  }
+
+  saveClientNote({client, note}: {client: Client, note: string }) {
+    this.store.dispatch(new SaveClientNote({client, note}));
   }
 }

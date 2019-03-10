@@ -1,11 +1,11 @@
-import { ClientRepositoryInterface } from './client-repository';
-import { RxdbService } from '../services/rxdb.service';
-import { Client } from '../clients/models/client.interface';
-import { Observable, of } from 'rxjs';
-import { EntityIdGeneratorService } from '../services/entity-id-generator.service';
-import { fromPromise } from 'rxjs/internal-compatibility';
-import { map, switchMap, tap } from 'rxjs/operators';
-import { ClientEvent } from '../clients/models/client-event';
+import {ClientRepositoryInterface} from './client-repository';
+import {RxdbService} from '../services/rxdb.service';
+import {Client} from '../clients/models/client.interface';
+import {from, Observable, of} from 'rxjs';
+import {EntityIdGeneratorService} from '../services/entity-id-generator.service';
+import {fromPromise} from 'rxjs/internal-compatibility';
+import {first, map, switchMap, tap} from 'rxjs/operators';
+import {ClientEvent} from '../clients/models/client-event';
 
 export class RxdbClientRepository implements ClientRepositoryInterface {
   constructor(private rxdb: RxdbService, private idGenerator: EntityIdGeneratorService) {}
@@ -36,6 +36,11 @@ export class RxdbClientRepository implements ClientRepositoryInterface {
   addClientEvent(payload: { client: Client; clientEvent: ClientEvent }): Observable<any> {
     return of('dupa');
   }
-}
 
-export const log = tap((data) => console.log(data));
+  saveClientNote({ note, client }: { note: any; client: Client }) {
+    return this.rxdb.getDb$().pipe(
+      switchMap((db) => db.clients.findOne(client.id).$.pipe(first())),
+      switchMap((clientDoc) => from(clientDoc.update({ $set: { clientNotes: note } }))),
+    );
+  }
+}

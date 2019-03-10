@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { ClientStateService } from '../../../../services/state/client-state.service';
-import { PhoneService } from '../../../../services/phone.service';
+import {Component, OnInit} from '@angular/core';
+import {ClientStateService} from '../../../../services/state/client-state.service';
+import {PhoneService} from '../../../../services/phone.service';
 import {ClientEvent} from '../../../models/client-event';
 
 @Component({
@@ -22,4 +22,8 @@ export class DetailsContainerComponent implements OnInit {
     this.clientStateService.deleteClientEvent({clientEventId: clientEvent._id});
 
   }
+
+    saveNote({client, note}) {
+        this.clientStateService.saveClientNote({client, note});
+    }
 }

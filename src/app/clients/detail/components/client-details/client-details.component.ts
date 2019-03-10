@@ -1,10 +1,10 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Client } from '../../../models/client.interface';
-import { ClientEvent } from '../../../models/client-event';
-import { ClientStateService } from '../../../../services/state/client-state.service';
-import { PageChangedEvent } from 'ngx-bootstrap';
-import { distinctUntilChanged, filter } from 'rxjs/operators';
-import { Pager } from '../../../../shared/class/Pager.class';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Client} from '../../../models/client.interface';
+import {ClientEvent} from '../../../models/client-event';
+import {ClientStateService} from '../../../../services/state/client-state.service';
+import {PageChangedEvent} from 'ngx-bootstrap';
+import {distinctUntilChanged, filter} from 'rxjs/operators';
+import {Pager} from '../../../../shared/class/Pager.class';
 
 @Component({
   selector: 'app-client-details',
@@ -23,6 +23,7 @@ export class ClientDetailsComponent implements OnInit {
     this.pager.setCollection(ce);
   }
   @Output() call = new EventEmitter<{ number: string }>();
+  @Output() saveNote = new EventEmitter<string>();
   displayNotesCheckbox = false;
   pager = new Pager(this.CLIENT_EVENTS_PAGE_SIEZE);
   public expandedRow: string;
