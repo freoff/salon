@@ -48,7 +48,7 @@ export class ClientFormController {
         id: [],
         fname: ['', [Validators.required, Validators.minLength(3)]],
         lname: ['', [Validators.required, Validators.minLength(3)]],
-        phones: this.fb.array([this.createPhone()]),
+        phones: this.fb.array([]),
         email: ['', [Validators.email]],
         clientNotes: [''],
         sex: ['female'],
@@ -68,7 +68,7 @@ export class ClientFormController {
     const { id, name, number, order, primary } = phone;
     return this.fb.group({
       id: [id, []],
-      name: [name, []],
+      name: [name, [Validators.required]],
       number: [number, [Validators.required]],
       primary: [primary, []],
       order: [order, []],
@@ -86,7 +86,7 @@ export class ClientFormController {
   reset() {
     this.form.reset();
     this.form.patchValue(DEFAULT_CLIENT_FORM);
-    this.addPhonesToForm(DEFAULT_CLIENT_FORM.client.phones);
+    this.addPhonesToForm([]);
   }
   getValue() {
     const values: ClientFormInterface = this.form.value;

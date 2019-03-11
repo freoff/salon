@@ -55,6 +55,11 @@
             "removeClientHeader": "Czy napewno chcesz usunąć klienta ?",
             "deleteClient": "Tak. Usuń klienta i wszystkie dane",
             "abortDelete": "Anuluj"
+        },
+        "edits": {
+            "labels": {
+                "addPhone": "Dodaj telefon"
+            }
         }
     },
     "commons": {

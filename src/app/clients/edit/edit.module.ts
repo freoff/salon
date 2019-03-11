@@ -10,6 +10,7 @@ import { ClientFormComponent } from './components/client-form/client-form.compon
 import { ClientFormFooterComponent } from './components/client-form-footer/client-form-footer.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { SharedModule } from '../../shared/shared.module';
+import { ClientFormPhonesComponent } from './components/client-form-phones/client-form-phones.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,6 @@ const routes: Routes = [
     SharedModule,
     TranslateModule.forChild(),
   ],
-  declarations: [EditPage, ClientFormContainerComponent, ClientFormComponent, ClientFormFooterComponent],
+  declarations: [EditPage, ClientFormContainerComponent, ClientFormComponent, ClientFormFooterComponent, ClientFormPhonesComponent],
 })
 export class EditPageModule {}

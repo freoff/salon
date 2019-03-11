@@ -58,47 +58,18 @@
       </ion-col>
     </ion-row>
 
-    <ion-row
-      [ngClass.lt-sm]="'border-telephones'"
-      ngClass.gt-sm=""
-      formArrayName="phones"
-      *ngFor="let phone of phones; let currentPhoneIndex = index"
-    >
-      <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>
-        <ion-item>
-          <ion-label position="floating">{{ 'number' | translate }}</ion-label>
-          <ion-input type="phone" inputmode="tel" formControlName="number"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>
-        <ion-item style="margin-top: 4px">
-          <ion-label position="floating">{{ '' }}</ion-label>
-          <ion-select formControlName="name" interface="popover" style="width: 100%">
-            <ion-select-option *ngFor="let phoneType of phoneTypes" [value]="phoneType">
-              {{ phoneType | translate }}
-            </ion-select-option>
-          </ion-select>
-          <ion-buttons slot="end" style="margin-bottom: 6px; margin-left: 10px" slot="end" align-self-end>
-            <ion-button
-              [hidden]="currentPhoneIndex === 0"
-              fill="clear"
-              size="small"
-              (click)="removePhone.emit(currentPhoneIndex)"
-            >
-              <ion-icon slot="icon-only" name="remove"></ion-icon>
-            </ion-button>
-            <ion-button size="large" fill="clear" (click)="addPhone.emit()">
-              <ion-icon slot="icon-only" name="add"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+    <app-client-form-phones
+      [form]="form"
+      [phones]="phones"
+      [phoneTypes]="phoneTypes"
+      (addPhone)="addPhone.emit($event)"
+      (removePhone)="removePhone.emit($event)"
+    ></app-client-form-phones>
     <ion-row>
       <ion-col size="12" size-md>
-        <ion-item>
-          <ion-label position="floating">{{ 'email' | translate }}</ion-label>
-          <ion-input type="email" formControlName="email"></ion-input>
+        <ion-item lines="inset">
+          <ion-label position="stacked">{{ 'email' | translate }}</ion-label>
+          <ion-input type="email" formControlName="email" placeholder="example: email@business.pl"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
