@@ -1,5 +1,5 @@
 <ion-list>
-  <ion-item *ngFor="let client of clientLists" button (click)="onShowClient(client)" class="">
+  <ion-item *ngFor="let client of clientLists" button (click)="onShowClient(client)" lines="full">
     <ion-icon color="primary" slot="start" [src]="getImageForSex(client)"></ion-icon>
     <ion-label>{{ client?.lname }}  {{ client?.fname }} </ion-label>
   </ion-item>

@@ -1,5 +1,7 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ChangeDetectionStrategy,  Component, EventEmitter, Input, OnInit, Output,  } from '@angular/core';
+import { Location } from '@angular/common';
+
+import {ActivatedRoute, Router, } from '@angular/router';
 
 @Component({
   selector: 'app-client-form-footer',
@@ -12,14 +14,12 @@ export class ClientFormFooterComponent implements OnInit {
   @Output() addClient = new EventEmitter();
   @Output() updateClient = new EventEmitter();
   @Input() isUpdate: boolean;
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(private router: Router, private location: Location, private route: ActivatedRoute) {}
 
   ngOnInit() {
     console.log(this.route.snapshot);
   }
   close() {
-
-    this.router.navigateByUrl(window.location.href);
-    this.resetForm.emit();
+    this.location.back();
   }
 }

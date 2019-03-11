@@ -20,6 +20,12 @@
 				"update": ""
 			}
 		},
+		"edits": {
+			"labels": {
+				"number": "",
+				"updateClient": ""
+			}
+		},
 		"event": {
 			"errors": {
 				"priceSeemsBeInvalid": "This price seems to be invalid"
@@ -36,9 +42,11 @@
 				"notes": "",
 				"price": ""
 			}
-		}
+		},
+		"js": ""
 	},
 	"commons": {
+		"cancel": "",
 		"labels": {
 			"add": "",
 			"cancel": ""

@@ -1,40 +1,33 @@
 <section [formGroup]="form">
   <ion-row
-    [ngClass.lt-sm]="'border-telephones'"
-    ngClass.gt-sm=""
     formArrayName="phones"
     *ngFor="let phone of phones; let currentPhoneIndex = index"
   >
-    <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>
+    <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd="6">
       <ion-item>
-        <ion-label position="floating">{{ 'number' | translate }}
+        <ion-label position="floating">
+          {{ 'number' | translate }}
           <!--<ion-text><a href="javascript:void(0);">Stacjonarny <ion-icon name="arrow-down"></ion-icon> </a></ion-text>-->
         </ion-label>
-        <ion-input autofocus type="phone" inputmode="tel" formControlName="number"></ion-input>
-        <ion-button slot="end" fill="clear" size="small" (click)="removePhone.emit(currentPhoneIndex)">
+        <ion-input #phoneInput autofocus type="phone" inputmode="tel" formControlName="number"></ion-input>
+
+        <ion-button slot="end" align-self-end fill="clear" size="small" (click)="removePhone.emit(currentPhoneIndex)">
           <ion-icon slot="icon-only" name="remove"></ion-icon>
         </ion-button>
       </ion-item>
     </ion-col>
-    <!--<ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>-->
-    <!--<ion-item style="margin-top: 4px">-->
-    <!--<ion-label position="floating">{{ '' }}</ion-label>-->
-    <!--<ion-select formControlName="name" interface="popover" style="width: 100%">-->
-    <!--<ion-select-option *ngFor="let phoneType of phoneTypes" [value]="phoneType">-->
-    <!--{{ phoneType | translate }}-->
-    <!--</ion-select-option>-->
-    <!--</ion-select>-->
 
-    <!--</ion-item>-->
-    <!--</ion-col>-->
   </ion-row>
 </section>
-<ion-row>
-  <ion-col size="12">
-    <ion-item button style="--padding-start: 0; --padding-end: 0;" (click)="addPhone.emit({})">
-        <ion-label   text-center color="medium" fill="clear">
-          {{ 'clients.edits.labels.addPhone' | translate }}
-        </ion-label>
-    </ion-item>
-  </ion-col>
-</ion-row>
+<section>
+
+    <ion-row>
+        <ion-col size="12" sizeMd="6">
+            <ion-item (click)="onAddPhone()" lines="full">
+                <ion-label text-left>
+                    {{ 'clients.edits.labels.number' | translate }}
+                </ion-label>
+            </ion-item>
+        </ion-col>
+    </ion-row>
+</section>
