@@ -1,20 +1,18 @@
-import {ClientRepository, ClientRepositoryInterface} from './client-repository';
-import { Storage } from '@ionic/storage';
-import { Injectable } from '@angular/core';
-import { from, Observable, of } from 'rxjs';
-import { Client } from '../clients/models/client.interface';
-import { EntityIdGeneratorService } from '../services/entity-id-generator.service';
+import {Storage} from '@ionic/storage';
+import {Injectable} from '@angular/core';
+import {from, Observable} from 'rxjs';
+import {Client} from '../clients/models/client.interface';
+import {EntityIdGeneratorService} from '../services/entity-id-generator.service';
+import {ClientEvent} from '../clients/models/client-event';
 
 export const CLIENTS_KEY = 'CLIENTS';
 /*
-    CLIETNS_KEY: HasMap(clientId: Client)
-
-
-
+   Proof of concept,
+    implement was commented due to ts errors
  */
 
 @Injectable()
-export class LocalStorageClientRepository implements ClientRepositoryInterface {
+export class LocalStorageClientRepository /* implements ClientRepositoryInterface */ {
   constructor(private store: Storage, private id: EntityIdGeneratorService) {}
   saveClient({ client }) {
     const createClientPromise = this.getClientsFromStore().then((clients) => {
@@ -33,15 +31,27 @@ export class LocalStorageClientRepository implements ClientRepositoryInterface {
 
   getClient({ clientId }: { clientId: string }): Observable<Client> {
     return from(
-        this.getClientsFromStore().then((clients: { [key: string]: Client }) => clients[clientId]).then(client => {
+      this.getClientsFromStore()
+        .then((clients: { [key: string]: Client }) => clients[clientId])
+        .then((client) => {
           console.log('im getting client', client);
           if (client) {
             return Promise.resolve(client);
           } else {
             return Promise.reject('Client dont exist');
           }
-        })
+        }),
     );
+  }
+
+  addClientEvent(payload: { client: Client; clientEvent: ClientEvent }): Observable<any> {
+    // TODO implement for localstoreage persist impolementation
+
+    return undefined;
+  }
+
+  saveClientNote({note, client}: { note: string; client: Client }) {
+    //TODO implement
   }
 
   private getClientsFromStore(): Promise<{ [key: string]: Client }> {

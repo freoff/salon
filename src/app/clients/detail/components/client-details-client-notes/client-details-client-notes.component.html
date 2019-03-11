@@ -1,0 +1,39 @@
+<ng-container *ngIf="client">
+  <ng-container *ngIf="!editMessage; else editMessageTemplate">
+    <h1 fxLayout="row center">
+      <ion-text color="secondary">{{ 'clients.details.labels.notes' | translate }}</ion-text>
+      <span fxFlex="1 1 auto"></span>
+      <ion-button size="small" fill="clear" (click)="toggleEditMessage()" fxFlexAlign="end">
+        <small>
+          {{ 'clients.details.labels.addNote' | translate }}
+        </small>
+      </ion-button>
+    </h1>
+    <ion-item style="--min-height: 50px" class="">
+      <section fxLayout="column" fxLayoutAlign="start start">
+        <ion-text class="text-left">
+          <span [innerHTML]="(client.clientNotes.length > 3 ? client.clientNotes : 'no notes') | nl2br"></span>
+        </ion-text>
+      </section>
+    </ion-item>
+  </ng-container>
+  <ng-template #editMessageTemplate>
+    <ion-item class="" lines="none">
+      <ion-textarea
+        [formControl]="formControl"
+        rows="3"
+        autofocus
+        placeholder="{{ 'clients.details.labels.addNoteHere' | translate }}"
+      ></ion-textarea>
+    </ion-item>
+
+    <ion-item class="" style="--padding-end: 0">
+      <section fxFill fxLayoutAlign="end">
+        <ion-button slot="end" (click)="onCancel()">{{ 'clients.details.labels.cancel' | translate }}</ion-button>
+        <ion-button slot="end" (click)="onSaveNote()" [disabled]="formControl.pristine">
+          {{ 'clients.details.labels.update' | translate }}
+        </ion-button>
+      </section>
+    </ion-item>
+  </ng-template>
+</ng-container>

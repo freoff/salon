@@ -1,26 +1,32 @@
-<ion-grid [formGroup]="form" class="with-background">
-  <ion-card-header [translucent]="true">
+<ng-container [formGroup]="form">
+  <ion-card-header>
+    <ion-item lines="none" *ngIf="!isUpdate">
+      <section
+        fxLayout="row"
+        fxLayout.lt-sm="column"
+        fxLayoutAlign.lt-sm="start center"
+        fxFill
+        fxLayoutAlign="start start"
+      >
+        <ion-img padding-end [src]="getIcon()" slot="start" style="width: 96px; height: auto;"></ion-img>
 
-    <ion-item lines="none" *ngIf="!isUpdate" style="--min-height: 150px">
-      <div fxShow="true" fxHide.lt-sm="true">
-        <ion-img  [src]="getIcon()" slot="start" style="width: 96px; height: auto;"></ion-img>
-      </div>
-      <ion-content fxLayout="column" fxLayoutAlign="space-between, start">
-        <ion-card-subtitle>{{ 'addInformationAboutClient' | translate }}</ion-card-subtitle>
-        <ion-card-title margin-top>
-          <ion-text style="--font-size: 12px">
-            <b>{{ form.value.lname }}</b>
-            {{ form.value.fname }}
-          </ion-text>
-        </ion-card-title>
-      </ion-content>
+        <section fxLayout="column" fxFlexAlign.lt-sm="start" fxLayoutAlign="space-between, start" fxFlex.lt-sm="100%">
+          <ion-card-subtitle fxHide.lt-sm>{{ 'addInformationAboutClient' | translate }}</ion-card-subtitle>
+          <ion-card-title margin-top>
+            <ion-text style="--font-size: 12px">
+              {{ form.value.lname }}
+              {{ form.value.fname }}
+            </ion-text>
+          </ion-card-title>
+        </section>
+      </section>
     </ion-item>
     <ion-item lines="none" *ngIf="isUpdate">
-      <ion-icon name="contact" slot="start" size="large" color="primary"></ion-icon>
-      <ion-content>
+      <ion-icon padding-end name="contact" slot="start" size="large" color="primary"></ion-icon>
+      <section>
         <ion-card-title>{{ 'client' | translate }}</ion-card-title>
         <ion-card-subtitle>{{ 'updateClientData' | translate }}</ion-card-subtitle>
-      </ion-content>
+      </section>
     </ion-item>
   </ion-card-header>
   <ion-card-content>
@@ -52,42 +58,18 @@
       </ion-col>
     </ion-row>
 
-    <ion-row formArrayName="phones" *ngFor="let phone of phones; let currentPhoneIndex = index">
-      <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>
-        <ion-item>
-          <ion-label position="floating">{{ 'number' | translate }}</ion-label>
-          <ion-input type="phone" inputmode="tel" formControlName="number"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col [formGroupName]="currentPhoneIndex" size="12" sizeMd>
-        <ion-item style="margin-top: 4px">
-          <ion-label position="floating">{{ '' }}</ion-label>
-          <ion-select formControlName="name" interface="popover" style="width: 100%">
-            <ion-select-option *ngFor="let phoneType of phoneTypes" [value]="phoneType">
-              {{ phoneType | translate }}
-            </ion-select-option>
-          </ion-select>
-          <ion-buttons slot="end" style="margin-bottom: 6px; margin-left: 10px" slot="end" align-self-end>
-            <ion-button
-              [hidden]="currentPhoneIndex === 0"
-              fill="clear"
-              size="small"
-              (click)="removePhone.emit(currentPhoneIndex)"
-            >
-              <ion-icon slot="icon-only" name="remove"></ion-icon>
-            </ion-button>
-            <ion-button size="large" fill="clear" (click)="addPhone.emit()">
-              <ion-icon slot="icon-only" name="add"></ion-icon>
-            </ion-button>
-          </ion-buttons>
-        </ion-item>
-      </ion-col>
-    </ion-row>
+    <app-client-form-phones
+      [form]="form"
+      [phones]="phones"
+      [phoneTypes]="phoneTypes"
+      (addPhone)="addPhone.emit($event)"
+      (removePhone)="removePhone.emit($event)"
+    ></app-client-form-phones>
     <ion-row>
       <ion-col size="12" size-md>
-        <ion-item>
-          <ion-label position="floating">{{ 'email' | translate }}</ion-label>
-          <ion-input type="email" formControlName="email"></ion-input>
+        <ion-item lines="inset">
+          <ion-label position="stacked">{{ 'email' | translate }}</ion-label>
+          <ion-input type="email" formControlName="email" placeholder="example: email@business.pl"></ion-input>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -104,4 +86,4 @@
       </ion-col>
     </ion-row>
   </ion-card-content>
-</ion-grid>
+</ng-container>

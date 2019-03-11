@@ -4,16 +4,18 @@
       <ion-menu-button menu="mainMenu"></ion-menu-button>
     </ion-buttons>
     <ion-title *ngIf="(isUpdate$ | async); else createNew">Klient - Update</ion-title>
-    <ng-template #createNew> <ion-title>Nowy klient</ion-title> </ng-template>
+    <ng-template #createNew><ion-title>Nowy klient</ion-title></ng-template>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="transparent" padding>
   <ion-grid>
     <ion-row justify-content-center>
-      <ion-card style="max-width: 600px">
-        <app-client-form-container [isUpdate]="isUpdate$ | async"></app-client-form-container>
-      </ion-card>
+      <ion-col size="12" sizeSm="12" sizeMd="8">
+        <ion-card class="background-default" no-margin no-padding>
+          <app-client-form-container [isUpdate]="isUpdate$ | async"></app-client-form-container>
+        </ion-card>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

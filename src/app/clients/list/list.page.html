@@ -3,16 +3,17 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>{{'clientList' | translate}}</ion-title> </ion-toolbar>
+    <ion-title>{{ 'clientList' | translate }}</ion-title>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="transparent">
   <ion-grid>
-    <ion-row>
-      <ion-col [sizeXl]="6" offsetXl="3">
-        <ion-card padding> <app-lient-list-container></app-lient-list-container> </ion-card>
+    <ion-row justify-content-center>
+      <ion-col size="12" sizeSm="12" sizeMd="8">
+        <ion-card><app-lient-list-container></app-lient-list-container></ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
-  <ion-footer padding text-right color="dark">Total clients:</ion-footer>
+<ion-footer padding text-right color="dark">Total clients:</ion-footer>

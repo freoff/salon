@@ -18,7 +18,10 @@ import { ClientRepository } from './repository/client-repository';
 import { RxdbClientRepository } from './repository/rxdb-client.repository';
 import { RxdbService } from './services/rxdb.service';
 import { EntityIdGeneratorService } from './services/entity-id-generator.service';
-import {FlexLayoutModule} from '@angular/flex-layout';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MomentModule } from 'ngx-moment';
+import { PaginationModule } from 'ngx-bootstrap';
+import { ReactiveFormsModule } from '@angular/forms';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -28,18 +31,25 @@ export function createTranslateLoader(http: HttpClient) {
   declarations: [AppComponent, SideMenuComponent],
   entryComponents: [],
   imports: [
-    BrowserModule,
-    IonicModule.forRoot(),
     AppRoutingModule,
-    StateModule,
-    IonicStorageModule.forRoot(),
-    HttpClientModule,
+    BrowserModule,
     FlexLayoutModule,
+    HttpClientModule,
+    IonicModule.forRoot(),
+    IonicStorageModule.forRoot(),
+    ReactiveFormsModule,
+    StateModule,
+    PaginationModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: createTranslateLoader,
         deps: [HttpClient],
+      },
+    }),
+    MomentModule.forRoot({
+      relativeTimeThresholdOptions: {
+        m: 59,
       },
     }),
   ],

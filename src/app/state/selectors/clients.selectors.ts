@@ -1,14 +1,19 @@
-import { getClients, getClientsPageState } from '../reducers';
+import { getClientEvents as clientEventsState, getClients, getClientsPageState } from '../reducers';
 import * as fromClients from '../clients/client/reducers/client.reducer';
+import * as fromClientEvents from '../clients/clientEvents/client-event.reducer';
 import { createSelector } from '@ngrx/store';
 import { selectedClientId } from '../clients/page/client-page.reducer';
-
-
 
 export const getAllClientsMap = createSelector(
   getClients,
   fromClients.clientsEntitisAsMap,
 );
+
+export const getAllEvents = createSelector(
+  clientEventsState,
+  fromClientEvents.allClientEvents,
+);
+
 export const getAllClients = createSelector(
   getClients,
   fromClients.clients,
@@ -30,4 +35,14 @@ export const getSelectedClient = createSelector(
   getSelectedClientId,
   (clients, id) => clients[id],
 );
-export const getClientById = (clientId: string) => createSelector(getAllClients, clients => clients[clientId]);
+export const getClientById = (clientId: string) =>
+  createSelector(
+      getAllClientsMap,
+    (clients) => clients[clientId],
+  );
+
+export const getClientEvents = createSelector(
+  getSelectedClientId,
+  getAllEvents,
+  (clientId, events) => events.filter((event) => event.client === clientId),
+);

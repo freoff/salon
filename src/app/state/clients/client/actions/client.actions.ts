@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
-import {Client} from '../../../../clients/models/client.interface';
+import { Client } from '../../../../clients/models/client.interface';
 
 export enum ClientActionTypes {
   LoadClients = '[Client] Load Clients',
@@ -12,7 +12,7 @@ export enum ClientActionTypes {
   UpdateClients = '[Client] Update Clients',
   DeleteClient = '[Client] Delete Client',
   DeleteClients = '[Client] Delete Clients',
-  ClearClients = '[Client] Clear Clients'
+  ClearClients = '[Client] Clear Clients',
 }
 
 export class LoadClients implements Action {
@@ -74,13 +74,13 @@ export class ClearClients implements Action {
 }
 
 export type ClientActions =
- LoadClients
- | AddClient
- | UpsertClient
- | AddClients
- | UpsertClients
- | UpdateClient
- | UpdateClients
- | DeleteClient
- | DeleteClients
- | ClearClients;
+  | LoadClients
+  | AddClient
+  | UpsertClient
+  | AddClients
+  | UpsertClients
+  | UpdateClient
+  | UpdateClients
+  | DeleteClient
+  | DeleteClients
+  | ClearClients;

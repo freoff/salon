@@ -1,4 +1,4 @@
-import { reducer, initialState } from './client-page.reducer';
+import { initialState, reducer } from './client-page.reducer';
 
 describe('ClientPage Reducer', () => {
   describe('an unknown action', () => {

@@ -1,7 +1,9 @@
 <app-client-details
-        [client]="selectedClient$ | async"
-
-        (call)="call($event)"
->
-
-</app-client-details>
+  [client]="selectedClient$ | async"
+  [clientEvents]="clientEvents$ | async"
+  (call)="call($event)"
+  (deleteClientEvent)="deleteClientEvent($event)"
+  (saveNote)="saveNote($event)"
+  (editClient)="editClient($event)"
+  (deleteClient)="deleteClient($event)"
+></app-client-details>

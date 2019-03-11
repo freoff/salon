@@ -1,7 +1,7 @@
-import {Client} from '../models/client.interface';
-import {FormState} from '../../types/form-status.enum';
+import { Client } from '../models/client.interface';
+import { FormState } from '../../types/form-status.enum';
 
 export interface ClientFormInterface {
-    client: Client;
-    state: FormState;
+  client: Client;
+  state: FormState;
 }

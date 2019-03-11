@@ -1,9 +1,8 @@
-import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ModalController, PopoverController } from '@ionic/angular';
 import { ClientEventFormComponent } from '../client-event-form/client-event-form.component';
-import { HTMLIonOverlayElement } from '@ionic/core';
-import { ECHILD } from 'constants';
 import { Client } from 'src/app/clients/models/client.interface';
+
 @Component({
   selector: 'app-client-events',
   templateUrl: './client-events.component.html',
@@ -12,7 +11,7 @@ import { Client } from 'src/app/clients/models/client.interface';
 export class ClientEventsComponent implements OnInit {
   public static CLIENT_EVENT_MODAL_ID = 'CLIENT_EVENT_MODAL_ID';
   @Input() client: Client;
-  @Output() emitAddEvent = new EventEmitter<any>();
+  @Output() addClientEvent = new EventEmitter<any>();
   eventModal: any;
   constructor(private modalController: ModalController, private pop: PopoverController) {}
 
@@ -24,6 +23,11 @@ export class ClientEventsComponent implements OnInit {
       cssClass: ['add-client-event-popover'],
     });
     this.eventModal.present();
-    this.eventModal.onDidDismiss().then((data) => data && this.emitAddEvent.emit(data));
+    this.eventModal.onDidDismiss().then(({ data }) => {
+      console.log('data', data);
+      if (data) {
+        this.addClientEvent.emit(data);
+      }
+    });
   }
 }

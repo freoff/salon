@@ -1,4 +1,4 @@
-import { reducer, initialState } from './application.reducer';
+import { initialState, reducer } from './application.reducer';
 
 describe('Application Reducer', () => {
   describe('an unknown action', () => {

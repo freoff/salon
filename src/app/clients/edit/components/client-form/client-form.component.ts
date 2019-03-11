@@ -1,8 +1,6 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {FormArray, FormGroup} from '@angular/forms';
-import {PhoneTypes} from '../../../models/phone-types.enum';
-import {FormState} from '../../../../types/form-status.enum';
-import {ClientFormInterface} from '../../../types/client-form.interface';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormArray, FormGroup } from '@angular/forms';
+import { PhoneTypes } from '../../../models/phone-types.enum';
 
 @Component({
   selector: 'app-client-form',
@@ -18,17 +16,16 @@ export class ClientFormComponent implements OnInit {
   @Output() addPhone = new EventEmitter();
   @Output() removePhone = new EventEmitter<number>();
 
-  constructor() { }
+  constructor() {}
 
   isFemale() {
     return this.form.get(['sex']).value === 'female';
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   // src/assets/icon/boy-hair-shape.svg
-    getIcon() {
-      return this.isFemale() ? '/assets/icon/016-girl.svg' : '/assets/icon/017-man.svg';
-    }
+  getIcon() {
+    return this.isFemale() ? '/assets/icon/016-girl.svg' : '/assets/icon/017-man.svg';
+  }
 }

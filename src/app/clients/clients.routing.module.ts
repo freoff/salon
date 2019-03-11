@@ -10,6 +10,11 @@ const routes: Routes = [
       { path: 'list', loadChildren: './list/list.module#ListPageModule' },
       { path: 'edit', loadChildren: './edit/edit.module#EditPageModule' },
       {
+        path: ':clientId/edit',
+        loadChildren: './edit/edit.module#EditPageModule',
+        resolve: { client: ClientDetailsResolver },
+      },
+      {
         path: ':clientId',
         loadChildren: './detail/detail.module#DetailPageModule',
         resolve: { r: ClientDetailsResolver },

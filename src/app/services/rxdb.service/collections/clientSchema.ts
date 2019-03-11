@@ -1,6 +1,5 @@
-import { RxJsonSchema, RxSchema } from 'rxdb';
-import { Phone } from '../../../clients/models/phone.interface';
-import { ClientDocMethods, ClientsCollection, ClientCollectionMethods, ClientDocument } from './clients.collection';
+import { RxJsonSchema } from 'rxdb';
+import { ClientCollectionMethods, ClientDocMethods, ClientDocument, ClientsCollection } from './clients.collection';
 
 export const clientSchema: RxJsonSchema = {
   title: 'Client schema',

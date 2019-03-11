@@ -1,6 +1,5 @@
 import { LocalStorageClientRepository } from './local-storage-client-repository.service';
 
 describe('LocalStorageClientRepository', () => {
-  it('should create an instance', () => {
-  });
+  it('should create an instance', () => {});
 });

@@ -10,13 +10,7 @@ import { FlexModule } from '@angular/flex-layout';
 @NgModule({
   declarations: [ClientEventsComponent, ClientEventFormComponent],
   exports: [ClientEventsComponent],
-  imports: [
-    CommonModule,
-    IonicModule,
-    ReactiveFormsModule,
-    TranslateModule.forChild(),
-    FlexModule,
-  ],
-  entryComponents: [ClientEventFormComponent]
+  imports: [CommonModule, IonicModule, ReactiveFormsModule, TranslateModule.forChild(), FlexModule],
+  entryComponents: [ClientEventFormComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

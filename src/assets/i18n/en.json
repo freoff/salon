@@ -1,0 +1,58 @@
+{
+	"ClientDoNotExist": "This client dose not exist.",
+	"addClientEvent": "Add new visit",
+	"addInformationAboutClient": "Add information about client",
+	"client": "Client",
+	"clientList": "Clients list",
+	"clients": {
+		"details": {
+			"labels": {
+				"addNote": "",
+				"addNoteHere": "",
+				"call": "Call",
+				"cancel": "",
+				"delete": "Remove",
+				"edit": "Edit",
+				"hideNotes": "Hide",
+				"notes": "Notes",
+				"previousVisit": "Previous visits",
+				"showNotes": "Show notes",
+				"update": ""
+			}
+		},
+		"event": {
+			"errors": {
+				"priceSeemsBeInvalid": "This price seems to be invalid"
+			}
+		},
+		"events": {
+			"labels": {
+				"date": "Date",
+				"notes": "Notes",
+				"price": "Price",
+				"title": ""
+			},
+			"placeholders": {
+				"notes": "",
+				"price": ""
+			}
+		}
+	},
+	"commons": {
+		"labels": {
+			"add": "",
+			"cancel": ""
+		}
+	},
+	"details": "Details",
+	"email": "Email",
+	"female": "female",
+	"fname": "First name",
+	"lname": "Last name",
+	"male": "Male",
+	"notes": "Notes",
+	"notesTooltip": "Here you can add your private notes about this client.",
+	"number": "Phone number",
+	"phones": "Phones",
+	"updateClientData": "Edit"
+}

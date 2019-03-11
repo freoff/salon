@@ -1,20 +1,43 @@
 ion-header {
-
-  background        : url("/assets/images/header_rigth-head.png");
+  background: url('/assets/images/header_rigth-head.png');
   background-size: cover;
-  --backgroun-size    : 100% 100%;
-  --padding-bottom    : 0;
-  --padding-end       : 0;
-  --padding-start     : 0;
-  --padding-top       : 0;  //background-size: contain;
+  --backgroun-size: 100% 100%;
+  --padding-bottom: 0;
+  --padding-end: 0;
+  --padding-start: 0;
+  --padding-top: 0; //background-size: contain;
   //background url(fjdkslajflksadjf) no-repeat scroll 100% 100%;
-
 }
 ion-toolbar {
   --background: transperent;
   ion-title {
     font-weight: 800;
     font-family: 'Montserrat', sans-serif;
+  }
+}
+@function whiteTransparent($howMany) {
+  @return rgba(255, 255, 255, $howMany);
+}
+@mixin absoluteFull {
+  display: block !important;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+ion-split-pane {
+  background: url('/assets/images/backgroud-01-big.jpg');
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(124, 117, 122, 0.81);
+  @media (max-width: 400px) {
+    background-size: auto;
+  }
 
+  .white {
+    @include absoluteFull;
+    background-color: whiteTransparent(0.6);
   }
 }

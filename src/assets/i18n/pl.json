@@ -1,60 +1,92 @@
 {
-	"ClientDoNotExist": "Ten klient nie istnieje",
-	"addClientEvent": "Dodaj obsługę",
-	"addInformationAboutClient": "Dodaj informacje o nowy kliencie",
-	"cell": "Komórkowy",
-	"client": "Klient",
-	"clientList": "Lista klientow",
-	"clientNotes": "Notatki",
-	"clients": {
-		"event": {
-			"errors": {
-				"priceSeemsBeInvalid": "Ta kwota wydaje się nie być prawidłowa"
-			}
-		},
-		"events": {
-			"labels": {
-				"date": "Data usługi",
-				"notes": "Dodatkowe informacje",
-				"price": "Wartość usługi",
-				"title": "Dodaj usługe dla klienta"
-			},
-			"notes": {
-				"label": ""
-			},
-			"placeholders": {
-				"notes": "Tutaj można dodać dodatkow informację na temat usługi",
-				"price": "Wpisz tuaj kwotę jaką zapłacił klient"
-			}
-		}
-	},
-	"commons": {
-		"labels": {
-			"add": "Dodaj",
-			"cancel": "Anuluj",
-			"close": "Zamknij"
-		}
-	},
-	"details": "Szczegoly klienta",
-	"email": "Email",
-	"etykieta": "Etykieta",
-	"female": "Kobieta",
-	"fname": "Imię",
-	"ground": "Stacjonarny",
-	"js": {
-		"details": {}
-	},
-	"klient": "Klient",
-	"lname": "Nazwisko",
-	"male": "Mężczyzna",
-	"nav": {
-		"add": "Dodaj",
-		"edit": "Edytuj",
-		"list": "Lista"
-	},
-	"notes": "Notatki",
-	"notesTooltip": "Tutaj możęsz dodać dodtkowe informacje o kliencie",
-	"number": "Numer",
-	"phones": "Telefony",
-	"updateClientData": "Poprawe dane klienta"
+    "ClientDoNotExist": "Ten klient nie istnieje",
+    "addClientEvent": "Dodaj wizytę klienta",
+    "addInformationAboutClient": "Dodaj informację o nowy kliencie",
+    "cell": "Komórkowy",
+    "client": "Klient",
+    "clientList": "Lista klientów",
+    "clientNotes": "Notatki",
+    "clients": {
+        "details": {
+            "labels": {
+                "addNote": "Dodaj notatkę",
+                "addNoteHere": "",
+                "call": "Zadzwoń",
+                "cancel": "Anuluj",
+                "clientEventsNote": "Notatki",
+                "delete": "Usuń",
+                "edit": "Edytuj",
+                "hideNotes": "ukryj notatki",
+                "notes": "Notatki",
+                "previousVisit": "Poprzednie wizyty w salonie",
+                "showNotes": "pokarz notatki",
+                "update": "Zapisz"
+            }
+        },
+        "event": {
+            "errors": {
+                "priceSeemsBeInvalid": "Ta kwota wydaje się nie być prawidłowa"
+            }
+        },
+        "events": {
+            "labels": {
+                "date": "Data usługi",
+                "notes": "Dodatkowe informacje",
+                "price": "Wartość usługi",
+                "title": "Dodaj usług dla klienta"
+            },
+            "notes": {
+                "label": ""
+            },
+            "placeholders": {
+                "notes": "Tutaj moż na dodać dodatków informację na temat usługi",
+                "price": "Wpisz tutaj kwotę jaką zapłacił klient"
+            }
+        },
+        "messages": {
+            "cantLoadEvents": "Nie można pobrać listy wizytk klienta",
+            "wasAdded": "Wizyta została dodana",
+            "wasAddedFail": "Dodanie wizyty się nie powiodło",
+            "wasDeleted": "Wizyta usunięta",
+            "messageUpdated": "Notatka zostala zapisana",
+            "clientWasDeleted": "Klient został usunięty"
+        },
+        "js": {
+            "removeClientHeader": "Czy napewno chcesz usunąć klienta ?",
+            "deleteClient": "Tak. Usuń klienta i wszystkie dane",
+            "abortDelete": "Anuluj"
+        },
+        "edits": {
+            "labels": {
+                "addPhone": "Dodaj telefon"
+            }
+        }
+    },
+    "commons": {
+        "labels": {
+            "add": "Dodaj",
+            "cancel": "Anuluj",
+            "close": "Zamknij"
+        }
+    },
+    "details": "Szczegóły klienta",
+    "email": "Email",
+    "etykieta": "Etykieta",
+    "female": "Kobieta",
+    "fname": "Imię",
+    "ground": "Stacjonarny",
+
+    "klient": "Klient",
+    "lname": "Nazwisko",
+    "male": "Mężczyzna",
+    "nav": {
+        "add": "Dodaj",
+        "edit": "Edytuj",
+        "list": "Lista"
+    },
+    "notes": "Notatki",
+    "notesTooltip": "Tutaj możesz dodać dodatkowe informacje o kliencie",
+    "number": "Numer",
+    "phones": "Telefony",
+    "updateClientData": "Poprawę dane klienta"
 }

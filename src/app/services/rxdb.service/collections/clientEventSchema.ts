@@ -7,8 +7,13 @@ export const clientEventSchema: RxJsonSchema = {
   type: 'object',
   properties: {
     eventDate: {
+      type: 'number',
+      index: true,
+    },
+
+    client: {
+      ref: 'clients',
       type: 'string',
-      format: 'date-time',
     },
     price: {
       type: 'object',
@@ -23,4 +28,5 @@ export const clientEventSchema: RxJsonSchema = {
       type: 'string',
     },
   },
+  required: ['client'],
 };

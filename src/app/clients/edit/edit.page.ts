@@ -1,8 +1,7 @@
-import { AfterViewChecked, Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
-import { filter, map, tap } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import {distinctUntilChanged, map, tap} from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { isEmpty } from 'underscore';
 import { FormState } from '../../types/form-status.enum';
 
 @Component({
@@ -23,6 +22,12 @@ export class EditPage implements OnInit {
     this.params$ = this.route.paramMap.pipe(
       map((params) => (params.has('formState') ? (params.get('formState') as FormState) : FormState.createNew)),
     );
-    this.isUpdate$ = this.params$.pipe(map((formState) => FormState.isUpdate(formState)));
+
+    // this.isUpdate$ = this.params$.pipe(map((formState) => FormState.isUpdate(formState)));
+    this.isUpdate$ = this.route.data.pipe(
+        distinctUntilChanged(),
+        tap(data => console.log('resolve with', data)),
+        map(data => !!data.client )
+    );
   }
 }

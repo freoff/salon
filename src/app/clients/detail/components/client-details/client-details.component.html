@@ -1,16 +1,36 @@
-<ion-card style="max-width: 500px" *ngIf="client" no-margin>
+<ion-card *ngIf="client" style="--background: #fff">
   <ion-card-header padding>
-   
     <ion-card-title>
       <ion-row>
         <ion-col size="auto">
           <ion-icon style="font-size: 64px" color="primary" [src]="getIcon(client)"></ion-icon>
         </ion-col>
         <ion-col color="tertiary" align-items-center>
-          <b>{{ client?.lname }}</b>
-          {{ client?.fname }}
+          <ion-row>
+            <ion-col>
+              <b>{{ client?.lname }}</b>
+              {{ client?.fname }}
+            </ion-col>
+
+            <ion-col size="auto">
+              <ion-col size="auto">
+                <ion-fab vertical="center" horizontal="center">
+                  <ion-fab-button size="small" translucent="true" color="light">
+                    <ion-icon name="more"></ion-icon>
+                  </ion-fab-button>
+                  <ion-fab-list side="bottom">
+                    <ion-fab-button (click)="onEditClient(client)">
+                      <ion-icon name="color-wand" ></ion-icon>
+                    </ion-fab-button>
+                    <ion-fab-button>
+                      <ion-icon name="trash" (click)="deleteClientConfirmation(client)"></ion-icon>
+                    </ion-fab-button>
+                  </ion-fab-list>
+                </ion-fab>
+              </ion-col>
+            </ion-col>
+          </ion-row>
         </ion-col>
-       
       </ion-row>
     </ion-card-title>
   </ion-card-header>
@@ -22,29 +42,75 @@
           <h1>
             <ion-text color="secondary">{{ 'phones' | translate }}</ion-text>
           </h1>
-          <ion-item lines="none" *ngFor="let phone of client.phones" text-left>
-            <ion-label color="dark">{{ phone.number }}</ion-label>
-            <ion-button slot="start" fill="clear" size="large" (click)="onCall(phone.number)">
-              <ion-icon src="/assets/icon/018-phone-contact.svg" color="dark"></ion-icon>
-            </ion-button>
+          <ion-item lines="none" *ngFor="let phone of client.phones" text-left class="ps-0">
+            <section fxFlex fxLayoutAlign="start center" fxLayoutGap="15px">
+              <ion-text color="dark">{{ phone.number }}</ion-text>
+              <ion-button (click)="onCall(phone.number)" fill="clear">
+                <ion-icon src="/assets/icon/018-phone-contact.svg"></ion-icon>
+                &nbsp;
+                {{ 'clients.details.labels.call' | translate }}
+              </ion-button>
+            </section>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col size="12">
-          <h1>
-            <ion-text color="secondary">{{ 'clientNotes' | translate }}</ion-text>
-          </h1>
-          <ion-item>
-            <ion-text [innerHTML]="client.clientNotes | nl2br "></ion-text>
-          </ion-item>
+        <ion-col size="12" class="ps-0">
+          <app-client-details-client-notes [client]="client" (saveNote)="saveNote.emit($event)"></app-client-details-client-notes>
         </ion-col>
       </ion-row>
     </ion-grid>
-    <app-client-events></app-client-events>
+    <app-client-events (addClientEvent)="addClientEvent($event)"></app-client-events>
+
+    <ion-list *ngIf="length > 0 && (clientEventToDisplay | async) as clientEvents">
+      <ng-container *ngFor="let ce of clientEvents; trackBy: trackEventsBy">
+        <ion-item
+          button
+          detail
+          [detailIcon]="expandedRow === ce._id ? 'arrow-down' : 'arrow-forward'"
+          (click)="setExpanded(ce._id)"
+        >
+          <ion-label text-wrap fxLayout>
+            <ion-text>
+              {{ ce.eventDate | amDateFormat: 'DD MMMM YYYY' }} &nbsp;
+              <ion-text color="medium">({{ ce.eventDate | amTimeAgo }})</ion-text>
+              <span fxFlex="1 1 auto"></span>
+            </ion-text>
+          </ion-label>
+          <span slot="end">{{ ce.price.amount / 100 }} {{ ce.price.currency }}</span>
+        </ion-item>
+        <ion-item *ngIf="ce._id === expandedRow">
+          <section fxLayout="column" fxFill fxLayoutAlign="end start">
+            <p fxFlex align-self-end>
+              <!--<ion-button fill="clear">{{ 'clients.details.labels.edit' | translate }}</ion-button>-->
+              <ion-button fill="clear" (click)="onDeleteClientEvent(ce)">
+                {{ 'clients.details.labels.delete' | translate }}
+              </ion-button>
+            </p>
+            <p float-left>
+              <span [innerHTML]="ce.eventNotes | nl2br"></span>
+            </p>
+          </section>
+        </ion-item>
+      </ng-container>
+
+      <ion-list *ngIf="showPager">
+        <div class="wrapper" fxLayoutAlign="end start">
+          <pagination
+            [totalItems]="length"
+            previousText="&lsaquo;"
+            nextText="&rsaquo;"
+            firstText="&laquo;"
+            lastText="&raquo;"
+            (pageChanged)="changePage($event)"
+          ></pagination>
+        </div>
+      </ion-list>
+    </ion-list>
   </ion-card-content>
 </ion-card>
 
-<pre>
-    {{ client | json }}
-</pre>
+<pre style="max-width: 0px">
+        {{ client | json }}
+      </pre
+>

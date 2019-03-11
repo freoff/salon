@@ -3,7 +3,6 @@ import { Actions, Effect, ofType } from '@ngrx/effects';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { CallToNumber, PhonesActionsTypes } from './phone.actions';
 import { tap } from 'rxjs/operators';
-import { ToastController } from '@ionic/angular';
 import { ApplicationStateService } from '../../services/application-state.service';
 
 @Injectable()
@@ -24,9 +23,7 @@ export class PhoneEffets {
         .catch((e) => {
           console.log(e, this);
           this.applicationStateService.showToast({ message: `${e} \n You can not dial from this device right now!` });
-
-        }
-        );
+        });
     }),
   );
 }

@@ -8,10 +8,10 @@ describe('LientListContainerComponent', () => {
   let fixture: ComponentFixture<LientListContainerComponent>;
   let store: Store<any>;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [ StoreModule.forRoot({}) ],
-      declarations: [ LientListContainerComponent ]
+      imports: [StoreModule.forRoot({})],
+      declarations: [LientListContainerComponent],
     });
 
     await TestBed.compileComponents();

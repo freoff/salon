@@ -14,11 +14,10 @@ export class ClientsListsComponent implements OnInit {
   ngOnInit() {}
 
   onShowClient(client: Client) {
-
     this.showClient.emit({ client });
   }
 
-    getImageForSex(client: Client) {
-        return client.sex === 'female' ? '/assets/icon/woman-head-side-silhouette.svg' : '/assets/icon/boy-hair-shape.svg'
-    }
+  getImageForSex(client: Client) {
+    return client.sex === 'female' ? '/assets/icon/woman-head-side-silhouette.svg' : '/assets/icon/boy-hair-shape.svg';
+  }
 }

@@ -1,7 +1,7 @@
 export class Phone {
-    id: string;
-    name: string;
-    number: string;
-    primary: boolean;
-    order: number;
+  id: string;
+  name: string;
+  number: string;
+  primary: boolean;
+  order: number;
 }
