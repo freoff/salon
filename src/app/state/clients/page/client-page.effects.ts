@@ -62,7 +62,6 @@ export class ClientPageEffects {
     switchMap((action) =>
       this.clientRepository.getAll().pipe(
         filter((client) => !!client),
-        tap((clients) => console.log('all clients', clients)),
         mergeMap((clients) => [new LoadClients({ clients: clients })]),
       ),
     ),

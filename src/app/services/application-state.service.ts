@@ -12,7 +12,6 @@ import { TranslateService } from '@ngx-translate/core';
 export class ApplicationStateService {
   constructor(private store: Store<State>, private translateService: TranslateService) {}
   initializeAppData() {
-    console.log('in constructor');
     this.store.dispatch(new LoadAllClients());
   }
   showToast(toastOptions?: Partial<ToastOptions>) {

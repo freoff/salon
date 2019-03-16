@@ -9,8 +9,9 @@
 	"clients": {
 		"details": {
 			"labels": {
+				"noNotes": "Brak notatek",
 				"addNote": "Dodaj notatkę",
-				"addNoteHere": "",
+				"addNoteHere": "Dodaj notatke",
 				"call": "Zadzwoń",
 				"cancel": "Anuluj",
 				"clientEventsNote": "Notatki",
@@ -20,15 +21,18 @@
 				"notes": "Notatki",
 				"previousVisit": "Poprzednie wizyty w salonie",
 				"showNotes": "pokarz notatki",
-				"update": "Zapisz"
+				"update": "Zapisz",
+				"abortDelete": "Anuluj",
+				"deleteClient": "Tak. Usuń klienta i wszystkie dane",
+				"removeClientHeader": "Czy napewno chcesz usunąć klienta ?"
 			}
 		},
 		"edits": {
 			"labels": {
+				"addClient": "Dodaj klienta",
 				"addPhone": "Dodaj telefon",
 				"number": "Numer telefonu",
-				"updateClient": "Zapisz zmiany",
-				"addClient": "Dodaj klienta"
+				"updateClient": "Zapisz zmiany"
 			}
 		},
 		"event": {
@@ -51,18 +55,22 @@
 				"price": "Wpisz tutaj kwotę jaką zapłacił klient"
 			}
 		},
-		"js": "",
+		"js": {
+
+		},
 		"messages": {
 			"cantLoadEvents": "Nie można pobrać listy wizytk klienta",
 			"clientWasDeleted": "Klient został usunięty",
 			"messageUpdated": "Notatka zostala zapisana",
 			"wasAdded": "Wizyta została dodana",
 			"wasAddedFail": "Dodanie wizyty się nie powiodło",
-			"wasDeleted": "Wizyta usunięta"
+			"wasDeleted": "Wizyta usunięta",
+			"clientUpdated": "Dane klienta zostały poprawione"
+
 		}
 	},
 	"commons": {
-		"cancel": "",
+		"cancel": "Anuluj",
 		"labels": {
 			"add": "Dodaj",
 			"cancel": "Anuluj",

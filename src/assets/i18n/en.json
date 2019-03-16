@@ -22,6 +22,7 @@
 		},
 		"edits": {
 			"labels": {
+				"addClient": "",
 				"number": "",
 				"updateClient": ""
 			}
@@ -43,7 +44,8 @@
 				"price": ""
 			}
 		},
-		"js": ""
+		"js": "",
+		"jss": ""
 	},
 	"commons": {
 		"cancel": "",

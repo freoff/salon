@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { FormState } from '../types/form-status.enum';
 import { Phone } from '../clients/models/phone.interface';
 import { PhoneTypes } from '../clients/models/phone-types.enum';
@@ -26,6 +26,10 @@ const DEFAULT_CLIENT_FORM: ClientFormInterface = {
   },
   state: FormState.createNew,
 };
+
+function phoneNumber(fc: FormControl) {
+  return Validators.pattern(/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/)(fc) ? { phonenumber: fc.value } : null;
+}
 
 @Injectable({ providedIn: 'root' })
 export class ClientFormController {
@@ -68,8 +72,8 @@ export class ClientFormController {
     const { id, name, number, order, primary } = phone;
     return this.fb.group({
       id: [id, []],
-      name: [name, [Validators.required]],
-      number: [number, [Validators.required]],
+      name: [name, []],
+      number: [number, [Validators.required, (fc: FormControl) => phoneNumber(fc)]],
       primary: [primary, []],
       order: [order, []],
     });
@@ -102,5 +106,32 @@ export class ClientFormController {
     (this.form.get('client') as FormGroup).setControl('phones', new FormArray([]));
     const formPhonesArray = this.getFormPhones();
     phones.forEach((phone) => formPhonesArray.push(this.createPhone(phone)));
+  }
+  isValid() {
+    return this.form.valid;
+  }
+  isInvalid() {
+    return this.form.invalid;
+  }
+
+  touchAllControls() {
+    this._touchAllControls(this.form.get('client'));
+  }
+
+  private _touchAllControls(formGroup) {
+    Object.keys(formGroup.controls)
+      .map((key) => formGroup.get(key))
+      .forEach((control) => {
+        if (control instanceof FormControl) {
+          control.markAsTouched();
+          control.markAsDirty();
+        } else if (control instanceof FormGroup) {
+          this._touchAllControls(control);
+        } else if (control instanceof FormArray) {
+          (control as FormArray).controls.forEach((arrayControl) => this._touchAllControls(arrayControl));
+        } else {
+          console.log('wtf is this :)', control);
+        }
+      });
   }
 }

@@ -3,7 +3,7 @@ import { Client } from '../../../models/client.interface';
 import { ClientEvent } from '../../../models/client-event';
 import { ClientStateService } from '../../../../services/client-state.service';
 import { PageChangedEvent } from 'ngx-bootstrap';
-import { distinctUntilChanged, filter, take } from 'rxjs/operators';
+import { distinctUntilChanged, filter, take, tap } from 'rxjs/operators';
 import { Pager } from '../../../../shared/class/Pager.class';
 import { ActionSheetController, PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
@@ -86,18 +86,34 @@ export class ClientDetailsComponent implements OnInit {
 
   deleteClientConfirmation(client: Client) {
     this.translationService
-      .get('clients.js')
-      .pipe(take(1))
-      .subscribe(({ removeClientHeader, deleteClient, abortDelete }) => {
-        const actionSheet = this.actionSheetController
-          .create({
-            header: removeClientHeader,
-            buttons: [
-              { text: abortDelete, icon: 'close' },
-              { text: deleteClient, icon: 'trash', handler: () => this.deleteClient.emit(client) },
-            ],
-          })
-          .then((dialog) => dialog.present());
-      });
+      .get(
+        [
+          'clients.details.labels.removeClientHeader',
+          'clients.details.labels.deleteClient',
+          'clients.details.labels.abortDelete',
+        ],
+        {},
+      )
+      .pipe(
+        take(1),
+        tap(console.log),
+      )
+      .subscribe(
+        ({
+          'clients.details.labels.removeClientHeader': removeClientHeader,
+          'clients.details.labels.deleteClient': deleteClient,
+          'clients.details.labels.abortDelete': abortDelete,
+        }) => {
+          const actionSheet = this.actionSheetController
+            .create({
+              header: removeClientHeader,
+              buttons: [
+                { text: abortDelete, icon: 'close' },
+                { text: deleteClient, icon: 'trash', handler: () => this.deleteClient.emit(client) },
+              ],
+            })
+            .then((dialog) => dialog.present());
+        },
+      );
   }
 }

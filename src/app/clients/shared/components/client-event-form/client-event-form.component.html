@@ -11,10 +11,12 @@
     <ion-item>
       <ion-label>{{ 'clients.events.labels.price' | translate }}</ion-label>
       <ion-input
+        #priceInput
         text-right
         formControlName="price"
         inputmode="numeric"
         type="number"
+        autofocus="true"
         placeholder="{{ 'clients.events.placeholders.price' | translate }}"
       ></ion-input>
     </ion-item>

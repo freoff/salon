@@ -85,7 +85,7 @@ export class ClientStateService {
   }
 
     deleteClient(client: Client) {
-        console.log('Delete client ', client.id);
+
         this.store.dispatch(new StartDeleteClient({client}));
     }
 }

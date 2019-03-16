@@ -1,9 +1,15 @@
 <ion-row justify-content-end>
   <ion-col size="6" justify-content-end>
     <section style="display: flex; justify-content: flex-end;">
-      <ion-button (click)="close()" fill="outline"><ion-text>{{'commons.labels.cancel' | translate}}</ion-text></ion-button>
-      <ion-button *ngIf="isUpdate" (click)="updateClient.emit()"><ion-text>{{'clients.edits.labels.updateClient' | translate}}</ion-text></ion-button>
-      <ion-button *ngIf="!isUpdate"(click)="addClient.emit()"><ion-text>{{'clients.edits.labels.addClient' | translate}}</ion-text></ion-button>
+      <ion-button (click)="close()" fill="outline">
+        <ion-text>{{ 'commons.labels.cancel' | translate }}</ion-text>
+      </ion-button>
+      <ion-button *ngIf="isUpdate" (click)="updateClient.emit()">
+        <ion-text>{{ 'clients.edits.labels.updateClient' | translate }}</ion-text>
+      </ion-button>
+      <ion-button *ngIf="!isUpdate" (click)="addClient.emit()">
+        <ion-text>{{ 'clients.edits.labels.addClient' | translate }}</ion-text>
+      </ion-button>
     </section>
   </ion-col>
 </ion-row>
