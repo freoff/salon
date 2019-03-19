@@ -4,6 +4,7 @@ import { SalonDatabase, SalonDatabaseCollections } from './collections';
 import { clientCollectionMethods, clientDocMethods, clientSchema } from './collections/clientSchema';
 import { Observable, ReplaySubject } from 'rxjs';
 import { clientEventSchema } from './collections/clientEventSchema';
+import { applicationSettingsMethods, applicationSettingsSchema } from './collections/application-settings.schema';
 
 export class RxdbService {
   _dbConnection: SalonDatabase;
@@ -35,7 +36,6 @@ export class RxdbService {
     await this.initializeCollections();
     if (!environment.production) {
       window['d'] = this._dbConnection;
-      console.log(window['d']);
     }
   }
 
@@ -49,6 +49,11 @@ export class RxdbService {
     await this._dbConnection.collection({
       name: 'client_events',
       schema: clientEventSchema,
+    });
+    await this._dbConnection.collection({
+      name: 'application_settings',
+      schema: applicationSettingsSchema,
+      methods: applicationSettingsMethods as any,
     });
   }
 }

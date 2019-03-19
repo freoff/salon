@@ -74,7 +74,6 @@ export class ClientFormContainerComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('destroing');
     this.formController.reset();
   }
 }

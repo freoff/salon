@@ -1,4 +1,4 @@
-<ion-split-pane when="xl" contentId="menu-content">
+<ion-split-pane when="xs" contentId="menu-content">
   <!--<div class="white">DUPA</div>-->
   <ion-menu contentId="menu-content" menuId="mainMenu" type="overlay">
     <ion-header [translucent]="false">
@@ -31,13 +31,15 @@
           <ion-item-divider>
             <ion-icon color="primary" slot="start" name="person"></ion-icon>
             <ion-label color="primary" text-center>
-              <ion-text text-center><h1 style="display: inline">Ustawienia</h1></ion-text>
+              <ion-text text-center><h1 style="display: inline">{{'layouts.navigations.labels.settings' | translate}}</h1></ion-text>
             </ion-label>
           </ion-item-divider>
-          <ion-item detail routerLink="/settings" routerLinkActive="url-active">
-            <ion-label>Ustawienia</ion-label>
-            <ion-icon slot="start" name="search"></ion-icon>
-          </ion-item>
+          <ion-menu-toggle [autoHide]="false">
+            <ion-item  routerLink="/settings" routerLinkActive="url-active" routerDirection="root">
+              <ion-label>{{'layouts.navigations.labels.settings' | translate}}</ion-label>
+              <ion-icon slot="start" name="search"></ion-icon>
+            </ion-item>
+          </ion-menu-toggle>
         </ion-item-group>
       </ion-list>
     </ion-content>

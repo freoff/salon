@@ -10,7 +10,7 @@ import * as fromClientEvents from '../clients/clientEvents/client-event.reducer'
 export interface State {
   client: fromClient.State;
   router: RouterReducerState;
-  application: fromApplication.State;
+  application: fromApplication.ApplicationState;
   authorization: fromAuthorization.AuthorizationState;
   clientPage: fromClientPage.ClientPageState;
   clientEvents: fromClientEvents.State;
@@ -28,5 +28,6 @@ export const reducers: ActionReducerMap<State> = {
 export const getClients = (state: State) => state.client;
 export const getClientEvents = (state: State) => state.clientEvents;
 export const getClientsPageState = (state: State) => state.clientPage;
+export const getApplicationState = (state: State) => state.application;
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
