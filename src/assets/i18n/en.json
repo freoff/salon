@@ -7,15 +7,19 @@
 	"clients": {
 		"details": {
 			"labels": {
+				"abortDelete": "",
 				"addNote": "",
 				"addNoteHere": "",
 				"call": "Call",
 				"cancel": "",
 				"delete": "Remove",
+				"deleteClient": "",
 				"edit": "Edit",
 				"hideNotes": "Hide",
+				"noNotes": "",
 				"notes": "Notes",
 				"previousVisit": "Previous visits",
+				"removeClientHeader": "",
 				"showNotes": "Show notes",
 				"update": ""
 			}
@@ -58,6 +62,13 @@
 	"email": "Email",
 	"female": "female",
 	"fname": "First name",
+	"layouts": {
+		"navigations": {
+			"labels": {
+				"settings": ""
+			}
+		}
+	},
 	"lname": "Last name",
 	"male": "Male",
 	"notes": "Notes",

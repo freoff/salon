@@ -6,7 +6,13 @@ export enum ApplicationActionTypes {
   LoadApplications = '[Application] Load Applications',
   GoTo = '[Application] Go to',
   DisplayToast = '[Application] Display Toast',
+  SaveApplicationSetting = '[Settings page] save settings change',
 }
+
+export class SaveApplicationSetting {
+  readonly type = ApplicationActionTypes.SaveApplicationSetting;
+}
+
 
 export class DisplayToast implements Action {
   readonly type = ApplicationActionTypes.DisplayToast;

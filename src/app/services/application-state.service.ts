@@ -5,6 +5,7 @@ import { LoadAllClients } from '../state/clients/page/client-page.actions';
 import { ToastOptions } from '@ionic/core';
 import { DisplayToast } from '../state/application/application.actions';
 import { TranslateService } from '@ngx-translate/core';
+import { ApplicationSettingsFormInterface } from '../settings/application-setting-form.controller';
 
 @Injectable({
   providedIn: 'root',
@@ -26,5 +27,9 @@ export class ApplicationStateService {
         // .pipe(map((translations) => translations))
         .toPromise()
     );
+  }
+
+  saveSettings(applicationSettings: ApplicationSettingsFormInterface) {
+    this.store.dispatch(new SaveApplicationSetting({ applicationSettings }));
   }
 }

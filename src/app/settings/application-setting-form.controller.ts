@@ -1,17 +1,19 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ApplicationSettingsComponent } from './components/application-settings/application-settings.component';
-import {SettingsPageModule} from './settings.module';
+import { SettingsPageModule } from './settings.module';
+import { Observable } from 'rxjs';
 
-@Injectable({ providedIn: SettingsPageModule })
-export class ApplicationSettingsController {
+@Injectable()
+export class ApplicationSettingsFormController {
   _form: FormGroup;
+
   constructor(private fb: FormBuilder) {
     this.init();
   }
+
   init() {
     this._form = this.fb.group({
-      language: ['PL'],
+      language: ['pl'],
       currency: ['PLN'],
     });
   }
@@ -19,4 +21,21 @@ export class ApplicationSettingsController {
   isValid() {
     return this._form.valid;
   }
+
+  onChangeLanguage(): Observable<string> {
+    return this._form.get('language').valueChanges;
+  }
+
+  getForm() {
+    return this.form;
+  }
+
+  get form() {
+    return this._form;
+  }
+}
+
+export interface ApplicationSettingsFormInterface {
+  language: string;
+  currency: string;
 }
