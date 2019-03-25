@@ -22,7 +22,7 @@ export const applicationSettingsSchema: RxJsonSchema = {
 export const applicationSettingsMethods: ApplicationSettingsMethods = {
   getApplicationSettings: function(this: ApplicationSettingsDoc): ApplicationSetting {
     return {
-      language: this.language,
+      applicationLanguage: this.applicationLanguage,
       currency: this.currency,
     };
   },

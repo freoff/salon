@@ -4,12 +4,14 @@ import { Client } from '../../../../clients/models/client.interface';
 
 export interface State extends EntityState<Client> {
   // additional entities state properties
+  clientsLoaded: boolean;
 }
 
 export const adapter: EntityAdapter<Client> = createEntityAdapter<Client>();
 
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
+  clientsLoaded: false,
 });
 
 export function reducer(state = initialState, action: ClientActions): State {
@@ -47,7 +49,7 @@ export function reducer(state = initialState, action: ClientActions): State {
     }
 
     case ClientActionTypes.LoadClients: {
-      return adapter.addAll(action.payload.clients, state);
+      return adapter.addAll(action.payload.clients, {...state, clientsLoaded: true});
     }
 
     case ClientActionTypes.ClearClients: {

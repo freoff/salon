@@ -63,9 +63,9 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <app-client-events (addClientEvent)="addClientEvent($event)"></app-client-events>
+    <app-client-events (addClientEvent)="addClientEvent($event)" [currency]="currency"></app-client-events>
 
-    <ion-list *ngIf="length > 0 && (clientEventToDisplay | async) as clientEvents">
+    <ion-list *ngIf="length > 0 && (clientEventToDisplay() | async) as clientEvents">
       <ng-container *ngFor="let ce of clientEvents; trackBy: trackEventsBy">
         <ion-item
           button
@@ -97,7 +97,7 @@
         </ion-item>
       </ng-container>
 
-      <ion-list *ngIf="showPager">
+      <ion-list *ngIf="showPager()">
         <div class="wrapper" fxLayoutAlign="end start">
           <pagination
             [totalItems]="length"

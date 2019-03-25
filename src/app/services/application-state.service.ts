@@ -3,9 +3,21 @@ import { Store } from '@ngrx/store';
 import { State } from '../state/reducers';
 import { LoadAllClients } from '../state/clients/page/client-page.actions';
 import { ToastOptions } from '@ionic/core';
-import { DisplayToast } from '../state/application/application.actions';
+import {
+  DisplayToast,
+  LoadApplicationSettings,
+  SaveApplicationSetting,
+} from '../state/application/application.actions';
 import { TranslateService } from '@ngx-translate/core';
 import { ApplicationSettingsFormInterface } from '../settings/application-setting-form.controller';
+import {
+  getAplicationCurrency,
+  getApplicationLanaguage,
+  isApplicationReady,
+} from '../state/selectors/appliation.selectors';
+import { filter } from 'rxjs/operators';
+import { first } from 'rxjs/internal/operators/first';
+import { getCurrency } from '../state/application/application.reducer';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +26,7 @@ export class ApplicationStateService {
   constructor(private store: Store<State>, private translateService: TranslateService) {}
   initializeAppData() {
     this.store.dispatch(new LoadAllClients());
+    this.store.dispatch(new LoadApplicationSettings());
   }
   showToast(toastOptions?: Partial<ToastOptions>) {
     this.translateMessage({ message: toastOptions.message }).then(() =>
@@ -31,5 +44,18 @@ export class ApplicationStateService {
 
   saveSettings(applicationSettings: ApplicationSettingsFormInterface) {
     this.store.dispatch(new SaveApplicationSetting({ applicationSettings }));
+  }
+  applicationReady() {
+    return this.store.select(isApplicationReady).pipe(
+      filter((ready) => ready),
+      first(),
+    );
+  }
+
+  getApplicationLanguage() {
+    return this.store.select(getApplicationLanaguage);
+  }
+  getApplicationCurrency() {
+    return this.store.select(getAplicationCurrency);
   }
 }

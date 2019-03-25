@@ -8,16 +8,23 @@
 </ion-header>
 
 <ion-content padding>
-  <section >
+  <section>
     <h1></h1>
-    <section fxFlex="1 1 100%" justify-content-center>
-
-      <ion-card sizeSm="6">
-        <ion-card-content>
-
-          <app-application-settings-container></app-application-settings-container>
-        </ion-card-content>
-      </ion-card>
-    </section>
+    <ion-grid>
+      <ion-row justify-content-center>
+        <ion-col size="12" sizeSm="10" sizeMd="10" sizeLg="12">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>
+                {{ 'applicationSettings.labels.header' | translate }}
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <app-application-settings-container></app-application-settings-container>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </section>
 </ion-content>

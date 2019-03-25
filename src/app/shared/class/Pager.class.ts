@@ -1,9 +1,9 @@
-import { ReplaySubject } from 'rxjs';
+import { Observable, ReplaySubject } from 'rxjs';
 
 export class Pager<T> {
-  private _data = new ReplaySubject(1);
+  private _data = new ReplaySubject<Array<T>>(1);
 
-  get data() {
+  get data(): Observable<Array<T>> {
     return this._data.asObservable();
   }
 

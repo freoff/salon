@@ -11,11 +11,18 @@ export class ApplicationSettingsComponent implements OnInit {
   @Output() saveSettings = new EventEmitter<any>();
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.form.valueChanges.subscribe(() => this.saveSettings.emit());
+  }
 
 
 
   onApplicationSettingFormSubmit() {
     this.saveSettings.emit();
   }
+
+  onSaveSettings() {
+
+  }
+
 }

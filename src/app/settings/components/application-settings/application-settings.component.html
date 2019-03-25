@@ -1,11 +1,27 @@
 <form [formGroup]="form" (ngSubmit)="onApplicationSettingFormSubmit()">
   <ion-list>
-    <ion-item>
-      <ion-label position="stacked">{{ 'applicationSetting.labels.locale' }} | translate</ion-label>
-      <ion-select formControlName="language">
-        <ion-select-option value="pl" [selected]="default">Polski</ion-select-option>
-        <ion-select-option value="en">English</ion-select-option>
-      </ion-select>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" sizeSm>
+          <ion-item>
+            <ion-label position="stacked">{{ 'applicationSetting.labels.locale' | translate }}</ion-label>
+            <ion-select interface="popover" formControlName="applicationLanguage">
+              <ion-select-option value="pl">Polski</ion-select-option>
+              <ion-select-option value="en">English</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" sizeSm>
+          <ion-item>
+            <ion-label position="stacked">{{ 'applicationSetting.labels.currency' | translate }}</ion-label>
+            <ion-select interface="popover" formControlName="currency">
+              <ion-select-option value="PLN">PLN</ion-select-option>
+              <ion-select-option value="&euro;">EUR</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
   </ion-list>
 </form>

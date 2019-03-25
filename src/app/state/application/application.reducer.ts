@@ -1,26 +1,38 @@
 import { ApplicationActions, ApplicationActionTypes } from './application.actions';
 
 export interface ApplicationState {
-  language: string;
+  applicationLanguage: string;
   currency: string;
-
+  applicationSettingsLoaded: boolean;
 }
 
 export const initialState: ApplicationState = {
-  language: 'pl',
+  applicationLanguage: 'pl',
   currency: 'PLN',
+  applicationSettingsLoaded: false,
 };
 
 export function reducer(state = initialState, action: ApplicationActions): ApplicationState {
   switch (action.type) {
     case ApplicationActionTypes.LoadApplications:
       return state;
+    case ApplicationActionTypes.SaveApplicationSetting:
+    case ApplicationActionTypes.LoadApplicationSettingsSuccess:
+      if (action.payload.applicationSettings) {
+        return {
+          ...state,
+          applicationSettingsLoaded: true,
+          applicationLanguage: action.payload.applicationSettings.applicationLanguage,
+          currency: action.payload.applicationSettings.currency,
+        };
+      } else {
+        return { ...state };
+      }
 
     default:
       return state;
   }
 }
 
-export const getLanguage = (state: ApplicationState) => state.language;
-export const getCurrency= (state: ApplicationState) => state.currency;
-
+export const getLanguage = (state: ApplicationState) => state.applicationLanguage;
+export const getCurrency = (state: ApplicationState) => state.currency;

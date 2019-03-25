@@ -8,6 +8,8 @@ import { ApplicationStateService } from './services/application-state.service';
 import { TranslateService } from '@ngx-translate/core';
 import { RxdbService } from './services/rxdb.service/rxdb.service';
 import { APP_ROUTES } from './app-named-route';
+import { distinctUntilChanged, filter } from 'rxjs/operators';
+import { tap } from 'rxjs/internal/operators/tap';
 
 @Component({
   selector: 'app-root',
@@ -34,11 +36,26 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.translateService.setDefaultLang('pl');
       this.mainMenu = await this.menuController.get('mainMenu');
+      this.applicationStateService.applicationReady().subscribe((ready) => this.applicationReady());
+      this.applicationStateService
+        .getApplicationLanguage()
+        .pipe(
+          filter((lang) => !!lang),
+          distinctUntilChanged(),
+          tap(console.log),
+          tap((lang) => this.translateService.use(lang.toLowerCase())),
+        )
+        .subscribe();
       this.applicationStateService.initializeAppData();
     });
   }
   private async show() {
     await this.router.navigate(APP_ROUTES.clients.list);
+    this.splashScreen.hide();
+  }
+
+  applicationReady() {
+    console.log('Application ready, clients, settings loaded');
     this.splashScreen.hide();
   }
 }

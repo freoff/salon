@@ -1,7 +1,7 @@
 import {RxCollection, RxDocument} from 'rxdb';
 
 export interface ApplicationSetting {
-    language: string;
+    applicationLanguage: string;
     currency: string;
 }
 export interface ApplicationSettingsMethods {

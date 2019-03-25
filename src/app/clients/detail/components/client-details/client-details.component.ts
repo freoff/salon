@@ -7,6 +7,7 @@ import { distinctUntilChanged, filter, take, tap } from 'rxjs/operators';
 import { Pager } from '../../../../shared/class/Pager.class';
 import { ActionSheetController, PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-client-details',
@@ -16,6 +17,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class ClientDetailsComponent implements OnInit {
   private CLIENT_EVENTS_PAGE_SIEZE = 10;
   @Input() client: Client;
+  @Input() currency;
   @Output() deleteClientEvent = new EventEmitter<ClientEvent>();
   _clientEvents: ClientEvent[];
   length;
@@ -29,14 +31,14 @@ export class ClientDetailsComponent implements OnInit {
   @Output() editClient = new EventEmitter<Client>();
   @Output() deleteClient = new EventEmitter<Client>();
   displayNotesCheckbox = false;
-  pager = new Pager(this.CLIENT_EVENTS_PAGE_SIEZE);
+  pager = new Pager<ClientEvent>(this.CLIENT_EVENTS_PAGE_SIEZE);
   public expandedRow: string;
   constructor(
     private clientStateService: ClientStateService,
     public actionSheetController: ActionSheetController,
     private translationService: TranslateService,
   ) {}
-  get clientEventToDisplay() {
+  clientEventToDisplay(): Observable<Array<ClientEvent>> {
     return this.pager.data.pipe(
       distinctUntilChanged(),
       filter((data) => !!data),
@@ -73,7 +75,7 @@ export class ClientDetailsComponent implements OnInit {
   changePage($event: PageChangedEvent) {
     this.pager.goToPage($event.page);
   }
-  get showPager() {
+  showPager() {
     return this.length && this.length > this.CLIENT_EVENTS_PAGE_SIEZE;
   }
   onDeleteClientEvent(clientEvent: ClientEvent) {

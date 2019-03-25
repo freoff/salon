@@ -1,4 +1,5 @@
-<ion-content [formGroup]="form" padding>
+<ion-content padding>
+  <form [formGroup]="form" (ngSubmit)="add()">
   <ion-list>
     <ion-title>
       <ion-label>{{ 'clients.events.labels.title' | translate }}</ion-label>
@@ -19,6 +20,7 @@
         autofocus="true"
         placeholder="{{ 'clients.events.placeholders.price' | translate }}"
       ></ion-input>
+      <ion-text slot="end">{{currency}}</ion-text>
     </ion-item>
     <ion-item *ngIf="showPriceError()">
       <ion-text color="danger" class="form-error">
@@ -36,7 +38,8 @@
     </ion-item>
   </ion-list>
   <section fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="10px">
-    <ion-button fill="clear" (click)="cancel()">{{ 'commons.labels.cancel' | translate }}</ion-button>
-    <ion-button color="success" (click)="add()">{{ 'commons.labels.add' | translate }}</ion-button>
+    <ion-button type="button" fill="clear" (click)="cancel()">{{ 'commons.labels.cancel' | translate }}</ion-button>
+    <ion-button  type="submit" color="success" (click)="add()">{{ 'commons.labels.add' | translate }}</ion-button>
   </section>
+  </form>
 </ion-content>

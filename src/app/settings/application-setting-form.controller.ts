@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { SettingsPageModule } from './settings.module';
 import { Observable } from 'rxjs';
+import { ApplicationSetting } from '../services/rxdb.service/collections/applicationSettings.collection';
 
 @Injectable()
 export class ApplicationSettingsFormController {
@@ -13,7 +14,7 @@ export class ApplicationSettingsFormController {
 
   init() {
     this._form = this.fb.group({
-      language: ['pl'],
+      applicationLanguage: ['pl'],
       currency: ['PLN'],
     });
   }
@@ -23,7 +24,7 @@ export class ApplicationSettingsFormController {
   }
 
   onChangeLanguage(): Observable<string> {
-    return this._form.get('language').valueChanges;
+    return this._form.get('applicationLanguage').valueChanges;
   }
 
   getForm() {
@@ -33,9 +34,19 @@ export class ApplicationSettingsFormController {
   get form() {
     return this._form;
   }
+  getSettings(): ApplicationSetting {
+    return {
+      currency: this.form.get('currency').value,
+      applicationLanguage: this.form.get('applicationLanguage').value,
+    };
+  }
+
+  update(lang: string, currency: string) {
+    this.form.patchValue({ applicationLanguage: lang, currency: currency }, {emitEvent: false});
+  }
 }
 
 export interface ApplicationSettingsFormInterface {
-  language: string;
+  applicationLanguage: string;
   currency: string;
 }

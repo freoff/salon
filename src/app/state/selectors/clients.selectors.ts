@@ -46,3 +46,4 @@ export const getClientEvents = createSelector(
   getAllEvents,
   (clientId, events) => events.filter((event) => event.client === clientId),
 );
+export const getClientsAreLoaded = createSelector(getClients, state => state.clientsLoaded)
