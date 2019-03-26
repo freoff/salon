@@ -2,8 +2,20 @@
 	"ClientDoNotExist": "Ten klient nie istnieje",
 	"addClientEvent": "Dodaj wizytę klienta",
 	"addInformationAboutClient": "Dodaj informację o nowy kliencie",
+	"applicationSettings": {
+		"labels": {
+			"backup": "Utwórz kopie zapasową",
+			"backupAndRestoreHeader": "Kopia zapasowa i przywracanie danych",
+			"backupTip": "Tworzy kopie zapasową aktualnych danych klientów, wizyt i ustawień aplikacji",
+			"currency": "Waluta",
+			"header": "Ustawienia aplikacji",
+			"locale": "Język",
+			"restore": "Przywróć z kopi zaposowej",
+			"restoreTip": "Przywraca kopie zapasową aplikacji. Do poprawnego przywrócenia danych niezbędne jest wyczyszczenie danych aplikaji w ustawieniach urządzenia. Operacji nie można cofnąć!!"
+		}
+	},
 	"cell": "Komórkowy",
-	"client": "Klient",
+	"client": "Klienci",
 	"clientList": "Lista klientów",
 	"clientNotes": "Notatki",
 	"clients": {
@@ -90,6 +102,10 @@
 	},
 	"lname": "Nazwisko",
 	"male": "Mężczyzna",
+	"messages": {
+		"restoreDBFail": "Kopie zapasowa nie może zostać przywrócona. Usuń dane aplikacji i spróbuj ponownie",
+		"restoreDBSuccess": "Kopia zapasowa została przywrócona"
+	},
 	"nav": {
 		"add": "Dodaj",
 		"edit": "Edytuj",

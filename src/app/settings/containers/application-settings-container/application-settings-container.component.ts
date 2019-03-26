@@ -38,4 +38,11 @@ export class ApplicationSettingsContainerComponent implements OnInit {
       this.formController.update(lang, currency),
     );
   }
+  backupDb() {
+    this.state.backupDB();
+  }
+
+  restore(jsonBackup: string) {
+    this.state.restoreDB(jsonBackup);
+  }
 }

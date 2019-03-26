@@ -10,7 +10,17 @@ export enum ApplicationActionTypes {
   SaveApplicationSetting = '[Settings page] Save application settings',
   LoadApplicationSettings = '[Initialize app] Load application settings',
   LoadApplicationSettingsSuccess = '[Request response] load settings change',
-  SetAndSaveDefaultSettings = '[Application settings] set and save default settings',
+  CreateBackup = '[Application settings] Create backup',
+  RestoreBackup = '[Application settings] Restore backup',
+}
+
+export class CreateBackup {
+  readonly type = ApplicationActionTypes.CreateBackup;
+  public constructor() {}
+}
+export class RestoreBackup {
+  readonly type = ApplicationActionTypes.RestoreBackup;
+  public constructor(public payload: { json: string }) {}
 }
 
 export class LoadApplicationSettings {
@@ -19,7 +29,7 @@ export class LoadApplicationSettings {
 }
 export class LoadApplicationSettingsSuccess {
   readonly type = ApplicationActionTypes.LoadApplicationSettingsSuccess;
-  public constructor(public payload: {applicationSettings: ApplicationSetting}) {}
+  public constructor(public payload: { applicationSettings: ApplicationSetting }) {}
 }
 export class SaveApplicationSetting {
   readonly type = ApplicationActionTypes.SaveApplicationSetting;

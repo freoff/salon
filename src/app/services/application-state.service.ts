@@ -4,8 +4,9 @@ import { State } from '../state/reducers';
 import { LoadAllClients } from '../state/clients/page/client-page.actions';
 import { ToastOptions } from '@ionic/core';
 import {
+  CreateBackup,
   DisplayToast,
-  LoadApplicationSettings,
+  LoadApplicationSettings, RestoreBackup,
   SaveApplicationSetting,
 } from '../state/application/application.actions';
 import { TranslateService } from '@ngx-translate/core';
@@ -57,5 +58,13 @@ export class ApplicationStateService {
   }
   getApplicationCurrency() {
     return this.store.select(getAplicationCurrency);
+  }
+
+  backupDB() {
+    this.store.dispatch(new CreateBackup());
+  }
+
+  restoreDB(jsonBackup: string) {
+    this.store.dispatch(new RestoreBackup({json: jsonBackup}))
   }
 }

@@ -2,33 +2,45 @@
 	"ClientDoNotExist": "This client dose not exist.",
 	"addClientEvent": "Add new visit",
 	"addInformationAboutClient": "Add information about client",
-	"client": "Client",
+	"applicationSettings": {
+		"labels": {
+			"backup": "Create application backup",
+			"backupAndRestoreHeader": "Backup/Restore application",
+			"backupTip": "",
+			"currency": "Currency",
+			"header": "Safety backup",
+			"locale": "",
+			"restore": "Restore",
+			"restoreTip": ""
+		}
+	},
+	"client": "Clients",
 	"clientList": "Clients list",
 	"clients": {
 		"details": {
 			"labels": {
-				"abortDelete": "",
-				"addNote": "",
-				"addNoteHere": "",
+				"abortDelete": "Cancel",
+				"addNote": "Add note",
+				"addNoteHere": "Add note about client here...",
 				"call": "Call",
-				"cancel": "",
+				"cancel": "Cancel",
 				"delete": "Remove",
-				"deleteClient": "",
+				"deleteClient": "Delete client",
 				"edit": "Edit",
 				"hideNotes": "Hide",
-				"noNotes": "",
+				"noNotes": "Notes not availble",
 				"notes": "Notes",
 				"previousVisit": "Previous visits",
-				"removeClientHeader": "",
+				"removeClientHeader": "Remove client",
 				"showNotes": "Show notes",
-				"update": ""
+				"update": "Update"
 			}
 		},
 		"edits": {
 			"labels": {
-				"addClient": "",
-				"number": "",
-				"updateClient": ""
+				"addClient": "Add client",
+				"number": "Phone number",
+				"updateClient": "Update client"
 			}
 		},
 		"event": {
@@ -44,18 +56,16 @@
 				"title": ""
 			},
 			"placeholders": {
-				"notes": "",
-				"price": ""
+				"notes": "Notes",
+				"price": "Price"
 			}
-		},
-		"js": "",
-		"jss": ""
+		}
 	},
 	"commons": {
-		"cancel": "",
+		"cancel": "Cancel",
 		"labels": {
-			"add": "",
-			"cancel": ""
+			"add": "Add",
+			"cancel": "Cancel"
 		}
 	},
 	"details": "Details",
@@ -65,7 +75,7 @@
 	"layouts": {
 		"navigations": {
 			"labels": {
-				"settings": ""
+				"settings": "Settings"
 			}
 		}
 	},
@@ -75,5 +85,10 @@
 	"notesTooltip": "Here you can add your private notes about this client.",
 	"number": "Phone number",
 	"phones": "Phones",
-	"updateClientData": "Edit"
+	"updateClientData": "Edit",
+	"nav": {
+		"add": "Add",
+		"edit": "Change",
+		"list": "List"
+	}
 }

@@ -4,7 +4,7 @@
       <ion-row>
         <ion-col size="12" sizeSm>
           <ion-item>
-            <ion-label position="stacked">{{ 'applicationSetting.labels.locale' | translate }}</ion-label>
+            <ion-label position="stacked">{{ 'applicationSettings.labels.locale' | translate }}</ion-label>
             <ion-select interface="popover" formControlName="applicationLanguage">
               <ion-select-option value="pl">Polski</ion-select-option>
               <ion-select-option value="en">English</ion-select-option>
@@ -13,7 +13,7 @@
         </ion-col>
         <ion-col size="12" sizeSm>
           <ion-item>
-            <ion-label position="stacked">{{ 'applicationSetting.labels.currency' | translate }}</ion-label>
+            <ion-label position="stacked">{{ 'applicationSettings.labels.currency' | translate }}</ion-label>
             <ion-select interface="popover" formControlName="currency">
               <ion-select-option value="PLN">PLN</ion-select-option>
               <ion-select-option value="&euro;">EUR</ion-select-option>
@@ -21,6 +21,17 @@
           </ion-item>
         </ion-col>
       </ion-row>
+
+    </ion-grid>
+    <ion-grid>
+      <h1>{{'applicationSettings.labels.backupAndRestoreHeader' | translate}}</h1>
+       <ion-col>
+         <p>{{'applicationSettings.labels.backupTip' | translate}}</p>
+         <ion-button type="button" fill="block" (click)="backupDB.emit()">{{'applicationSettings.labels.backup' | translate}}</ion-button>
+         <p>{{'applicationSettings.labels.restoreTip' | translate}}</p>
+         <ion-button type="button" fill="block" (click)="restoreBackup(fileInput)">{{'applicationSettings.labels.restore' | translate}}</ion-button>
+         <input #fileInput type="file" (change)="fileSelected($event)" hidden>
+       </ion-col>
     </ion-grid>
 
   </ion-list>

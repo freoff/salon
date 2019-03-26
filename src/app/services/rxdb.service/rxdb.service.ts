@@ -38,7 +38,16 @@ export class RxdbService {
       window['d'] = this._dbConnection;
     }
   }
-
+  removeDB() {
+    return this._dbConnection.remove();
+    // return this.getDb()
+    //   .then((db) => db.destroy())
+    //   .then(() => {
+    //     this.activeConnection.next(null);
+    //     this.dbCreateInProgress = false;
+    //     return this.initializeDB().then(() => this._dbConnection);
+    //   });
+  }
   private async initializeCollections() {
     await this._dbConnection.collection({
       name: 'clients',
