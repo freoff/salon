@@ -9,9 +9,9 @@
         </small>
       </ion-button>
     </h1>
-    <ion-item style="--min-height: 50px" class="">
-      <section fxLayout="column" fxLayoutAlign="start start">
-        <ion-text class="text-left">
+    <ion-item style="--min-height: 50px" class="" (click)="toggleEditMessage()">
+      <section fxLayout="column" fxLayoutAlign="start start" >
+        <ion-text class="text-left" >
           <span [innerHTML]="clientNotes | async | nl2br"></span>
         </ion-text>
       </section>

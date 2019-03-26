@@ -1,4 +1,7 @@
 .add-client-event-popover {
   --width: 500px;
   --max-width: 90%;
+  .popover-content {
+    top: 20px !important;
+  }
 }
