@@ -26,7 +26,6 @@ export class RxdbClientRepository implements ClientRepositoryInterface {
             .exec()
             .then((clientDoc) =>
               clientDoc.atomicUpdate((oldData) => {
-                console.log(`old ${oldData}\n client: ${client}`);
                 return { ...oldData, ...client };
               }),
             ),

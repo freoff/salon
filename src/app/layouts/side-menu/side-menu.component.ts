@@ -11,8 +11,4 @@ export class SideMenuComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
-  changeRoute($event) {
-    console.log($event);
-    // this.mainMenu.close();
-  }
 }
