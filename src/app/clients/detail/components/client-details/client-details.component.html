@@ -79,7 +79,7 @@
 
     <ion-list *ngIf="length > 0 && (clientEventToDisplay() | async) as clientEvents">
       <ng-container *ngFor="let ce of clientEvents; trackBy: trackEventsBy">
-        <ion-item-sliding>
+        <ion-item-sliding #slideItem>
         <ion-item
           button
           detail
@@ -96,7 +96,7 @@
           <span slot="end">{{ ce.price.amount / 100 }} {{ ce.price.currency }}</span>
         </ion-item>
           <ion-item-options side="end">
-            <ion-item-option color="danger" (click)="onDeleteClientEvent(ce)">
+            <ion-item-option color="danger" (click)="onDeleteClientEvent(ce, slideItem )">
               {{ 'clients.details.labels.delete' | translate }}
             </ion-item-option>
           </ion-item-options>

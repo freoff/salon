@@ -25,6 +25,7 @@ import { isEmpty } from 'underscore';
 import { ClientFormController } from '../../../services/client-form.controller';
 import { FormState } from '../../../types/form-status.enum';
 import { FormArray } from '@angular/forms';
+import { NavController } from '@ionic/angular';
 
 @Injectable()
 export class ClientPageEffects {
@@ -66,10 +67,12 @@ export class ClientPageEffects {
       ),
     ),
   );
-  @Effect()
+  @Effect({dispatch: false})
   goToClientDetails$ = this.actions$.pipe(
     ofType<GoToClientDetails>(ClientPageActionTypes.GoToClientDetails),
-    mergeMap((action) => [new GoTo({ navigationUrl: APP_ROUTES.clients.details(action.payload.client.id) })]),
+    tap((action) => this.navCtrl.navigateRoot(APP_ROUTES.clients.details(action.payload.client.id), {})),
+    // mergeMap((action) => [new GoTo({ navigationUrl: APP_ROUTES.clients.details(action.payload.client.id) })]),
+
   );
 
   @Effect()
@@ -102,6 +105,7 @@ export class ClientPageEffects {
     private actions$: Actions,
     private clientStateService: ClientStateService,
     private clientFormController: ClientFormController,
+    private navCtrl: NavController
   ) {}
   @Effect()
   editClient$ = this.actions$.pipe(

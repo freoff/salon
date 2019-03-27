@@ -5,7 +5,7 @@ import { ClientStateService } from '../../../../services/client-state.service';
 import { PageChangedEvent } from 'ngx-bootstrap';
 import { distinctUntilChanged, filter, take, tap } from 'rxjs/operators';
 import { Pager } from '../../../../shared/class/Pager.class';
-import { ActionSheetController, IonTextarea, PopoverController } from '@ionic/angular';
+import { ActionSheetController, IonItemSliding, IonTextarea, PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
@@ -80,9 +80,6 @@ export class ClientDetailsComponent implements OnInit {
   showPager() {
     return this.length && this.length > this.CLIENT_EVENTS_PAGE_SIEZE;
   }
-  onDeleteClientEvent(clientEvent: ClientEvent) {
-    this.deleteClientEvent.emit(clientEvent);
-  }
 
   onEditClient(client: Client) {
     this.editClient.emit(client);
@@ -132,5 +129,12 @@ export class ClientDetailsComponent implements OnInit {
     } else {
       return 3;
     }
+  }
+  // FIX bug in ionic that allow remove only one item from list via sliding
+  onDeleteClientEvent(ce: ClientEvent, slideItem: IonItemSliding) {
+    slideItem.closeOpened();
+    this.deleteClientEvent.emit(ce);
+
+
   }
 }

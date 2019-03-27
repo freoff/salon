@@ -42,7 +42,7 @@ export class ClientFormContainerComponent implements OnInit, OnDestroy {
     }
   }
 
-  updateClient() {
+  updateClient(event) {
     if (this.formController.isValid()) {
       this.clientState.updateClient({ client: this.formController.getValue() as ClientFormInterface });
     } else {
