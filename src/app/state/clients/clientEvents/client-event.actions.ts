@@ -39,7 +39,7 @@ export class StartAddClientEvent implements Action {
 }
 export class UpdateClientEventData {
   readonly type = ClientEventActionTypes.UpdateClientEventData;
-  constructor(public payload: { newText: string; eventId: any }) {}
+  constructor(public payload: { newText: string; eventId: any } | ClientEvent) {}
 }
 
 export class FetchClientEvents implements Action {

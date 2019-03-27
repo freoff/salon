@@ -27,9 +27,10 @@ export class ClientDetailsComponent implements OnInit {
     this.pager.setCollection(ce);
   }
   @Output() call = new EventEmitter<{ number: string }>();
-  @Output() saveNote = new EventEmitter<string>();
+  @Output() saveNote = new EventEmitter<any>();
   @Output() editClient = new EventEmitter<Client>();
   @Output() deleteClient = new EventEmitter<Client>();
+  @Output() editClientEvent = new EventEmitter<ClientEvent>();
   @Output() updateClientEvent = new EventEmitter<{ newText: string; eventId: any }>();
   displayNotesCheckbox = false;
   pager = new Pager<ClientEvent>(this.CLIENT_EVENTS_PAGE_SIEZE);
@@ -136,5 +137,10 @@ export class ClientDetailsComponent implements OnInit {
     this.deleteClientEvent.emit(ce);
 
 
+  }
+
+  onClientEventEdit(ce: ClientEvent, slideItem: IonItemSliding) {
+     slideItem.closeOpened();
+     this.editClientEvent.emit(ce);
   }
 }

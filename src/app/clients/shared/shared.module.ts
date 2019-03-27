@@ -9,7 +9,7 @@ import { FlexModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [ClientEventsComponent, ClientEventFormComponent],
-  exports: [ClientEventsComponent],
+  exports: [ClientEventsComponent, ClientEventFormComponent],
   imports: [CommonModule, IonicModule, ReactiveFormsModule, TranslateModule.forChild(), FlexModule],
   entryComponents: [ClientEventFormComponent],
 })

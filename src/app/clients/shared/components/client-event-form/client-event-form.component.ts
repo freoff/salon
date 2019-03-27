@@ -1,5 +1,6 @@
 import {
   AfterViewInit,
+  ChangeDetectorRef,
   Component,
   ComponentRef,
   HostBinding,
@@ -8,10 +9,12 @@ import {
   ViewChild,
   ViewChildren,
 } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { IonInput, PopoverController } from '@ionic/angular';
 import { ClientEvent } from '../../../models/client-event';
+import { ClientFormInterface } from '../../../types/client-form.interface';
+import { ClietnEventFormInterface } from '../../../types/clietn-event-form.interface';
 
 @Component({
   selector: 'app-client-event-form',
@@ -22,14 +25,27 @@ export class ClientEventFormComponent implements OnInit, AfterViewInit {
   @HostBinding('style.--width') hostWidth = '50px';
   @Input() event: any;
   @Input() currency = 'PLN';
+  @Input() isUpdate = false;
   @ViewChild('priceInput') priceInput: IonInput;
+  @Input() set clientEvent(ce: ClientEvent) {
+    this._clientEvent = ce;
+    const formData: ClietnEventFormInterface = {
+      eventDate: moment(ce.eventDate).toISOString(),
+      eventNotes: ce.eventNotes,
+      _id: ce._id,
+      price: ce.price.amount / 100,
+    };
+    this.form.patchValue({ ...formData });
+    this.form.setControl('_id', new FormControl(ce._id));
+  }
   form: FormGroup;
+  private _clientEvent: ClientEvent;
 
-  constructor(private formBuilder: FormBuilder, private popOver: PopoverController) {}
-
-  ngOnInit() {
+  constructor(private formBuilder: FormBuilder, private popOver: PopoverController, private chdr: ChangeDetectorRef) {
     this.initForm();
   }
+
+  ngOnInit() {}
 
   ngAfterViewInit(): void {
     setTimeout(() => this.priceInput.setFocus(), 300);
@@ -52,9 +68,11 @@ export class ClientEventFormComponent implements OnInit, AfterViewInit {
   add() {
     this.popOver.dismiss(this.mapFormDataToClientEventObject());
   }
+
   mapFormDataToClientEventObject(): ClientEvent {
     return {
       ...this.form.value,
+      eventDate: moment(this.form.value.eventDate).valueOf(),
       price: {
         amount: this.form.value.price * 100,
         currency: this.currency,

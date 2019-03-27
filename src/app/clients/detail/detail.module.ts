@@ -16,7 +16,10 @@ import {ClientDetailsClientNotesComponent} from './components/client-details-cli
 const routes: Routes = [
   {
     path: '',
-    component: DetailPage,
+    component: DetailPage, children: [
+
+    ]
+
   },
 ];
 

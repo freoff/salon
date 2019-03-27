@@ -53,7 +53,8 @@
 				"date": "Date",
 				"notes": "Notes",
 				"price": "Price",
-				"title": ""
+				"title": "Create new client visit data",
+				"titleUpdate": "Update this event data"
 			},
 			"placeholders": {
 				"notes": "Notes",
@@ -65,7 +66,8 @@
 		"cancel": "Cancel",
 		"labels": {
 			"add": "Add",
-			"cancel": "Cancel"
+			"cancel": "Cancel",
+			"update": "Update"
 		}
 	},
 	"details": "Details",
@@ -81,14 +83,14 @@
 	},
 	"lname": "Last name",
 	"male": "Male",
-	"notes": "Notes",
-	"notesTooltip": "Here you can add your private notes about this client.",
-	"number": "Phone number",
-	"phones": "Phones",
-	"updateClientData": "Edit",
 	"nav": {
 		"add": "Add",
 		"edit": "Change",
 		"list": "List"
-	}
+	},
+	"notes": "Notes",
+	"notesTooltip": "Here you can add your private notes about this client.",
+	"number": "Phone number",
+	"phones": "Phones",
+	"updateClientData": "Edit"
 }

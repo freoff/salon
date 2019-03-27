@@ -57,7 +57,8 @@
 				"date": "Data usługi",
 				"notes": "Dodatkowe informacje",
 				"price": "Wartość usługi",
-				"title": "Dodaj usług dla klienta"
+				"title": "Dodaj usług dla klienta",
+				"titleUpdate": "Popraw dane"
 			},
 			"notes": {
 				"label": "Notatki"
@@ -75,7 +76,8 @@
 			"messageUpdated": "Notatka zostala zapisana",
 			"wasAdded": "Wizyta została dodana",
 			"wasAddedFail": "Dodanie wizyty się nie powiodło",
-			"wasDeleted": "Wizyta usunięta"
+			"wasDeleted": "Wizyta usunięta",
+			"updateSuccess": "Aktualizaja zakończyła się sukcesem"
 		}
 	},
 	"commons": {
@@ -83,7 +85,8 @@
 		"labels": {
 			"add": "Dodaj",
 			"cancel": "Anuluj",
-			"close": "Zamknij"
+			"close": "Zamknij",
+			"update": "Update"
 		}
 	},
 	"details": "Szczegóły klienta",

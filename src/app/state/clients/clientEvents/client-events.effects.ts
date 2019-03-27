@@ -77,8 +77,8 @@ export class ClientEventsEffects {
     ofType<UpdateClientEventData>(ClientEventActionTypes.UpdateClientEventData),
     switchMap((action) =>
       this.clientEventsRepository
-        .updateClientEvent(action.payload.eventId, { eventNotes: action.payload.newText })
-        .pipe(switchMap(() => [new DisplayToast({ toastOptions: { message: 'messages.updateSuccess' } })])),
+        .updateClientEvent(action.payload)
+        .pipe(switchMap(() => [new DisplayToast({ toastOptions: { message: 'clients.messages.updateSuccess' } })])),
     ),
   );
 }

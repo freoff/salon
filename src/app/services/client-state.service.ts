@@ -90,7 +90,7 @@ export class ClientStateService {
         this.store.dispatch(new StartDeleteClient({client}));
     }
 
-  updateClientEvent(changes: {newText: string; eventId: any}) {
+  updateClientEvent(changes: {newText: string; eventId: any} | ClientEvent) {
         this.store.dispatch(new UpdateClientEventData(changes));
   }
 }

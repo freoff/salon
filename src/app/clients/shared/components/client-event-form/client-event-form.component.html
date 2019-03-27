@@ -2,7 +2,8 @@
   <form [formGroup]="form" (ngSubmit)="add()">
   <ion-list>
     <ion-title>
-      <ion-label>{{ 'clients.events.labels.title' | translate }}</ion-label>
+      <ion-label *ngIf="!isUpdate">{{ 'clients.events.labels.title' | translate }}</ion-label>
+      <ion-label *ngIf="isUpdate">{{ 'clients.events.labels.titleUpdate' | translate }}</ion-label>
     </ion-title>
 
     <ion-item lines="none" detail detailIcon="time">
@@ -39,7 +40,8 @@
   </ion-list>
   <section fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="10px">
     <ion-button type="button" fill="clear" (click)="cancel()">{{ 'commons.labels.cancel' | translate }}</ion-button>
-    <ion-button  type="submit" color="success" (click)="add()">{{ 'commons.labels.add' | translate }}</ion-button>
+    <ion-button *ngIf="!isUpdate" type="submit" color="success" (click)="add()">{{ 'commons.labels.add' | translate }}</ion-button>
+    <ion-button *ngIf="isUpdate" type="submit" color="success" (click)="add()">{{ 'commons.labels.update' | translate }}</ion-button>
   </section>
   </form>
 </ion-content>

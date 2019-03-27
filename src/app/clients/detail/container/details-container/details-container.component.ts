@@ -4,6 +4,10 @@ import { PhoneService } from '../../../../services/phone.service';
 import { ClientEvent } from '../../../models/client-event';
 import { Client } from '../../../models/client.interface';
 import { ApplicationStateService } from '../../../../services/application-state.service';
+import { ClientEventFormPopoverCreator } from '../../../shared/ClientEventFormPopoverCreator.class';
+import { first, switchMap } from 'rxjs/operators';
+import { from } from 'rxjs/internal/observable/from';
+import { tap } from 'rxjs/internal/operators/tap';
 
 @Component({
   selector: 'app-details-container',
@@ -19,6 +23,7 @@ export class DetailsContainerComponent implements OnInit {
     private applicationStateService: ApplicationStateService,
     private clientStateService: ClientStateService,
     private phoneService: PhoneService,
+    private clientEventPopover: ClientEventFormPopoverCreator,
   ) {}
 
   ngOnInit() {}
@@ -44,5 +49,19 @@ export class DetailsContainerComponent implements OnInit {
 
   updateClientEvent($event: { newText: string; eventId: any }) {
     this.clientStateService.updateClientEvent($event);
+  }
+
+  editClientEvent(clientEvent: ClientEvent) {
+    console.log('creta ce form', clientEvent);
+    this.currency$
+      .pipe(
+        switchMap((currency) => from(this.clientEventPopover.createUpdateForm(clientEvent, currency))),
+        first(),
+
+      )
+      .subscribe(data => {
+        console.log('resolve this data', data);
+        this.clientStateService.updateClientEvent(data);
+      });
   }
 }
