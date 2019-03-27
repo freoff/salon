@@ -38,15 +38,27 @@
     <hr />
     <ion-grid>
       <ion-row>
-        <ion-col size="12">
-          <h1>
+        <ion-col size="12" *ngIf="client.email">
+          <h2>
+            <ion-text color="secondary">Email</ion-text>
+          </h2>
+          <ion-item lines="none" text-left class="ps-0">
+            <ion-icon color="primary" name="mail" slot="start"></ion-icon>
+            <ion-text color="primary">
+              <a #mailTo style="color: inherit" href="mailto:{{ client.email }}">{{ client.email }}</a>
+            </ion-text>
+          </ion-item>
+        </ion-col>
+        <ion-col size="12" *ngIf="client.phones.length > 0">
+          <h2>
             <ion-text color="secondary">{{ 'phones' | translate }}</ion-text>
-          </h1>
+          </h2>
           <ion-item lines="none" *ngFor="let phone of client.phones" text-left class="ps-0">
+            <ion-icon slot="start" color="primary" src="/assets/icon/018-phone-contact.svg"></ion-icon>
             <section fxFlex fxLayoutAlign="start center" fxLayoutGap="15px">
               <ion-text color="dark">{{ phone.number }}</ion-text>
               <ion-button (click)="onCall(phone.number)" fill="clear">
-                <ion-icon src="/assets/icon/018-phone-contact.svg"></ion-icon>
+
                 &nbsp;
                 {{ 'clients.details.labels.call' | translate }}
               </ion-button>
@@ -67,6 +79,7 @@
 
     <ion-list *ngIf="length > 0 && (clientEventToDisplay() | async) as clientEvents">
       <ng-container *ngFor="let ce of clientEvents; trackBy: trackEventsBy">
+        <ion-item-sliding>
         <ion-item
           button
           detail
@@ -82,18 +95,21 @@
           </ion-label>
           <span slot="end">{{ ce.price.amount / 100 }} {{ ce.price.currency }}</span>
         </ion-item>
-        <ion-item *ngIf="ce._id === expandedRow">
-          <section fxLayout="column" fxFill fxLayoutAlign="end start">
-            <p fxFlex align-self-end>
-              <!--<ion-button fill="clear">{{ 'clients.details.labels.edit' | translate }}</ion-button>-->
-              <ion-button fill="clear" (click)="onDeleteClientEvent(ce)">
-                {{ 'clients.details.labels.delete' | translate }}
-              </ion-button>
-            </p>
-            <p float-left>
-              <span [innerHTML]="ce.eventNotes | nl2br"></span>
-            </p>
-          </section>
+          <ion-item-options side="end">
+            <ion-item-option color="danger" (click)="onDeleteClientEvent(ce)">
+              {{ 'clients.details.labels.delete' | translate }}
+            </ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+        <ion-item *ngIf="ce._id === expandedRow" style="">
+          <ion-textarea
+            [rows]="currentTextAreaRow(textarea)"
+            #textarea
+            placeholder="Dodaj notatke z wizyty.."
+            type="text"
+            (change)="onUpdateClientEvent(textarea, ce)"
+            [value]="ce.eventNotes"
+          ></ion-textarea>
         </ion-item>
       </ng-container>
 
@@ -112,8 +128,3 @@
     </ion-list>
   </ion-card-content>
 </ion-card>
-
-<pre style="max-width: 0px">
-        {{ client | json }}
-      </pre
->

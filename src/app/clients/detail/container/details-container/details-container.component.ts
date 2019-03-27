@@ -41,4 +41,8 @@ export class DetailsContainerComponent implements OnInit {
   deleteClient(client: Client) {
     this.clientStateService.deleteClient(client);
   }
+
+  updateClientEvent($event: { newText: string; eventId: any }) {
+    this.clientStateService.updateClientEvent($event);
+  }
 }

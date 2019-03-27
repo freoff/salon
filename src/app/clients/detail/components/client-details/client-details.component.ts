@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Client } from '../../../models/client.interface';
 import { ClientEvent } from '../../../models/client-event';
 import { ClientStateService } from '../../../../services/client-state.service';
 import { PageChangedEvent } from 'ngx-bootstrap';
 import { distinctUntilChanged, filter, take, tap } from 'rxjs/operators';
 import { Pager } from '../../../../shared/class/Pager.class';
-import { ActionSheetController, PopoverController } from '@ionic/angular';
+import { ActionSheetController, IonTextarea, PopoverController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
@@ -30,6 +30,7 @@ export class ClientDetailsComponent implements OnInit {
   @Output() saveNote = new EventEmitter<string>();
   @Output() editClient = new EventEmitter<Client>();
   @Output() deleteClient = new EventEmitter<Client>();
+  @Output() updateClientEvent = new EventEmitter<{ newText: string; eventId: any }>();
   displayNotesCheckbox = false;
   pager = new Pager<ClientEvent>(this.CLIENT_EVENTS_PAGE_SIEZE);
   public expandedRow: string;
@@ -37,6 +38,7 @@ export class ClientDetailsComponent implements OnInit {
     private clientStateService: ClientStateService,
     public actionSheetController: ActionSheetController,
     private translationService: TranslateService,
+    private chd: ChangeDetectorRef
   ) {}
   clientEventToDisplay(): Observable<Array<ClientEvent>> {
     return this.pager.data.pipe(
@@ -117,5 +119,18 @@ export class ClientDetailsComponent implements OnInit {
             .then((dialog) => dialog.present());
         },
       );
+  }
+
+  onUpdateClientEvent(textarea: IonTextarea, ce: ClientEvent) {
+    this.updateClientEvent.emit({ eventId: ce._id, newText: textarea.value });
+  }
+
+  currentTextAreaRow(textarea: IonTextarea) {
+    if (textarea && textarea.value && (textarea.value.split('\n').length > 2)) {
+      this.chd.markForCheck();
+      return textarea.value.split('\n').length + 1;
+    } else {
+      return 3;
+    }
   }
 }

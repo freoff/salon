@@ -5,7 +5,7 @@ import { ClientEvent } from '../clients/models/client-event';
 import {from, Observable, of} from 'rxjs';
 import { RxDatabaseBase, RxDocumentBase } from 'rxdb';
 import {SalonDatabase, SalonDatabaseCollections} from '../services/rxdb.service/collections';
-import { exhaustMap, map, switchMap, tap } from 'rxjs/operators';
+import { exhaustMap, first, map, switchMap, tap } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
 
@@ -49,11 +49,10 @@ export class ClientEventsRepository {
         });
     }
 
-    updateClientEvent(clientEvent: ClientEvent) {
+    updateClientEvent(eventId, changes: Partial<ClientEvent>) {
     return this.db$.pipe(
-      exhaustMap((db) => db.client_events.findOne(clientEvent._id).$),
-      map(async (clientEventDoc) => await clientEventDoc.atomicUpdate(oldData => ({...oldData, ...clientEvent}))),
-      tap(result => console.table(clientEvent, result))
+      exhaustMap((db) => db.client_events.findOne(eventId).$.pipe(first())),
+      map(async (clientEventDoc) => await clientEventDoc.atomicUpdate(oldData => ({...oldData, ...changes}))),
     );
   }
   deleteClientEvent({clientEventId}): Observable<boolean> {

@@ -64,7 +64,7 @@ export const clientDocMethods: ClientDocMethods = {
       fname: this.get('fname'),
       lname: this.lname,
       clientNotes: this.get('clientNotes'),
-      email: this.get('emial'),
+      email: this.get('email'),
       sex: this.get('sex'),
       phones: this.get('phones'),
     };

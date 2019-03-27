@@ -7,6 +7,7 @@ import {
   LoadClientEvents,
   StartAddClientEvent,
   StartDeleteeClientEvents,
+  UpdateClientEventData,
   UpsertClientEvent,
   UpsertClientEvents,
 } from './client-event.actions';
@@ -69,6 +70,15 @@ export class ClientEventsEffects {
           deleted && new DeleteClientEvent({ id: action.payload.clientId }),
         ]),
       ),
+    ),
+  );
+  @Effect()
+  updateClientEventData$ = this.actions$.pipe(
+    ofType<UpdateClientEventData>(ClientEventActionTypes.UpdateClientEventData),
+    switchMap((action) =>
+      this.clientEventsRepository
+        .updateClientEvent(action.payload.eventId, { eventNotes: action.payload.newText })
+        .pipe(switchMap(() => [new DisplayToast({ toastOptions: { message: 'messages.updateSuccess' } })])),
     ),
   );
 }

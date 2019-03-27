@@ -1,6 +1,6 @@
 <ng-container *ngIf="client">
   <ng-container *ngIf="!editMessage; else editMessageTemplate">
-    <h1 fxLayout="row center">
+    <h2 fxLayout="row center" fxLayoutAlign="center center">
       <ion-text color="secondary">{{ 'clients.details.labels.notes' | translate }}</ion-text>
       <span fxFlex="1 1 auto"></span>
       <ion-button size="small" fill="clear" (click)="toggleEditMessage()" fxFlexAlign="end">
@@ -8,7 +8,7 @@
           {{ 'clients.details.labels.addNote' | translate }}
         </small>
       </ion-button>
-    </h1>
+    </h2>
     <ion-item style="--min-height: 50px" class="" (click)="toggleEditMessage()">
       <section fxLayout="column" fxLayoutAlign="start start" >
         <ion-text class="text-left" >

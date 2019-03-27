@@ -19,6 +19,7 @@ export enum ClientEventActionTypes {
   StartUpdateClientEvents = '[Request ClientEvents] update client event',
   StartDeleteeClientEvents = '[Request ClientEvents] delete client event',
   StartAddClientEvent = '[Request ClientEvents] add new client event',
+  UpdateClientEventData = '[Client event list] Update event data',
 }
 
 export class StartUpdateClientEvents implements Action {
@@ -34,7 +35,11 @@ export class StartDeleteeClientEvents implements Action {
 export class StartAddClientEvent implements Action {
   readonly type = ClientEventActionTypes.StartAddClientEvent;
 
-  constructor(public payload: { client: Partial<Client>, clientEvent: ClientEvent }) {}
+  constructor(public payload: { client: Partial<Client>; clientEvent: ClientEvent }) {}
+}
+export class UpdateClientEventData {
+  readonly type = ClientEventActionTypes.UpdateClientEventData;
+  constructor(public payload: { newText: string; eventId: any }) {}
 }
 
 export class FetchClientEvents implements Action {
@@ -114,4 +119,5 @@ export type ClientEventActions =
   | StartUpdateClientEvents
   | StartDeleteeClientEvents
   | StartAddClientEvent
+  | UpdateClientEventData
   | ClearClientEvents;

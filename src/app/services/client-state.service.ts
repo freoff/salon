@@ -19,9 +19,10 @@ import { RxdbService } from './rxdb.service';
 import {
   FetchClientEvents,
   StartAddClientEvent,
-  StartDeleteeClientEvents, StartUpdateClientEvents,
+  StartDeleteeClientEvents, StartUpdateClientEvents, UpdateClientEventData,
 } from '../state/clients/clientEvents/client-event.actions';
 import {ClientsModule} from '../clients/clients.module';
+
 
 
 
@@ -88,4 +89,8 @@ export class ClientStateService {
 
         this.store.dispatch(new StartDeleteClient({client}));
     }
+
+  updateClientEvent(changes: {newText: string; eventId: any}) {
+        this.store.dispatch(new UpdateClientEventData(changes));
+  }
 }
