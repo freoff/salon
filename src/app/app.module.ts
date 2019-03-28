@@ -5,6 +5,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { File } from '@ionic-native/file/ngx';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +23,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MomentModule } from 'ngx-moment';
 import { PaginationModule } from 'ngx-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -54,6 +56,8 @@ export function createTranslateLoader(http: HttpClient) {
     }),
   ],
   providers: [
+    File,
+    CallNumber,
     StatusBar,
     SplashScreen,
     RxdbService,
