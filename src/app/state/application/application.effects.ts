@@ -1,6 +1,10 @@
+import { State } from '../reducers';
+
+declare type cordova = any;
+
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { File,  } from '@ionic-native/file/ngx';
+import { DirectoryEntry, File, FileEntry } from '@ionic-native/file/ngx';
 import {
   ApplicationActionTypes,
   CreateBackup,
@@ -14,11 +18,12 @@ import {
 import { Router } from '@angular/router';
 import { catchError, filter, map, mergeMap, switchMap, tap } from 'rxjs/operators';
 import { from, of } from 'rxjs';
-import { LoadingController, ToastController } from '@ionic/angular';
+import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { ToastOptions } from '@ionic/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ApplicationSettingsRepository } from '../../repository/applicationSettings.repository';
 import { RxdbService } from '../../services/rxdb.service';
+import { Store } from '@ngrx/store';
 
 declare var LocalFileSystem: any;
 
@@ -76,24 +81,11 @@ export class ApplicationEffects {
         .getDb()
         .then((db) => db.dump())
         .then((data) => {
-          this.saveDBData(data);
+          this.platform.is('android') ? this.saveDBData(data) : this.saveJson(data);
         });
     }),
   );
-  // @Effect({ dispatch: false })
-  // createBackup$ = this.actions$.pipe(
-  //   ofType<CreateBackup>(ApplicationActionTypes.CreateBackup),
-  //   tap(() => {
-  //     this.rxdb
-  //       .getDb()
-  //       .then((db) => db.dump())
-  //       .then((data) => {
-  //         console.log(data);
-  //         this.saveJson(data);
-  //       });
-  //   }),
-  // );
-  private loading: any;
+
   @Effect()
   restoreBackup$ = this.actions$.pipe(
     ofType<RestoreBackup>(ApplicationActionTypes.RestoreBackup),
@@ -107,19 +99,35 @@ export class ApplicationEffects {
       ),
     ),
   );
-
-  async saveDBData(data) {
-    console.log('create device ready');
+  // TODO separete backup file IO to separate service
+  saveDBData(data) {
     document.addEventListener('deviceready', () => {
-      console.log('ready');
-      window['requestFileSystem'](LocalFileSystem.PERSISTENT, 0, function(fs) {
-        console.log('file system open: ' + fs.name);
-        fs.root.getFile('newPersistentFile.txt', { create: true, exclusive: false }, function(fileEntry) {
-          console.log('fileEntry is file?' + fileEntry.isFile.toString());
-          // fileEntry.name == 'someFile.txt'
-          // fileEntry.fullPath == '/someFile.txt'
+      window['resolveLocalFileSystemURL'](cordova['file'].externalRootDirectory, (directory: DirectoryEntry) => {
+        directory.getFile('db.json', { create: true, exclusive: false }, (fileEntry: FileEntry) => {
+          console.log('get file success', Object.keys(fileEntry));
+          this.writeFile(fileEntry, data);
         });
       });
+    });
+  }
+  writeFile(fileEntry, dataObj, successResolve?) {
+    // Create a FileWriter object for our FileEntry (log.txt).
+    fileEntry.createWriter(function(fileWriter) {
+      fileWriter.onwriteend = function(event) {
+        console.log('Successful file write...');
+        // TODO return as observable to effect and dispatch acion from there
+        new DisplayToast({ toastOptions: { message: 'messages.backupSuccess', color: 'primary' } });
+      };
+
+      fileWriter.onerror = function(e) {
+        console.log('Failed file write: ' + e.toString());
+        new DisplayToast({ toastOptions: { message: 'messages.backupFial', color: 'danger' } });
+      };
+      if (!dataObj) {
+        dataObj = new Blob(['some file data'], { type: 'text/plain' });
+      }
+
+      fileWriter.write(dataObj);
     });
   }
 
@@ -148,9 +156,11 @@ export class ApplicationEffects {
     return new Uint8Array(out);
   }
   constructor(
+    private platform: Platform,
     private file: File,
     private actions$: Actions,
     private router: Router,
+    private store: Store<State>,
     private toastCtrl: ToastController,
     private translateService: TranslateService,
     private loadingController: LoadingController,
