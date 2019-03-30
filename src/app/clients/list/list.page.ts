@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { State } from '../../state/reducers';
+import { Store } from '@ngrx/store';
+import { getTotalClients } from '../../state/selectors/clients.selectors';
 
 @Component({
   selector: 'app-list',
@@ -6,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.page.scss'],
 })
 export class ListPage implements OnInit {
-  constructor() {}
+  totalClients = this.store.select(getTotalClients)
+  constructor(private store: Store<State>) {}
 
   ngOnInit(): void {}
 }

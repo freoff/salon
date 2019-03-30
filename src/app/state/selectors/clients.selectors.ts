@@ -8,7 +8,10 @@ export const getAllClientsMap = createSelector(
   getClients,
   fromClients.clientsEntitisAsMap,
 );
-
+export const getTotalClients = createSelector(
+  getClients,
+  fromClients.totalClients,
+)
 export const getAllEvents = createSelector(
   clientEventsState,
   fromClientEvents.allClientEvents,

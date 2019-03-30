@@ -77,15 +77,17 @@ export class ApplicationEffects {
   createBackup$ = this.actions$.pipe(
     ofType<CreateBackup>(ApplicationActionTypes.CreateBackup),
     tap(() => {
+      this.loadingController.create().then((loader) => loader.present());
       this.rxdb
         .getDb()
         .then((db) => db.dump())
         .then((data) => {
           this.platform.is('android') ? this.saveDBData(data) : this.saveJson(data);
-        });
+        })
+        .catch(() => this.dismissTopLoader());
     }),
   );
-
+  dismissTopLoader = () => this.loadingController.getTop().then((top) => top.dismiss());
   @Effect()
   restoreBackup$ = this.actions$.pipe(
     ofType<RestoreBackup>(ApplicationActionTypes.RestoreBackup),
@@ -100,7 +102,7 @@ export class ApplicationEffects {
     ),
   );
   // TODO separete backup file IO to separate service
-  saveDBData(data) {
+  saveDBData = (data) => {
     document.addEventListener('deviceready', () => {
       window['resolveLocalFileSystemURL'](cordova['file'].externalRootDirectory, (directory: DirectoryEntry) => {
         directory.getFile('db.json', { create: true, exclusive: false }, (fileEntry: FileEntry) => {
@@ -109,19 +111,23 @@ export class ApplicationEffects {
         });
       });
     });
-  }
-  writeFile(fileEntry, dataObj, successResolve?) {
+  };
+  writeFile = (fileEntry, dataObj, successResolve?) => {
     // Create a FileWriter object for our FileEntry (log.txt).
-    fileEntry.createWriter(function(fileWriter) {
-      fileWriter.onwriteend = function(event) {
+    fileEntry.createWriter((fileWriter) => {
+      fileWriter.onwriteend = (event) => {
         console.log('Successful file write...');
         // TODO return as observable to effect and dispatch acion from there
-        new DisplayToast({ toastOptions: { message: 'messages.backupSuccess', color: 'primary' } });
+        this.store.dispatch(
+          new DisplayToast({ toastOptions: { message: 'messages.backupSuccess', color: 'primary' } }),
+        );
+        this.loadingController.getTop().then((top) => top.dismiss());
       };
 
-      fileWriter.onerror = function(e) {
+      fileWriter.onerror = (e) => {
         console.log('Failed file write: ' + e.toString());
-        new DisplayToast({ toastOptions: { message: 'messages.backupFial', color: 'danger' } });
+        this.store.dispatch(new DisplayToast({ toastOptions: { message: 'messages.backupFial', color: 'danger' } }));
+        this.loadingController.getTop().then((top) => top.dismiss());
       };
       if (!dataObj) {
         dataObj = new Blob(['some file data'], { type: 'text/plain' });
@@ -129,7 +135,7 @@ export class ApplicationEffects {
 
       fileWriter.write(dataObj);
     });
-  }
+  };
 
   saveJson(obj) {
     const str = JSON.stringify(obj);

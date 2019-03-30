@@ -107,7 +107,9 @@
 	"male": "Mężczyzna",
 	"messages": {
 		"restoreDBFail": "Kopie zapasowa nie może zostać przywrócona. Usuń dane aplikacji i spróbuj ponownie",
-		"restoreDBSuccess": "Kopia zapasowa została przywrócona"
+		"restoreDBSuccess": "Kopia zapasowa została przywrócona",
+		"backupSuccess": "Kopia utworzona na karcie SD. Zapisz plik db.json w bezpiecznym miejscu.",
+		"backupFial": "Utworzenie kopii zapasowej się nie powiodło"
 	},
 	"nav": {
 		"add": "Dodaj",
