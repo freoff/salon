@@ -25,6 +25,7 @@
             <ion-item
               *ngFor="let navigationItem of navigationItems.clients"
               [routerLink]="navigationItem.navigation"
+              routerDirection="forward"
               routerLinkActive="link-active"
             >
               <ion-label>{{ navigationItem.label | translate }}</ion-label>
@@ -45,7 +46,7 @@
             <ion-item
               routerLink="/settings"
               routerLinkActive="url-active"
-              routerDirection="root"
+              routerDirection="forward"
               routerLinkActive="link-active"
             >
               <ion-label>{{ 'layouts.navigations.labels.settings' | translate }}</ion-label>
@@ -54,7 +55,7 @@
             <ion-item
                     routerLink="/about"
                     routerLinkActive="url-active"
-                    routerDirection="root"
+                    routerDirection="forward"
                     routerLinkActive="link-active"
             >
               <ion-label>{{ 'layouts.navigations.labels.about' | translate }}</ion-label>

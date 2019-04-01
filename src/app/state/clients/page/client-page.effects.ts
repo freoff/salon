@@ -70,7 +70,7 @@ export class ClientPageEffects {
   @Effect({dispatch: false})
   goToClientDetails$ = this.actions$.pipe(
     ofType<GoToClientDetails>(ClientPageActionTypes.GoToClientDetails),
-    tap((action) => this.navCtrl.navigateRoot(APP_ROUTES.clients.details(action.payload.client.id), {})),
+    tap((action) => this.navCtrl.navigateForward(APP_ROUTES.clients.details(action.payload.client.id), {})),
     // mergeMap((action) => [new GoTo({ navigationUrl: APP_ROUTES.clients.details(action.payload.client.id) })]),
 
   );
