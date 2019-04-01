@@ -7,7 +7,9 @@ export interface State extends EntityState<Client> {
   clientsLoaded: boolean;
 }
 
-export const adapter: EntityAdapter<Client> = createEntityAdapter<Client>();
+export const adapter: EntityAdapter<Client> = createEntityAdapter<Client>({
+  sortComparer: (c1, c2) => c1.lname.localeCompare(c2.lname),
+});
 
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
