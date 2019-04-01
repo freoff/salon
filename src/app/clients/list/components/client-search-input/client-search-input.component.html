@@ -1,5 +1,10 @@
 <ion-list>
-  <ion-item>
+  <ion-item lines="none" >
+    <section fxFlex style="width: 100%">
+      <ion-button size="default" expand="full" shape="round" routerDirection="forward" routerLink="/secure/clients/edit">Dodaj klienta</ion-button>
+    </section>
+  </ion-item>
+  <ion-item style="">
     <ion-label position="floating">Szukaj</ion-label>
     <ion-input [formControl]="searchTerm" type="text" autofocus></ion-input>
     <ion-button slot="end" align-self-end fill="transparent" (click)="clearInput()">
