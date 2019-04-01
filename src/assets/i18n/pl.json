@@ -1,137 +1,137 @@
 {
-  "about": {
-    "header": "O programie",
-    "author": "Autor",
-    "licencja": "Licencja",
-    "showLicence": "Pokarz licencje",
-    "close": "Zamknij",
-    "appVersion": "Wersja aplikacji",
-    "aboutApplication0": "Aplikacja wspomaga zarządzanie klientami. ",
-    "aboutApplication1": "Pozwala na zapisywanie listy kilentów wraz z informacjami o przeszlych wizytach takimi jak: data wiyty, notatki dotyczące wizyty, wartość usługi, możliwośc pełnej modyfikacji istniejących wpisów",
-    "aboutApplication2": "Aplikacja działa w trybie offline, dlatego wszystkie dane znajdują się tylko i wyłącznie na urządzeniu",
-    "aboutApplication3": "Dane można jednak archiwizowac (czynność manualna wykonywana przez urzytkownika aplikacji) do pliku, który może służyć do awaryjnego przywrócenia informacji do stanu z dnia kopi zapasowej."
-  },
-  "ClientDoNotExist": "Ten klient nie istnieje",
-  "addClientEvent": "Dodaj wizytę klienta",
-  "addInformationAboutClient": "Dodaj informację o nowy kliencie",
-  "applicationSettings": {
-    "labels": {
-      "backup": "Utwórz kopie zapasową",
-      "backupAndRestoreHeader": "Kopia zapasowa i przywracanie danych",
-      "backupTip": "Tworzy kopie zapasową aktualnych danych klientów, wizyt i ustawień aplikacji",
-      "currency": "Waluta",
-      "header": "Ustawienia aplikacji",
-      "locale": "Język",
-      "restore": "Przywróć z kopi zaposowej",
-      "restoreTip": "Przywraca kopie zapasową aplikacji. Do poprawnego przywrócenia danych niezbędne jest wyczyszczenie danych aplikaji w ustawieniach urządzenia. Operacji nie można cofnąć!!"
-    }
-  },
-  "cell": "Komórkowy",
-  "client": "Klienci",
-  "clientList": "Lista klientów",
-  "clientNotes": "Notatki",
-  "clients": {
-    "details": {
-      "labels": {
-        "abortDelete": "Anuluj",
-        "addNote": "Dodaj notatkę",
-        "addNoteHere": "Dodaj notatke",
-        "call": "Zadzwoń",
+    "about": {
+        "header": "O programie",
+        "author": "Autor",
+        "licencja": "Licencja",
+        "showLicence": "Pokarz licencje",
+        "close": "Zamknij",
+        "appVersion": "Wersja aplikacji",
+        "aboutApplication0": "Aplikacja wspomaga zarządzanie klientami. ",
+        "aboutApplication1": "Pozwala na zapisywanie listy klientów wraz z informacjami o przeszłych wizytach takimi jak: data wizyty, notatki dotyczące wizyty, wartość usługi, możliwość pełnej modyfikacji istniejących wpisów.",
+        "aboutApplication2": "Aplikacja działa w trybie offline, dlatego wszystkie dane znajdują się tylko i wyłącznie na urządzeniu.",
+        "aboutApplication3": "Dane można jednak archiwizować (czynność manualna wykonywana przez użytkownika aplikacji) do pliku, który może służyć do awaryjnego przywrócenia informacji do stanu z dnia kopii zapasowej."
+    },
+    "ClientDoNotExist": "Ten klient nie istnieje",
+    "addClientEvent": "Dodaj wizytę klienta",
+    "addInformationAboutClient": "Dodaj informację o nowy kliencie",
+    "applicationSettings": {
+        "labels": {
+            "backup": "Utwórz kopię zapasową",
+            "backupAndRestoreHeader": "Kopia zapasowa i przywracanie danych",
+            "backupTip": "Tworzy kopię zapasową aktualnych danych klientów, wizyt i ustawień aplikacji",
+            "currency": "Waluta",
+            "header": "Ustawienia aplikacji",
+            "locale": "Język",
+            "restore": "Przywróć z kopi zapasowej",
+            "restoreTip": "Przywraca kopię zapasową aplikacji. Do poprawnego przywrócenia danych niezbędne jest wyczyszczenie danych aplikacji w ustawieniach urządzenia. Operacji nie można cofnąć!!"
+        }
+    },
+    "cell": "Komórkowy",
+    "client": "Klienci",
+    "clientList": "Lista klientów",
+    "clientNotes": "Notatki",
+    "clients": {
+        "details": {
+            "labels": {
+                "abortDelete": "Anuluj",
+                "addNote": "Dodaj notatkę",
+                "addNoteHere": "Dodaj notatkę",
+                "call": "Zadzwoń",
+                "cancel": "Anuluj",
+                "clientEventsNote": "Notatki",
+                "delete": "Usuń",
+                "deleteClient": "Tak. Usuń klienta i wszystkie dane",
+                "edit": "Edytuj",
+                "hideNotes": "ukryj notatki",
+                "noNotes": "Brak notatek",
+                "notes": "Notatki",
+                "previousVisit": "Poprzednie wizyty w salonie",
+                "removeClientHeader": "Czy na pewno chcesz usunąć klienta ?",
+                "showNotes": "pokarz notatki",
+                "update": "Zapisz"
+            }
+        },
+        "edits": {
+            "labels": {
+                "addClient": "Dodaj klienta",
+                "addPhone": "Dodaj telefon",
+                "number": "Numer telefonu",
+                "updateClient": "Zapisz zmiany"
+            }
+        },
+        "event": {
+            "errors": {
+                "priceSeemsBeInvalid": "Ta kwota wydaje się nie być prawidłowa"
+            }
+        },
+        "events": {
+            "labels": {
+                "date": "Data usługi",
+                "notes": "Dodatkowe informacje",
+                "price": "Wartość usługi",
+                "title": "Dodaj usług dla klienta",
+                "titleUpdate": "Popraw dane"
+            },
+            "notes": {
+                "label": "Notatki"
+            },
+            "placeholders": {
+                "notes": "Tutaj moż na dodać dodatków informację na temat usługi",
+                "price": "Wpisz tutaj kwotę, jaką zapłacił klient"
+            }
+        },
+        "js": {},
+        "messages": {
+            "cantLoadEvents": "Nie można pobrać listy wizyt klienta",
+            "clientUpdated": "Dane klienta zostały poprawione",
+            "clientWasDeleted": "Klient został usunięty",
+            "messageUpdated": "Notatka zostala zapisana",
+            "wasAdded": "Wizyta została dodana",
+            "wasAddedFail": "Dodanie wizyty się nie powiodło",
+            "wasDeleted": "Wizyta usunięta",
+            "updateSuccess": "Aktualizacja zakończyła się sukcesem"
+        }
+    },
+    "commons": {
         "cancel": "Anuluj",
-        "clientEventsNote": "Notatki",
-        "delete": "Usuń",
-        "deleteClient": "Tak. Usuń klienta i wszystkie dane",
-        "edit": "Edytuj",
-        "hideNotes": "ukryj notatki",
-        "noNotes": "Brak notatek",
-        "notes": "Notatki",
-        "previousVisit": "Poprzednie wizyty w salonie",
-        "removeClientHeader": "Czy napewno chcesz usunąć klienta ?",
-        "showNotes": "pokarz notatki",
-        "update": "Zapisz"
-      }
+        "labels": {
+            "add": "Dodaj",
+            "cancel": "Anuluj",
+            "close": "Zamknij",
+            "update": "Update"
+        }
     },
-    "edits": {
-      "labels": {
-        "addClient": "Dodaj klienta",
-        "addPhone": "Dodaj telefon",
-        "number": "Numer telefonu",
-        "updateClient": "Zapisz zmiany"
-      }
+    "details": "Szczegóły klienta",
+    "email": "Email",
+    "etykieta": "Etykieta",
+    "female": "Kobieta",
+    "fname": "Imię",
+    "ground": "Stacjonarny",
+    "klient": "Klient",
+    "layouts": {
+        "navigations": {
+            "labels": {
+                "settings": "Ustawienia",
+                "about": "O programie"
+            }
+        }
     },
-    "event": {
-      "errors": {
-        "priceSeemsBeInvalid": "Ta kwota wydaje się nie być prawidłowa"
-      }
-    },
-    "events": {
-      "labels": {
-        "date": "Data usługi",
-        "notes": "Dodatkowe informacje",
-        "price": "Wartość usługi",
-        "title": "Dodaj usług dla klienta",
-        "titleUpdate": "Popraw dane"
-      },
-      "notes": {
-        "label": "Notatki"
-      },
-      "placeholders": {
-        "notes": "Tutaj moż na dodać dodatków informację na temat usługi",
-        "price": "Wpisz tutaj kwotę jaką zapłacił klient"
-      }
-    },
-    "js": {},
+    "lname": "Nazwisko",
+    "male": "Mężczyzna",
     "messages": {
-      "cantLoadEvents": "Nie można pobrać listy wizytk klienta",
-      "clientUpdated": "Dane klienta zostały poprawione",
-      "clientWasDeleted": "Klient został usunięty",
-      "messageUpdated": "Notatka zostala zapisana",
-      "wasAdded": "Wizyta została dodana",
-      "wasAddedFail": "Dodanie wizyty się nie powiodło",
-      "wasDeleted": "Wizyta usunięta",
-      "updateSuccess": "Aktualizaja zakończyła się sukcesem"
-    }
-  },
-  "commons": {
-    "cancel": "Anuluj",
-    "labels": {
-      "add": "Dodaj",
-      "cancel": "Anuluj",
-      "close": "Zamknij",
-      "update": "Update"
-    }
-  },
-  "details": "Szczegóły klienta",
-  "email": "Email",
-  "etykieta": "Etykieta",
-  "female": "Kobieta",
-  "fname": "Imię",
-  "ground": "Stacjonarny",
-  "klient": "Klient",
-  "layouts": {
-    "navigations": {
-      "labels": {
-        "settings": "Ustawienia",
-        "about": "O programie"
-      }
-    }
-  },
-  "lname": "Nazwisko",
-  "male": "Mężczyzna",
-  "messages": {
-    "restoreDBFail": "Kopie zapasowa nie może zostać przywrócona. Usuń dane aplikacji i spróbuj ponownie",
-    "restoreDBSuccess": "Kopia zapasowa została przywrócona",
-    "backupSuccess": "Kopia utworzona na karcie SD. Zapisz plik db.json w bezpiecznym miejscu.",
-    "backupFial": "Utworzenie kopii zapasowej się nie powiodło"
-  },
-  "nav": {
-    "add": "Dodaj",
-    "edit": "Edytuj",
-    "list": "Lista"
-  },
-  "notes": "Notatki",
-  "notesTooltip": "Tutaj możesz dodać dodatkowe informacje o kliencie",
-  "number": "Numer",
-  "phones": "Telefony",
-  "updateClientData": "Popraw dane klienta"
+        "restoreDBFail": "Kopie zapasowa nie może zostać przywrócona. Usuń dane aplikacji i spróbuj ponownie",
+        "restoreDBSuccess": "Kopia zapasowa została przywrócona",
+        "backupSuccess": "Kopia utworzona na karcie SD. Zapisz plik db.json w bezpiecznym miejscu.",
+        "backupFial": "Utworzenie kopii zapasowej się nie powiodło"
+    },
+    "nav": {
+        "add": "Dodaj",
+        "edit": "Edytuj",
+        "list": "Lista"
+    },
+    "notes": "Notatki",
+    "notesTooltip": "Tutaj możesz dodać dodatkowe informacje o kliencie",
+    "number": "Numer",
+    "phones": "Telefony",
+    "updateClientData": "Popraw dane klienta"
 }
