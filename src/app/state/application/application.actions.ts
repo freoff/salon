@@ -2,6 +2,8 @@ import { Action } from '@ngrx/store';
 import { ToastOptions } from '@ionic/core';
 import { NavigationExtras } from '@angular/router';
 import { ApplicationSetting } from '../../services/rxdb.service/collections/applicationSettings.collection';
+import { AppVersion } from './application.reducer';
+
 
 export enum ApplicationActionTypes {
   LoadApplications = '[Application] Load Applications',
@@ -12,6 +14,17 @@ export enum ApplicationActionTypes {
   LoadApplicationSettingsSuccess = '[Request response] load settings change',
   CreateBackup = '[Application settings] Create backup',
   RestoreBackup = '[Application settings] Restore backup',
+  GetAppVersionData = '[ApplicationInitialization] Get app version data',
+  SetAppVersionData = '[ApplicationInitialization] Set app version data',
+}
+
+export class SetAppVersionData {
+  readonly type = ApplicationActionTypes.SetAppVersionData;
+  public constructor(public payload: { appVersion: AppVersion }) {}
+}
+export class GetAppVersionData {
+  readonly type = ApplicationActionTypes.GetAppVersionData;
+  public constructor() {}
 }
 
 export class CreateBackup {
@@ -56,4 +69,6 @@ export type ApplicationActions =
   | LoadApplicationSettings
   | LoadApplicationSettingsSuccess
   | SaveApplicationSetting
+  | SetAppVersionData
+  | GetAppVersionData
   | DisplayToast;

@@ -1,5 +1,5 @@
 import { State } from '../reducers';
-
+import { AppVersion } from '@ionic-native/app-version/ngx';
 declare type cordova = any;
 
 import { Injectable } from '@angular/core';
@@ -9,11 +9,13 @@ import {
   ApplicationActionTypes,
   CreateBackup,
   DisplayToast,
+  GetAppVersionData,
   GoTo,
   LoadApplicationSettings,
   LoadApplicationSettingsSuccess,
   RestoreBackup,
   SaveApplicationSetting,
+  SetAppVersionData,
 } from './application.actions';
 import { Router } from '@angular/router';
 import { catchError, filter, map, mergeMap, switchMap, tap } from 'rxjs/operators';
@@ -39,7 +41,27 @@ export class ApplicationEffects {
     ofType<GoTo>(ApplicationActionTypes.GoTo),
     tap((action) => from(this.router.navigate(action.payload.navigationUrl, action.payload.navigationExtra))),
   );
-
+  @Effect({ dispatch: true })
+  getAppVersion$ = this.actions$.pipe(
+    ofType<GetAppVersionData>(ApplicationActionTypes.GetAppVersionData),
+    switchMap((action) =>
+      from(
+        Promise.all([
+          this.appVersion.getAppName(),
+          this.appVersion.getPackageName(),
+          this.appVersion.getVersionCode(),
+          this.appVersion.getVersionNumber(),
+        ]),
+      ),
+    ),
+    map(([appName, packageName, versionCode, versionNumber]) => ({
+      appName,
+      packageName,
+      versionCode,
+      versionNumber,
+    })),
+    map((appVersion) => new SetAppVersionData({ appVersion })),
+  );
   @Effect({ dispatch: false })
   toast$ = this.actions$.pipe(
     ofType<DisplayToast>(ApplicationActionTypes.DisplayToast),
@@ -172,5 +194,6 @@ export class ApplicationEffects {
     private loadingController: LoadingController,
     private applicationSettingsRepository: ApplicationSettingsRepository,
     private rxdb: RxdbService,
+    private appVersion: AppVersion,
   ) {}
 }

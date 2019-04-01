@@ -6,14 +6,16 @@ import { ToastOptions } from '@ionic/core';
 import {
   CreateBackup,
   DisplayToast,
-  LoadApplicationSettings, RestoreBackup,
+  GetAppVersionData,
+  LoadApplicationSettings,
+  RestoreBackup,
   SaveApplicationSetting,
 } from '../state/application/application.actions';
 import { TranslateService } from '@ngx-translate/core';
 import { ApplicationSettingsFormInterface } from '../settings/application-setting-form.controller';
 import {
   getAplicationCurrency,
-  getApplicationLanaguage,
+  getApplicationLanaguage, getAppVersion,
   isApplicationReady,
 } from '../state/selectors/appliation.selectors';
 import { filter } from 'rxjs/operators';
@@ -28,6 +30,7 @@ export class ApplicationStateService {
   initializeAppData() {
     this.store.dispatch(new LoadAllClients());
     this.store.dispatch(new LoadApplicationSettings());
+    this.store.dispatch(new GetAppVersionData());
   }
   showToast(toastOptions?: Partial<ToastOptions>) {
     this.translateMessage({ message: toastOptions.message }).then(() =>
@@ -65,6 +68,10 @@ export class ApplicationStateService {
   }
 
   restoreDB(jsonBackup: string) {
-    this.store.dispatch(new RestoreBackup({json: jsonBackup}))
+    this.store.dispatch(new RestoreBackup({ json: jsonBackup }));
+  }
+
+  getApplicationVersion() {
+    return this.store.select(getAppVersion);
   }
 }

@@ -3,6 +3,9 @@ import * as fromApplication from '../application/application.reducer';
 import { createSelector } from '@ngrx/store';
 import { getApplicationState } from '../reducers';
 import * as fromClients from './clients.selectors';
+
+export const getAppVersion = createSelector(getApplicationState, fromApplication.getAppVersion);
+
 export const getApplicationLanaguage = createSelector(
   getApplicationState,
   fromApplication.getLanguage,

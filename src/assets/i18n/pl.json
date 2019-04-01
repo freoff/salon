@@ -1,4 +1,22 @@
 {
+
+	"about": {
+		"header": "O programie",
+		"author": "Autor",
+		"licencja": "Licencja",
+		"showLicence": "Pokarz licencje",
+		"close": "Zamknij",
+		"appVersion": "Wersja aplikacji",
+		"aboutApplication1": "Aplikacja wspomaga zarządzanie klientami zakładu. ",
+		"aboutApplication2": "Pozwala na zapisywanie listy kilentów wraz z informacjami o przeszlych wizytach takimi jak:",
+		"aboutApplication4": "data wiyty",
+		"aboutApplication5": "notatki dotyczące wizyty",
+		"aboutApplication6": "wartość usługi",
+		"aboutApplication7": "możliwośc pełnej modyfikacji istniejących wpisów",
+		"aboutApplication8": "Aplikacja działa w trybie offline, dlatego wszystkie dane znajdują się tylko i wyłącznie na urządzeniu",
+		"aboutApplication9": "Dane można jednak archiwizowac (czynność manualna wykonywana przez urzytkownika aplikacji) do pliku, który może służyć do awaryjnego przywrócenia informacji do stanu z dnia kopi zapasowej.",
+
+	},
 	"ClientDoNotExist": "Ten klient nie istnieje",
 	"addClientEvent": "Dodaj wizytę klienta",
 	"addInformationAboutClient": "Dodaj informację o nowy kliencie",
@@ -99,7 +117,8 @@
 	"layouts": {
 		"navigations": {
 			"labels": {
-				"settings": "Ustawienia"
+				"settings": "Ustawienia",
+				"about": "O programie"
 			}
 		}
 	},

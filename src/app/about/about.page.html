@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'about.header' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button [defaultHref]="defaultRoute"></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="tranparent">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle color="primary">{{ 'about.header' | translate }}</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="none">
+        <ion-item color="" text-center>
+          <ion-text text-center style="width:100%">
+            <ion-img class="appIcon" src="/assets/images/icon.png" style="margin: 5px auto;"></ion-img>
+          </ion-text>
+        </ion-item>
+        <ion-item>
+          <ion-text>Aplikacja "Salon" - wersja {{ currentVersion | json }}</ion-text>
+        </ion-item>
+        <ion-item text-wrap>
+            {{'about.aboutApplication1' | translate}}
+        </ion-item>
+        <ion-item text-wrap>
+            {{'about.aboutApplication1' | translate}}
+        </ion-item>
+        <ion-item text-wrap>
+            {{'about.aboutApplication1' | translate}}
+        </ion-item>
+        <ion-item text-wrap>
+            {{'about.aboutApplication1' | translate}}
+        </ion-item>
+        <ion-item text-wrap>
+            {{'about.aboutApplication1' | translate}}
+        </ion-item>
+        <ion-item text-wrap>
+            {{'about.aboutApplication1' | translate}}
+        </ion-item>
+        <ion-item text-wrap>
+            {{'about.aboutApplication1' | translate}}
+        </ion-item>
+        <ion-item text-wrap>
+            {{'about.aboutApplication1' | translate}}
+        </ion-item>
+        <ion-item text-wrap>
+            {{'about.aboutApplication1' | translate}}
+        </ion-item>
+        <ion-item text-wrap>
+            {{'about.aboutApplication1' | translate}}
+        </ion-item>
+        <ion-list-header>Contact:</ion-list-header>
+        <ion-item lines="none">
+          <ion-text>
+            email: <a href="mailto: kpodlaski@gmail.com">   kpodlaski@gmail.com </a>
+          </ion-text>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
