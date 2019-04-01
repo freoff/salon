@@ -3,12 +3,15 @@ import { State } from '../state/reducers';
 import { Store } from '@ngrx/store';
 import { ClientFormInterface } from '../clients/types/client-form.interface';
 import {
-  CreateNewClient, EditClient,
+  CreateNewClient,
+  EditClient,
   GoToClientDetails,
   LoadAllClients,
   LoadClient,
   SaveClientNote,
-  SetSelectedClient, StartDeleteClient, StartUpdateClient,
+  SetSelectedClient,
+  StartDeleteClient,
+  StartUpdateClient,
 } from '../state/clients/page/client-page.actions';
 import * as fromClientsSelectors from '../state/selectors/clients.selectors';
 import { getClientEvents } from '../state/selectors/clients.selectors';
@@ -19,12 +22,9 @@ import { RxdbService } from './rxdb.service';
 import {
   FetchClientEvents,
   StartAddClientEvent,
-  StartDeleteeClientEvents, StartUpdateClientEvents, UpdateClientEventData,
+  StartDeleteeClientEvents,
+  UpdateClientEventData,
 } from '../state/clients/clientEvents/client-event.actions';
-import {ClientsModule} from '../clients/clients.module';
-
-
-
 
 @Injectable({ providedIn: 'root' })
 export class ClientStateService {
@@ -33,8 +33,8 @@ export class ClientStateService {
   createClient({ client }: { client: ClientFormInterface }): void {
     this.store.dispatch(new CreateNewClient({ client }));
   }
-  updateClient({client}: { client: ClientFormInterface }) {
-    this.store.dispatch(new StartUpdateClient({client}));
+  updateClient({ client }: { client: ClientFormInterface }) {
+    this.store.dispatch(new StartUpdateClient({ client }));
   }
   getAllClients(): Observable<Array<Client>> {
     return this.store.select(fromClientsSelectors.getAllClients);
@@ -85,12 +85,11 @@ export class ClientStateService {
     this.store.dispatch(new EditClient({ client }));
   }
 
-    deleteClient(client: Client) {
+  deleteClient(client: Client) {
+    this.store.dispatch(new StartDeleteClient({ client }));
+  }
 
-        this.store.dispatch(new StartDeleteClient({client}));
-    }
-
-  updateClientEvent(changes: {newText: string; eventId: any} | ClientEvent) {
-        this.store.dispatch(new UpdateClientEventData(changes));
+  updateClientEvent(changes: { newText: string; eventId: any } | ClientEvent) {
+    this.store.dispatch(new UpdateClientEventData(changes));
   }
 }

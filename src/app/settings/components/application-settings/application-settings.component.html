@@ -21,18 +21,20 @@
           </ion-item>
         </ion-col>
       </ion-row>
-
     </ion-grid>
     <ion-grid>
-      <h1>{{'applicationSettings.labels.backupAndRestoreHeader' | translate}}</h1>
-       <ion-col>
-         <p>{{'applicationSettings.labels.backupTip' | translate}}</p>
-         <ion-button type="button" fill="block" (click)="backupDB.emit()">{{'applicationSettings.labels.backup' | translate}}</ion-button>
-         <p>{{'applicationSettings.labels.restoreTip' | translate}}</p>
-         <ion-button type="button" fill="block" (click)="restoreBackup(fileInput)">{{'applicationSettings.labels.restore' | translate}}</ion-button>
-         <input #fileInput type="file" (change)="fileSelected($event)" hidden>
-       </ion-col>
+      <h1>{{ 'applicationSettings.labels.backupAndRestoreHeader' | translate }}</h1>
+      <ion-col>
+        <p>{{ 'applicationSettings.labels.backupTip' | translate }}</p>
+        <ion-button type="button" fill="block" (click)="backupDB.emit()">
+          {{ 'applicationSettings.labels.backup' | translate }}
+        </ion-button>
+        <p>{{ 'applicationSettings.labels.restoreTip' | translate }}</p>
+        <ion-button type="button" fill="block" (click)="restoreBackup(fileInput)">
+          {{ 'applicationSettings.labels.restore' | translate }}
+        </ion-button>
+        <input #fileInput type="file" (change)="fileSelected($event)" hidden />
+      </ion-col>
     </ion-grid>
-
   </ion-list>
 </form>

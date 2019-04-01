@@ -29,7 +29,7 @@ export class ApplicationSettingsRepository {
   loadSettings() {
     return this.rxdb.getDb$().pipe(
       switchMap((db) => from(db.application_settings.findOne().exec())),
-      map((applicationSettingDoc) => applicationSettingDoc &&  applicationSettingDoc.getApplicationSettings()),
+      map((applicationSettingDoc) => applicationSettingDoc && applicationSettingDoc.getApplicationSettings()),
     );
   }
 }

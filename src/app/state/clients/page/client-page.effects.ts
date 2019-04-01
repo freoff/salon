@@ -19,12 +19,10 @@ import { LoadClients, UpsertClient } from '../client/actions/client.actions';
 import { DisplayToast, GoTo } from '../../application/application.actions';
 import { APP_ROUTES } from '../../../app-named-route';
 import { of } from 'rxjs';
-import { environment } from '../../../../environments/environment';
 import { ClientStateService } from '../../../services/client-state.service';
 import { isEmpty } from 'underscore';
 import { ClientFormController } from '../../../services/client-form.controller';
 import { FormState } from '../../../types/form-status.enum';
-import { FormArray } from '@angular/forms';
 import { NavController } from '@ionic/angular';
 
 @Injectable()
@@ -67,12 +65,11 @@ export class ClientPageEffects {
       ),
     ),
   );
-  @Effect({dispatch: false})
+  @Effect({ dispatch: false })
   goToClientDetails$ = this.actions$.pipe(
     ofType<GoToClientDetails>(ClientPageActionTypes.GoToClientDetails),
     tap((action) => this.navCtrl.navigateForward(APP_ROUTES.clients.details(action.payload.client.id), {})),
     // mergeMap((action) => [new GoTo({ navigationUrl: APP_ROUTES.clients.details(action.payload.client.id) })]),
-
   );
 
   @Effect()
@@ -105,7 +102,7 @@ export class ClientPageEffects {
     private actions$: Actions,
     private clientStateService: ClientStateService,
     private clientFormController: ClientFormController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
   ) {}
   @Effect()
   editClient$ = this.actions$.pipe(

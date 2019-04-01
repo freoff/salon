@@ -7,7 +7,6 @@ import { ApplicationStateService } from '../../../../services/application-state.
 import { ClientEventFormPopoverCreator } from '../../../shared/ClientEventFormPopoverCreator.class';
 import { first, switchMap } from 'rxjs/operators';
 import { from } from 'rxjs/internal/observable/from';
-import { tap } from 'rxjs/internal/operators/tap';
 
 @Component({
   selector: 'app-details-container',
@@ -57,9 +56,8 @@ export class DetailsContainerComponent implements OnInit {
       .pipe(
         switchMap((currency) => from(this.clientEventPopover.createUpdateForm(clientEvent, currency))),
         first(),
-
       )
-      .subscribe(data => {
+      .subscribe((data) => {
         console.log('resolve this data', data);
         this.clientStateService.updateClientEvent(data);
       });

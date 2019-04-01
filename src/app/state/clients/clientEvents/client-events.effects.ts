@@ -4,14 +4,12 @@ import {
   ClientEventActionTypes,
   DeleteClientEvent,
   FetchClientEvents,
-  LoadClientEvents,
   StartAddClientEvent,
   StartDeleteeClientEvents,
   UpdateClientEventData,
-  UpsertClientEvent,
   UpsertClientEvents,
 } from './client-event.actions';
-import { catchError, map, mergeMap, switchMap, takeUntil, tap } from 'rxjs/operators';
+import { catchError, map, mergeMap, switchMap, takeUntil } from 'rxjs/operators';
 import { of, Subject } from 'rxjs';
 import { DisplayToast } from '../../application/application.actions';
 import { Injectable } from '@angular/core';

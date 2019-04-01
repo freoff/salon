@@ -1,10 +1,8 @@
 import { Directive } from '@angular/core';
 
 @Directive({
-  selector: '[appInputAutoFocusable]'
+  selector: '[appInputAutoFocusable]',
 })
 export class InputAutoFocusableDirective {
-
-  constructor() { }
-
+  constructor() {}
 }

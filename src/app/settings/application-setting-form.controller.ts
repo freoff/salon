@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { SettingsPageModule } from './settings.module';
 import { Observable } from 'rxjs';
 import { ApplicationSetting } from '../services/rxdb.service/collections/applicationSettings.collection';
 
@@ -42,7 +41,7 @@ export class ApplicationSettingsFormController {
   }
 
   update(lang: string, currency: string) {
-    this.form.patchValue({ applicationLanguage: lang, currency: currency }, {emitEvent: false});
+    this.form.patchValue({ applicationLanguage: lang, currency: currency }, { emitEvent: false });
   }
 }
 

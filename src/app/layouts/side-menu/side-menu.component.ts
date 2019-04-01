@@ -11,7 +11,7 @@ import { AppVersion } from '../../state/application/application.reducer';
 })
 export class SideMenuComponent implements OnInit {
   navigationItems: NavigationMenuItem = navigationMenuItems;
-  appVersion$: Observable<AppVersion> = this.applicationStateService.getApplicationVersion()
+  appVersion$: Observable<AppVersion> = this.applicationStateService.getApplicationVersion();
 
   constructor(private applicationStateService: ApplicationStateService) {}
 

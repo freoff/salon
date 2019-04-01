@@ -1,7 +1,7 @@
-import { ChangeDetectionStrategy,  Component, EventEmitter, Input, OnInit, Output,  } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Location } from '@angular/common';
 
-import {ActivatedRoute, Router, } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-form-footer',

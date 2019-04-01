@@ -1,6 +1,6 @@
-import {Action} from '@ngrx/store';
-import {ClientFormInterface} from '../../../clients/types/client-form.interface';
-import {Client} from '../../../clients/models/client.interface';
+import { Action } from '@ngrx/store';
+import { ClientFormInterface } from '../../../clients/types/client-form.interface';
+import { Client } from '../../../clients/models/client.interface';
 
 export enum ClientPageActionTypes {
   LoadAllClients = '[AppInitializer] Load all Client ClientPages',
@@ -16,11 +16,9 @@ export enum ClientPageActionTypes {
   StartDeleteClient = '[Client] Delete client data',
 }
 
-
-
 export class EditClient implements Action {
   readonly type = ClientPageActionTypes.EditClient;
-  constructor(public paylaod: {  client: Client }) {}
+  constructor(public paylaod: { client: Client }) {}
 }
 
 export class SaveClientNote implements Action {

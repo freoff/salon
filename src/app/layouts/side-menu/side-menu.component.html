@@ -53,10 +53,10 @@
               <ion-icon slot="start" name="settings"></ion-icon>
             </ion-item>
             <ion-item
-                    routerLink="/about"
-                    routerLinkActive="url-active"
-                    routerDirection="forward"
-                    routerLinkActive="link-active"
+              routerLink="/about"
+              routerLinkActive="url-active"
+              routerDirection="forward"
+              routerLinkActive="link-active"
             >
               <ion-label>{{ 'layouts.navigations.labels.about' | translate }}</ion-label>
               <ion-icon slot="start" name="eye"></ion-icon>
@@ -68,8 +68,8 @@
     <ion-footer>
       <ion-grid>
         <ion-row justify-content-start>
-          <ion-col *ngIf="appVersion$ | async as appversion" text-end>
-            <ion-text color="medium">App version: {{appversion.versionNumber}}</ion-text>
+          <ion-col *ngIf="(appVersion$ | async) as appversion" text-end>
+            <ion-text color="medium">App version: {{ appversion.versionNumber }}</ion-text>
           </ion-col>
         </ion-row>
       </ion-grid>

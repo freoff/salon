@@ -1,4 +1,3 @@
-import { getAppVersion } from './../state/selectors/appliation.selectors';
 import { ApplicationStateService } from './../services/application-state.service';
 import { Component, OnInit } from '@angular/core';
 import { APP_ROUTES } from '../app-named-route';

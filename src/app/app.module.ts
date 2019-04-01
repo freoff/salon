@@ -25,6 +25,7 @@ import { PaginationModule } from 'ngx-bootstrap';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { AppVersion } from '@ionic-native/app-version/ngx';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }

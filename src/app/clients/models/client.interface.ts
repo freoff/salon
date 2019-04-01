@@ -1,5 +1,4 @@
 import { Phone } from './phone.interface';
-import { ClientEvent } from './client-event';
 
 export interface Client {
   id: string;

@@ -1,47 +1,51 @@
 <ion-content padding>
   <form [formGroup]="form" (ngSubmit)="add()">
-  <ion-list>
-    <ion-title>
-      <ion-label *ngIf="!isUpdate">{{ 'clients.events.labels.title' | translate }}</ion-label>
-      <ion-label *ngIf="isUpdate">{{ 'clients.events.labels.titleUpdate' | translate }}</ion-label>
-    </ion-title>
+    <ion-list>
+      <ion-title>
+        <ion-label *ngIf="!isUpdate">{{ 'clients.events.labels.title' | translate }}</ion-label>
+        <ion-label *ngIf="isUpdate">{{ 'clients.events.labels.titleUpdate' | translate }}</ion-label>
+      </ion-title>
 
-    <ion-item lines="none" detail detailIcon="time">
-      <ion-label>{{ 'clients.events.labels.date' | translate }}</ion-label>
-      <ion-datetime displayFormat="DD-MM-YYYY HH:mm " slot="end" formControlName="eventDate"></ion-datetime>
-    </ion-item>
-    <ion-item>
-      <ion-label>{{ 'clients.events.labels.price' | translate }}</ion-label>
-      <ion-input
-        #priceInput
-        text-right
-        formControlName="price"
-        inputmode="numeric"
-        type="number"
-        autofocus="true"
-        placeholder="{{ 'clients.events.placeholders.price' | translate }}"
-      ></ion-input>
-      <ion-text slot="end">{{currency}}</ion-text>
-    </ion-item>
-    <ion-item *ngIf="showPriceError()">
-      <ion-text color="danger" class="form-error">
-        {{ 'clients.event.errors.priceSeemsBeInvalid' | translate }}
-      </ion-text>
-    </ion-item>
+      <ion-item lines="none" detail detailIcon="time">
+        <ion-label>{{ 'clients.events.labels.date' | translate }}</ion-label>
+        <ion-datetime displayFormat="DD-MM-YYYY HH:mm " slot="end" formControlName="eventDate"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'clients.events.labels.price' | translate }}</ion-label>
+        <ion-input
+          #priceInput
+          text-right
+          formControlName="price"
+          inputmode="numeric"
+          type="number"
+          autofocus="true"
+          placeholder="{{ 'clients.events.placeholders.price' | translate }}"
+        ></ion-input>
+        <ion-text slot="end">{{ currency }}</ion-text>
+      </ion-item>
+      <ion-item *ngIf="showPriceError()">
+        <ion-text color="danger" class="form-error">
+          {{ 'clients.event.errors.priceSeemsBeInvalid' | translate }}
+        </ion-text>
+      </ion-item>
 
-    <ion-item>
-      <ion-label position="stacked">{{ 'clients.events.labels.notes' | translate }}</ion-label>
-      <ion-textarea
-        formControlName="eventNotes"
-        rows="3"
-        placeholder="{{ 'clients.events.placeholders.notes' | translate }}"
-      ></ion-textarea>
-    </ion-item>
-  </ion-list>
-  <section fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="10px">
-    <ion-button type="button" fill="clear" (click)="cancel()">{{ 'commons.labels.cancel' | translate }}</ion-button>
-    <ion-button *ngIf="!isUpdate" type="submit" color="success" (click)="add()">{{ 'commons.labels.add' | translate }}</ion-button>
-    <ion-button *ngIf="isUpdate" type="submit" color="success" (click)="add()">{{ 'commons.labels.update' | translate }}</ion-button>
-  </section>
+      <ion-item>
+        <ion-label position="stacked">{{ 'clients.events.labels.notes' | translate }}</ion-label>
+        <ion-textarea
+          formControlName="eventNotes"
+          rows="3"
+          placeholder="{{ 'clients.events.placeholders.notes' | translate }}"
+        ></ion-textarea>
+      </ion-item>
+    </ion-list>
+    <section fxLayout="row wrap" fxLayoutAlign="end center" fxLayoutGap="10px">
+      <ion-button type="button" fill="clear" (click)="cancel()">{{ 'commons.labels.cancel' | translate }}</ion-button>
+      <ion-button *ngIf="!isUpdate" type="submit" color="success" (click)="add()">
+        {{ 'commons.labels.add' | translate }}
+      </ion-button>
+      <ion-button *ngIf="isUpdate" type="submit" color="success" (click)="add()">
+        {{ 'commons.labels.update' | translate }}
+      </ion-button>
+    </section>
   </form>
 </ion-content>

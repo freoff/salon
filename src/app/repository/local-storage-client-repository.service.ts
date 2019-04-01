@@ -1,9 +1,9 @@
-import {Storage} from '@ionic/storage';
-import {Injectable} from '@angular/core';
-import {from, Observable} from 'rxjs';
-import {Client} from '../clients/models/client.interface';
-import {EntityIdGeneratorService} from '../services/entity-id-generator.service';
-import {ClientEvent} from '../clients/models/client-event';
+import { Storage } from '@ionic/storage';
+import { Injectable } from '@angular/core';
+import { from, Observable } from 'rxjs';
+import { Client } from '../clients/models/client.interface';
+import { EntityIdGeneratorService } from '../services/entity-id-generator.service';
+import { ClientEvent } from '../clients/models/client-event';
 
 export const CLIENTS_KEY = 'CLIENTS';
 /*
@@ -50,7 +50,7 @@ export class LocalStorageClientRepository /* implements ClientRepositoryInterfac
     return undefined;
   }
 
-  saveClientNote({note, client}: { note: string; client: Client }) {
+  saveClientNote({ note, client }: { note: string; client: Client }) {
     //TODO implement
   }
 

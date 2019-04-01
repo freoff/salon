@@ -1,7 +1,5 @@
 import { State } from '../reducers';
 import { AppVersion } from '@ionic-native/app-version/ngx';
-declare type cordova = any;
-
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
 import { DirectoryEntry, File, FileEntry } from '@ionic-native/file/ngx';
@@ -26,6 +24,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ApplicationSettingsRepository } from '../../repository/applicationSettings.repository';
 import { RxdbService } from '../../services/rxdb.service';
 import { Store } from '@ngrx/store';
+
+declare type cordova = any;
 
 declare var LocalFileSystem: any;
 

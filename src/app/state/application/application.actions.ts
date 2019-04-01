@@ -4,7 +4,6 @@ import { NavigationExtras } from '@angular/router';
 import { ApplicationSetting } from '../../services/rxdb.service/collections/applicationSettings.collection';
 import { AppVersion } from './application.reducer';
 
-
 export enum ApplicationActionTypes {
   LoadApplications = '[Application] Load Applications',
   GoTo = '[Application] Go to',

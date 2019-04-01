@@ -11,7 +11,7 @@ export const getAllClientsMap = createSelector(
 export const getTotalClients = createSelector(
   getClients,
   fromClients.totalClients,
-)
+);
 export const getAllEvents = createSelector(
   clientEventsState,
   fromClientEvents.allClientEvents,
@@ -40,7 +40,7 @@ export const getSelectedClient = createSelector(
 );
 export const getClientById = (clientId: string) =>
   createSelector(
-      getAllClientsMap,
+    getAllClientsMap,
     (clients) => clients[clientId],
   );
 
@@ -49,4 +49,7 @@ export const getClientEvents = createSelector(
   getAllEvents,
   (clientId, events) => events.filter((event) => event.client === clientId),
 );
-export const getClientsAreLoaded = createSelector(getClients, state => state.clientsLoaded)
+export const getClientsAreLoaded = createSelector(
+  getClients,
+  (state) => state.clientsLoaded,
+);

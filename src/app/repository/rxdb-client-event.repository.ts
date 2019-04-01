@@ -2,7 +2,7 @@ import { RxdbService } from '../services/rxdb.service';
 import { EntityIdGeneratorService } from '../services/entity-id-generator.service';
 import { Client } from '../clients/models/client.interface';
 import { ClientEvent } from '../clients/models/client-event';
-import { from, Observable, of } from 'rxjs';
+import { from, Observable } from 'rxjs';
 import { RxDatabaseBase, RxDocumentBase } from 'rxdb';
 import { SalonDatabase, SalonDatabaseCollections } from '../services/rxdb.service/collections';
 import { exhaustMap, first, map, switchMap, tap } from 'rxjs/operators';

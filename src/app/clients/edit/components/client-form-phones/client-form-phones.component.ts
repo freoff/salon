@@ -1,8 +1,8 @@
-import {Component, ElementRef, EventEmitter, Input, OnInit, Output, QueryList, Renderer2, ViewChildren} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, QueryList, Renderer2, ViewChildren } from '@angular/core';
 import { Phone } from '../../../models/phone.interface';
 import { FormGroup } from '@angular/forms';
 import { PhoneTypes } from '../../../models/phone-types.enum';
-import {IonInput} from '@ionic/angular';
+import { IonInput } from '@ionic/angular';
 
 @Component({
   selector: 'app-client-form-phones',
@@ -22,9 +22,8 @@ export class ClientFormPhonesComponent implements OnInit {
 
   ngOnInit() {}
 
-    onAddPhone() {
-      this.addPhone.emit({});
-      setTimeout(() => this.phoneInputs.last.setFocus(),200);
-
-    }
+  onAddPhone() {
+    this.addPhone.emit({});
+    setTimeout(() => this.phoneInputs.last.setFocus(), 200);
+  }
 }

@@ -21,7 +21,7 @@ export class ClientEventsComponent implements OnInit {
   async onAddEvent(event: any) {
     this.eventModal = await this.pop.create({
       component: ClientEventFormComponent,
-      componentProps: {currency: this.currency},
+      componentProps: { currency: this.currency },
       cssClass: ['add-client-event-popover'],
     });
     this.eventModal.present();

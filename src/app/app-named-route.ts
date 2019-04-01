@@ -5,7 +5,7 @@ export const APP_ROUTES = {
     list: [...clientsRoute, 'list'],
     add: [...clientsRoute, 'edit'],
     details: (clientId) => [...clientsRoute, clientId],
-    edit: (clientId) => [...clientsRoute, clientId, 'edit']
+    edit: (clientId) => [...clientsRoute, clientId, 'edit'],
   },
   errors: {
     clientNotFound: [...errorsRoute, 'client-not-found'],

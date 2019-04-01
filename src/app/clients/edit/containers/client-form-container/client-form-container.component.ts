@@ -1,13 +1,4 @@
-import {
-  ChangeDetectorRef,
-  Component,
-  Input,
-  OnDestroy,
-  OnInit,
-  QueryList,
-  Renderer2,
-  ViewChildren,
-} from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, QueryList, ViewChildren } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { PhoneTypes } from '../../../models/phone-types.enum';
 import { ClientFormController } from '../../../../services/client-form.controller';
@@ -25,10 +16,7 @@ export class ClientFormContainerComponent implements OnInit, OnDestroy {
   @ViewChildren('ion-item') ionItems: QueryList<IonItem>;
   public form: FormGroup;
   public phoneTypes = [PhoneTypes.cell, PhoneTypes.ground];
-  constructor(
-    public formController: ClientFormController,
-    private clientState: ClientStateService,
-  ) {
+  constructor(public formController: ClientFormController, private clientState: ClientStateService) {
     this.form = formController.form;
   }
   resetForm() {

@@ -1,19 +1,8 @@
-import {
-  AfterViewInit,
-  ChangeDetectorRef,
-  Component,
-  ComponentRef,
-  HostBinding,
-  Input,
-  OnInit,
-  ViewChild,
-  ViewChildren,
-} from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, HostBinding, Input, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { IonInput, PopoverController } from '@ionic/angular';
 import { ClientEvent } from '../../../models/client-event';
-import { ClientFormInterface } from '../../../types/client-form.interface';
 import { ClietnEventFormInterface } from '../../../types/clietn-event-form.interface';
 
 @Component({

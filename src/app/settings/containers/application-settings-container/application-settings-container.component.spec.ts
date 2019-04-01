@@ -8,10 +8,10 @@ describe('ApplicationSettingsContainerComponent', () => {
   let fixture: ComponentFixture<ApplicationSettingsContainerComponent>;
   let store: Store<any>;
 
-  beforeEach(async() => {
+  beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [ StoreModule.forRoot({}) ],
-      declarations: [ ApplicationSettingsContainerComponent ]
+      imports: [StoreModule.forRoot({})],
+      declarations: [ApplicationSettingsContainerComponent],
     });
 
     await TestBed.compileComponents();

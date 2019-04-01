@@ -27,5 +27,3 @@ export function reducer(state = initialState, action: ClientPageActions): Client
 
 export const selectedClientId = (state: ClientPageState) => state.selectedClientId;
 export const creatingClient = (state: ClientPageState) => state.creatingClient;
-
-

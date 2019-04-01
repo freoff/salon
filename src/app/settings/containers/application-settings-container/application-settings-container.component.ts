@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { ApplicationState } from '../../../state/application/application.reducer';
 import { ApplicationStateService } from '../../../services/application-state.service';
 import { ApplicationSettingsFormController } from '../../application-setting-form.controller';
 import { distinctUntilChanged, takeUntil, tap } from 'rxjs/operators';
-import { combineLatest, merge, Subject } from 'rxjs';
+import { combineLatest, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-application-settings-container',

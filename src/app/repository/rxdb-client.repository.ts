@@ -4,7 +4,7 @@ import { Client } from '../clients/models/client.interface';
 import { forkJoin, from, Observable, of } from 'rxjs';
 import { EntityIdGeneratorService } from '../services/entity-id-generator.service';
 import { fromPromise } from 'rxjs/internal-compatibility';
-import { exhaustMap, first, map, switchMap, take, tap } from 'rxjs/operators';
+import { exhaustMap, first, map, switchMap } from 'rxjs/operators';
 import { ClientEvent } from '../clients/models/client-event';
 
 export class RxdbClientRepository implements ClientRepositoryInterface {
@@ -53,9 +53,11 @@ export class RxdbClientRepository implements ClientRepositoryInterface {
     return forkJoin(deleteClient$, deleteClientEvents$);
   }
   getAll(): Observable<Array<Client>> {
-    return this.rxdb.getDb$().pipe(
-      switchMap((db) => db.clients.find().$.pipe(map((result) => result.map((client) => client.getClientData())))),
-    );
+    return this.rxdb
+      .getDb$()
+      .pipe(
+        switchMap((db) => db.clients.find().$.pipe(map((result) => result.map((client) => client.getClientData())))),
+      );
   }
 
   getClient({ clientId }: { clientId: any }): Observable<Client> {

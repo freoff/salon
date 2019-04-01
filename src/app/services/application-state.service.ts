@@ -15,12 +15,12 @@ import { TranslateService } from '@ngx-translate/core';
 import { ApplicationSettingsFormInterface } from '../settings/application-setting-form.controller';
 import {
   getAplicationCurrency,
-  getApplicationLanaguage, getAppVersion,
+  getApplicationLanaguage,
+  getAppVersion,
   isApplicationReady,
 } from '../state/selectors/appliation.selectors';
 import { filter } from 'rxjs/operators';
 import { first } from 'rxjs/internal/operators/first';
-import { getCurrency } from '../state/application/application.reducer';
 
 @Injectable({
   providedIn: 'root',

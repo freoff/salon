@@ -49,7 +49,7 @@ export function reducer(state = initialState, action: ClientActions): State {
     }
 
     case ClientActionTypes.LoadClients: {
-      return adapter.addAll(action.payload.clients, {...state, clientsLoaded: true});
+      return adapter.addAll(action.payload.clients, { ...state, clientsLoaded: true });
     }
 
     case ClientActionTypes.ClearClients: {

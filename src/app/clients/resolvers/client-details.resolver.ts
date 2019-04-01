@@ -1,9 +1,9 @@
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { ClientStateService } from '../../services/client-state.service';
 import { Observable } from 'rxjs';
-import {filter, first, tap} from 'rxjs/operators';
+import { filter, first, tap } from 'rxjs/operators';
 import { Host, Injectable, Injector, Optional } from '@angular/core';
-import {Client} from '../models/client.interface';
+import { Client } from '../models/client.interface';
 
 @Injectable()
 export class ClientDetailsResolver implements Resolve<Client> {
@@ -23,7 +23,7 @@ export class ClientDetailsResolver implements Resolve<Client> {
           this.clientStateService.loadClient({ clientId });
         }
       }),
-      filter(client => !!client),
+      filter((client) => !!client),
       first(),
     ); // pipe 1
   }

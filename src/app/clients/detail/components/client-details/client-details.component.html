@@ -58,7 +58,6 @@
             <section fxFlex fxLayoutAlign="start center" fxLayoutGap="15px">
               <ion-text color="dark">{{ phone.number }}</ion-text>
               <ion-button (click)="onCall(phone.number)" fill="clear">
-
                 &nbsp;
                 {{ 'clients.details.labels.call' | translate }}
               </ion-button>
@@ -80,28 +79,28 @@
     <ion-list *ngIf="length > 0 && (clientEventToDisplay() | async) as clientEvents">
       <ng-container *ngFor="let ce of clientEvents; trackBy: trackEventsBy">
         <ion-item-sliding #slideItem>
-        <ion-item
-          button
-          detail
-          [detailIcon]="expandedRow === ce._id ? 'arrow-down' : 'arrow-forward'"
-          (click)="setExpanded(ce._id)"
-        >
-          <ion-label text-wrap fxLayout>
-            <ion-text>
-              {{ ce.eventDate | amDateFormat: 'DD MMMM YYYY' }} &nbsp;
-              <ion-text color="medium">({{ ce.eventDate | amTimeAgo }})</ion-text>
-              <span fxFlex="1 1 auto"></span>
-            </ion-text>
-          </ion-label>
-          <span slot="end">{{ ce.price.amount / 100 }} {{ ce.price.currency }}</span>
-        </ion-item>
+          <ion-item
+            button
+            detail
+            [detailIcon]="expandedRow === ce._id ? 'arrow-down' : 'arrow-forward'"
+            (click)="setExpanded(ce._id)"
+          >
+            <ion-label text-wrap fxLayout>
+              <ion-text>
+                {{ ce.eventDate | amDateFormat: 'DD MMMM YYYY' }} &nbsp;
+                <ion-text color="medium">({{ ce.eventDate | amTimeAgo }})</ion-text>
+                <span fxFlex="1 1 auto"></span>
+              </ion-text>
+            </ion-label>
+            <span slot="end">{{ ce.price.amount / 100 }} {{ ce.price.currency }}</span>
+          </ion-item>
           <ion-item-options side="end">
-            <ion-item-option color="danger" (click)="onDeleteClientEvent(ce, slideItem )">
+            <ion-item-option color="danger" (click)="onDeleteClientEvent(ce, slideItem)">
               {{ 'clients.details.labels.delete' | translate }}
             </ion-item-option>
           </ion-item-options>
           <ion-item-options side="start">
-            <ion-item-option color="warning" (click)="onClientEventEdit(ce, slideItem )">
+            <ion-item-option color="warning" (click)="onClientEventEdit(ce, slideItem)">
               {{ 'clients.details.labels.edit' | translate }}
             </ion-item-option>
           </ion-item-options>

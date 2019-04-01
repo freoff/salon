@@ -9,7 +9,7 @@ import { getTotalClients } from '../../state/selectors/clients.selectors';
   styleUrls: ['./list.page.scss'],
 })
 export class ListPage implements OnInit {
-  totalClients = this.store.select(getTotalClients)
+  totalClients = this.store.select(getTotalClients);
   constructor(private store: Store<State>) {}
 
   ngOnInit(): void {}

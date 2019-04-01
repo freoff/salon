@@ -21,6 +21,6 @@ const routes: Routes = [
 @NgModule({
   imports: [SharedModule, FormsModule, IonicModule, RouterModule.forChild(routes), TranslateModule.forChild()],
   declarations: [SettingsPage, ApplicationSettingsComponent, ApplicationSettingsContainerComponent],
-  providers: [ApplicationSettingsFormController]
+  providers: [ApplicationSettingsFormController],
 })
 export class SettingsPageModule {}

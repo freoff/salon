@@ -10,9 +10,9 @@ import {
 } from '@angular/core';
 import { Client } from '../../../models/client.interface';
 import { FormControl } from '@angular/forms';
-import { IonText, IonTextarea } from '@ionic/angular';
+import { IonTextarea } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
-import { first, map, take, tap } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-client-details-client-notes',

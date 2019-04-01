@@ -1,7 +1,7 @@
 import { ClientsCollection } from './clients.collection';
 import { RxDatabase } from 'rxdb';
 import { ClientEventsCollection } from './client-event.collection';
-import {ApplicationSettingsCollection} from './applicationSettings.collection';
+import { ApplicationSettingsCollection } from './applicationSettings.collection';
 
 export type SalonDatabase = RxDatabase<SalonDatabaseCollections>;
 

@@ -28,8 +28,12 @@ const routes: Routes = [
     SharedModule,
     TranslateModule.forChild(),
   ],
-  declarations: [EditPage, ClientFormContainerComponent, ClientFormComponent, ClientFormFooterComponent, ClientFormPhonesComponent],
+  declarations: [
+    EditPage,
+    ClientFormContainerComponent,
+    ClientFormComponent,
+    ClientFormFooterComponent,
+    ClientFormPhonesComponent,
+  ],
 })
-
-
 export class EditPageModule {}

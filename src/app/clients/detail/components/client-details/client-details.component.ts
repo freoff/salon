@@ -5,7 +5,7 @@ import { ClientStateService } from '../../../../services/client-state.service';
 import { PageChangedEvent } from 'ngx-bootstrap';
 import { distinctUntilChanged, filter, take, tap } from 'rxjs/operators';
 import { Pager } from '../../../../shared/class/Pager.class';
-import { ActionSheetController, IonItemSliding, IonTextarea, PopoverController } from '@ionic/angular';
+import { ActionSheetController, IonItemSliding, IonTextarea } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { Observable } from 'rxjs';
 
@@ -39,7 +39,7 @@ export class ClientDetailsComponent implements OnInit {
     private clientStateService: ClientStateService,
     public actionSheetController: ActionSheetController,
     private translationService: TranslateService,
-    private chd: ChangeDetectorRef
+    private chd: ChangeDetectorRef,
   ) {}
   clientEventToDisplay(): Observable<Array<ClientEvent>> {
     return this.pager.data.pipe(
@@ -124,7 +124,7 @@ export class ClientDetailsComponent implements OnInit {
   }
 
   currentTextAreaRow(textarea: IonTextarea) {
-    if (textarea && textarea.value && (textarea.value.split('\n').length > 2)) {
+    if (textarea && textarea.value && textarea.value.split('\n').length > 2) {
       this.chd.markForCheck();
       return textarea.value.split('\n').length + 1;
     } else {
@@ -135,12 +135,10 @@ export class ClientDetailsComponent implements OnInit {
   onDeleteClientEvent(ce: ClientEvent, slideItem: IonItemSliding) {
     slideItem.closeOpened();
     this.deleteClientEvent.emit(ce);
-
-
   }
 
   onClientEventEdit(ce: ClientEvent, slideItem: IonItemSliding) {
-     slideItem.closeOpened();
-     this.editClientEvent.emit(ce);
+    slideItem.closeOpened();
+    this.editClientEvent.emit(ce);
   }
 }
