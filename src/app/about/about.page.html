@@ -12,8 +12,8 @@
 
 <ion-content padding class="tranparent">
   <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle color="primary">{{ 'about.header' | translate }}</ion-card-subtitle>
+    <ion-card-header padding-start margin-start>
+      <ion-card-title color="primary">{{ 'about.header' | translate }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list lines="none">
@@ -23,42 +23,19 @@
           </ion-text>
         </ion-item>
         <ion-item>
-          <ion-text>Aplikacja "Salon" - wersja {{ currentVersion | json }}</ion-text>
+          <ion-text>Aplikacja "Salon" - wersja {{ currentVersion | async }}</ion-text>
         </ion-item>
-        <ion-item text-wrap>
-            {{'about.aboutApplication1' | translate}}
-        </ion-item>
-        <ion-item text-wrap>
-            {{'about.aboutApplication1' | translate}}
-        </ion-item>
-        <ion-item text-wrap>
-            {{'about.aboutApplication1' | translate}}
-        </ion-item>
-        <ion-item text-wrap>
-            {{'about.aboutApplication1' | translate}}
-        </ion-item>
-        <ion-item text-wrap>
-            {{'about.aboutApplication1' | translate}}
-        </ion-item>
-        <ion-item text-wrap>
-            {{'about.aboutApplication1' | translate}}
-        </ion-item>
-        <ion-item text-wrap>
-            {{'about.aboutApplication1' | translate}}
-        </ion-item>
-        <ion-item text-wrap>
-            {{'about.aboutApplication1' | translate}}
-        </ion-item>
-        <ion-item text-wrap>
-            {{'about.aboutApplication1' | translate}}
-        </ion-item>
-        <ion-item text-wrap>
-            {{'about.aboutApplication1' | translate}}
+        <ion-list-header>Informacje:</ion-list-header>
+        <ion-item text-wrap *ngFor="let trans of allTranslations; let i = index" style="text-align: justify">
+          <p>
+            {{ 'about.aboutApplication' + i | translate }}
+          </p>
         </ion-item>
         <ion-list-header>Contact:</ion-list-header>
         <ion-item lines="none">
           <ion-text>
-            email: <a href="mailto: kpodlaski@gmail.com">   kpodlaski@gmail.com </a>
+            email:
+            <a href="mailto: kpodlaski@gmail.com">kpodlaski@gmail.com</a>
           </ion-text>
         </ion-item>
       </ion-list>
